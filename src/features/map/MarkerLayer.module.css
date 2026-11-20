@@ -1,0 +1,177 @@
+.layer {
+  position: absolute;
+  inset: 0;
+  /* La couche laisse passer les gestes ; seuls les reperes les captent. */
+  pointer-events: none;
+}
+
+/* Point d'ancrage de dimension nulle : son origine EST la coordonnee exacte
+   du marqueur dans l'image. Tout le reste se positionne par rapport a lui. */
+.anchor {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.pin,
+.cluster,
+.preview {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  pointer-events: auto;
+}
+
+/* ------------------------------------------------------------- epingles --- */
+
+/* CONTRE-ECHELLE — le calque parent est mis a l'echelle `k` ; l'epingle
+   applique `1 / k`, donc sa taille a l'ecran ne change jamais. Le pivot est
+   sa POINTE (`transform-origin: 50% 100%`), si bien que la pointe reste rivee
+   a sa coordonnee a tous les niveaux de zoom. */
+.pin,
+.preview {
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) scale(var(--map-inv, 1));
+}
+
+.pin,
+.preview {
+  display: grid;
+  justify-items: center;
+  /* `start` est indispensable : en etirement, la pastille serait deformee
+     pour remplir la cible tactile de 44px. */
+  align-content: start;
+  /* Cible tactile conforme (44px) alors que la pastille visible fait 36px. */
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.pin {
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--text-on-accent);
+  cursor: pointer;
+}
+
+.pinBody {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-full);
+  background: var(--pin-accent, var(--accent));
+  border: 2px solid color-mix(in srgb, var(--abyss) 45%, transparent);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--dur-fast) var(--ease-back),
+              box-shadow var(--dur-fast) var(--ease-soft);
+}
+
+/* Pointe : losange qui prolonge la pastille jusqu'a la coordonnee. */
+.pinTip {
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 2px;
+  background: var(--pin-accent, var(--accent));
+  transform: rotate(45deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pin:hover .pinBody { transform: translateY(-2px) scale(1.06); }
+}
+
+.pin:active .pinBody { transform: scale(0.94); }
+.pin:focus-visible { outline: none; }
+.pin:focus-visible .pinBody { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+.pinSelected .pinBody {
+  transform: translateY(-3px) scale(1.14);
+  box-shadow: var(--shadow-lg), 0 0 0 4px color-mix(in srgb, var(--bone) 38%, transparent);
+}
+
+/* --------------------------------------------------------- regroupements -- */
+
+/* Un amas n'a pas de pointe : il est CENTRE sur sa coordonnee. Le pivot est
+   donc son centre, ce qui garantit l'absence de derive au changement de zoom
+   (un pivot decale ferait glisser la pastille pendant un pincement). */
+.cluster {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--r-full);
+  border: 2px solid color-mix(in srgb, var(--bone) 28%, transparent);
+  background: color-mix(in srgb, var(--surf-700) 92%, transparent);
+  color: var(--bone);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transform-origin: 50% 50%;
+  transform: translate(-50%, 50%) scale(var(--map-inv, 1));
+  transition: background-color var(--dur-fast) var(--ease-soft),
+              color var(--dur-fast) var(--ease-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cluster:hover { background: var(--surf); color: var(--text-on-accent); }
+}
+
+.cluster:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+/* -------------------------------------------- repere de contribution ----- */
+
+.preview {
+  color: var(--text-on-accent);
+  cursor: grab;
+  touch-action: none;
+}
+
+.preview:active { cursor: grabbing; }
+
+.previewBody {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-full);
+  background: var(--grad-sunset);
+  border: 2px solid var(--bone);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Halo d'attention. L'opacite de base est nulle : quand le membre a demande
+   la reduction des animations, les jetons de duree tombent a 0 et le halo
+   reste donc simplement invisible, au lieu de figer un anneau opaque. */
+.previewBody::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--r-full);
+  border: 2px solid var(--sunset-300);
+  opacity: 0;
+  animation: previewPulse var(--dur-scene) var(--ease-out) infinite;
+  pointer-events: none;
+}
+
+.previewTip {
+  width: 11px;
+  height: 11px;
+  margin-top: -5px;
+  border-radius: 2px;
+  background: var(--sunset);
+  transform: rotate(45deg);
+}
+
+.preview:focus-visible { outline: none; }
+.preview:focus-visible .previewBody { outline: 2px solid var(--bone); outline-offset: 3px; }
+
+@keyframes previewPulse {
+  from { opacity: 0.8; transform: scale(1); }
+  to   { opacity: 0;   transform: scale(2.1); }
+}

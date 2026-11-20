@@ -1,0 +1,109 @@
+/* -------------------------------------------------- bandeau de placement -- */
+
+.banner {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  right: var(--sp-3);
+  z-index: var(--z-sticky);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--tide) 94%, transparent);
+  backdrop-filter: var(--blur-panel);
+  box-shadow: var(--shadow-lg);
+  animation: bannerIn var(--dur-base) var(--ease-out) both;
+}
+
+.bannerText {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bannerText > svg { flex: none; color: var(--accent-warm); }
+
+.bannerActions {
+  display: flex;
+  gap: var(--sp-2);
+  margin-left: auto;
+}
+
+@keyframes bannerIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------- portail d'acces / fin ----- */
+
+.gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  text-align: center;
+  padding-block: var(--sp-2);
+}
+
+.gateMark {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--r-full);
+  background: var(--accent-warm-soft);
+  color: var(--accent-warm);
+  border: 1px solid color-mix(in srgb, var(--sunset) 32%, transparent);
+}
+
+.gateMarkOk {
+  background: color-mix(in srgb, var(--success) 16%, transparent);
+  color: var(--success);
+  border-color: color-mix(in srgb, var(--palm) 35%, transparent);
+}
+
+.gateTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--text);
+}
+
+.gateBody {
+  max-width: 44ch;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-muted);
+}
+
+.gateActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  width: 100%;
+  margin-top: var(--sp-2);
+}
+
+@media (min-width: 600px) {
+  .gateActions { flex-direction: row-reverse; }
+}
+
+.gateFoot { font-size: var(--text-sm); }
+
+.gateLink {
+  display: inline-block;
+  min-height: 44px;
+  padding-block: var(--sp-3);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.gateLink:hover { color: var(--surf-300); }

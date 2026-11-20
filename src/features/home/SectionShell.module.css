@@ -1,0 +1,81 @@
+.section {
+  padding-block: var(--sp-7);
+}
+
+@media (min-width: 900px) {
+  .section { padding-block: var(--sp-8); }
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-5);
+}
+
+.heading {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-md);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+}
+
+.title {
+  font-size: var(--text-xl);
+  color: var(--text);
+}
+
+.subtitle {
+  margin-top: var(--sp-1);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* Cible tactile de 44px garantie par le padding, sans decaler le texte. */
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding-inline: var(--sp-2);
+  margin-inline-end: calc(var(--sp-2) * -1);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-soft), transform var(--dur-fast) var(--ease-out);
+}
+
+.more:hover { color: var(--accent); }
+
+@media (hover: hover) and (pointer: fine) {
+  .more:hover { transform: translateX(2px); }
+}
+
+.body {
+  min-width: 0;
+}
+
+.emptyIcon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-full);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+}

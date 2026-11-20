@@ -1,0 +1,9 @@
+/* Favori pose : le sable des Keys, distinct du turquoise des reactions pour
+   que les deux actions ne se confondent pas dans une meme barre. */
+.active {
+  color: var(--sand);
+}
+
+.active svg {
+  filter: drop-shadow(0 0 var(--sp-2) color-mix(in srgb, var(--sand) 35%, transparent));
+}

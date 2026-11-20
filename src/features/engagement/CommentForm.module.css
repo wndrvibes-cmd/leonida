@@ -1,0 +1,65 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sp-2);
+}
+
+.compact .actions {
+  gap: var(--sp-2);
+}
+
+/* ------------------------------------------------- saisie indisponible -- */
+/* Jamais de champ mort : on explique pourquoi, et on propose une issue. */
+.locked {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+}
+
+.lockIcon {
+  flex: 0 0 auto;
+  color: var(--text-subtle);
+}
+
+.lockedText {
+  flex: 1 1 16ch;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: var(--leading-snug);
+}
+
+.lockedLink {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--sp-4);
+  border-radius: var(--r-full);
+  background: var(--accent-soft);
+  border: 1px solid var(--border-accent);
+  color: var(--text);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lockedLink:hover {
+    background: color-mix(in srgb, var(--surf) 26%, transparent);
+  }
+}

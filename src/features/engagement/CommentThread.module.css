@@ -1,0 +1,142 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+/* ------------------------------------------------------------- en-tete -- */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  letter-spacing: var(--tracking-tight);
+}
+
+.titleIcon {
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+
+/* Compteur : toujours le nombre REEL de commentaires charges. */
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  padding: 0 var(--sp-2);
+  border-radius: var(--r-full);
+  background: var(--accent-soft);
+  border: 1px solid var(--border-accent);
+  color: var(--text);
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------- liste -- */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.body {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  /* Les retours a la ligne du membre sont conserves ; le texte reste du
+     TEXTE (React echappe tout), jamais du HTML interprete. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.edited {
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+  font-style: italic;
+}
+
+/* ------------------------------------------------------------- reponses -- */
+.replies {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  /* Un seul cran d'indentation : au-dela, un fil devient illisible sur
+     iPhone. La hierarchie est portee par le filet, pas par la marge. */
+  margin-left: var(--sp-4);
+  padding-left: var(--sp-4);
+  border-left: 1px solid var(--border);
+}
+
+.reply .body {
+  font-size: var(--text-sm);
+}
+
+.replyForm {
+  margin-left: var(--sp-4);
+  padding-left: var(--sp-4);
+  border-left: 1px solid var(--border);
+}
+
+/* -------------------------------------------------------------- actions -- */
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  margin-left: calc(var(--sp-2) * -1);
+}
+
+/* ----------------------------------------------------- etats particuliers */
+.hidden,
+.closed,
+.truncated {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.hiddenIcon {
+  flex: 0 0 auto;
+  color: var(--warning);
+}
+
+.closedIcon {
+  flex: 0 0 auto;
+  color: var(--text-subtle);
+}
+
+.truncated {
+  border-style: dashed;
+}

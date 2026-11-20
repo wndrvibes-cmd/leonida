@@ -1,0 +1,61 @@
+.scroller {
+  /* Le carrousel va jusqu'au bord de l'ecran sur mobile : plus genereux a
+     l'oeil, et le defilement reste contenu dans ce bloc. */
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  padding-block: var(--sp-1);
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  min-width: 0;
+}
+
+.item > * {
+  width: 100%;
+}
+
+.sm .item { width: min(62vw, 220px); }
+.md .item { width: min(78vw, 300px); }
+.lg .item { width: min(86vw, 360px); }
+
+@media (min-width: 900px) {
+  /* Classe redoublee : bat la specificite de la regle globale `.snap-row`. */
+  .scroller.scroller {
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+  }
+
+  .row.row {
+    display: grid;
+    gap: var(--sp-5);
+  }
+
+  .sm.sm  { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .md.md  { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .lg.lg  { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+
+  .row.row > .item { width: auto; }
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.skeletonCover {
+  display: block;
+}

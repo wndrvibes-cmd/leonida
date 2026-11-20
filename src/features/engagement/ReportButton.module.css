@@ -1,0 +1,45 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding: var(--sp-6) 0;
+}
+
+/* Signalement deja depose : information, pas erreur. */
+.note,
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--text);
+}
+
+.note {
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success) 34%, transparent);
+}
+
+.noteIcon {
+  flex: 0 0 auto;
+  color: var(--success);
+}
+
+.alert {
+  background: color-mix(in srgb, var(--danger) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--danger) 38%, transparent);
+}
+
+.alertIcon {
+  flex: 0 0 auto;
+  color: var(--danger);
+}

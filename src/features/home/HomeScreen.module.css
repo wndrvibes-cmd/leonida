@@ -1,0 +1,25 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Alternance tres sobre : une section sur deux repose sur un fond legerement
+   plus clair, pour separer les rubriques sans multiplier les bordures. */
+.screen > :nth-child(even) {
+  background: color-mix(in srgb, var(--deep) 45%, transparent);
+}
+
+.state {
+  padding-block: var(--sp-8);
+}
+
+.skeletonSection {
+  padding-block: var(--sp-7);
+}
+
+.skeletonHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+}

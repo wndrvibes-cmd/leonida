@@ -1,0 +1,89 @@
+/* Classe redoublee : la specificite depasse celle de `.card` de
+   Card.module.css, l'ordre d'injection des feuilles n'a donc plus
+   d'influence sur la mise en page. */
+.card.card {
+  display: grid;
+  gap: var(--sp-5);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .card.card {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: var(--sp-7);
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--border-accent);
+}
+
+.heading {
+  font-size: var(--text-xl);
+  color: var(--text);
+}
+
+.description {
+  max-width: var(--reading-max);
+  color: var(--text-muted);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  color: var(--text);
+}
+
+.check {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--success);
+}
+
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-2);
+}
+
+.aside {
+  min-width: 0;
+}

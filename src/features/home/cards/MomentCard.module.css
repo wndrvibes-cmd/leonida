@@ -1,0 +1,60 @@
+/* Classe redoublee : la specificite depasse celle de `.card` de
+   Card.module.css, l'ordre d'injection des feuilles n'a donc plus
+   d'influence sur la mise en page. */
+.card.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.media {
+  position: relative;
+}
+
+.mediaLink {
+  display: block;
+}
+
+/* Pose par-dessus le lien : il ne doit donc pas intercepter le toucher. */
+.overlay {
+  position: absolute;
+  pointer-events: none;
+  inset-inline: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-3);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--abyss) 80%, transparent) 100%
+  );
+  font-size: var(--text-xs);
+  color: var(--bone);
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+}
+
+.caption {
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

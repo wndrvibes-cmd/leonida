@@ -1,0 +1,84 @@
+.list {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 900px) {
+  .list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.itemHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.itemTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.itemMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.date {
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+}
+
+.excerpt {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Le motif de refus est transmis tel quel a l'auteur : c'est ce qui lui
+   permet de corriger utilement. */
+.rejection {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border: 1px solid color-mix(in srgb, var(--danger) 34%, transparent);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.rejection > svg { flex: none; color: var(--danger); margin-top: 1px; }
+
+.hint {
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  color: var(--text-subtle);
+}
+
+.itemActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: auto;
+  padding-top: var(--sp-2);
+}

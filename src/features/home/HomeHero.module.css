@@ -1,0 +1,177 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: 62svh;
+  padding-block: var(--sp-9) var(--sp-8);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 900px) {
+  .hero { min-height: 56svh; padding-block: var(--sp-10) var(--sp-9); }
+}
+
+.loading {
+  min-height: 42svh;
+  background: var(--bg-elevated);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  width: 100%;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+.center .inner { align-items: center; }
+
+.title {
+  font-size: var(--text-4xl);
+  max-width: 24ch;
+  color: var(--bone);
+  text-shadow: 0 2px 24px color-mix(in srgb, var(--abyss) 65%, transparent);
+}
+
+.subtitle {
+  max-width: 52ch;
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-2);
+}
+
+/* ------------------------------------------------------------- VISUEL --- */
+
+.art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Voile de lisibilite : le texte doit rester lisible quelle que soit l'image
+   televersee par l'administrateur. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--grad-scrim);
+}
+
+/* ------------------------------------------- HORIZON TROPICAL EN CSS --- */
+
+.horizon {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.horizon > * {
+  position: absolute;
+  display: block;
+}
+
+.sky {
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      var(--abyss) 0%,
+      var(--surf-900) 34%,
+      var(--sunset-700) 72%,
+      var(--sunset) 100%
+    );
+}
+
+/* Soleil : halo chaud qui respire tres lentement. */
+.sun {
+  left: 50%;
+  bottom: 24%;
+  width: min(62vw, 420px);
+  aspect-ratio: 1;
+  margin-left: min(-31vw, -210px);
+  border-radius: var(--r-full);
+  background: radial-gradient(
+    circle at center,
+    var(--sand-100) 0%,
+    var(--sunset-300) 38%,
+    color-mix(in srgb, var(--sunset) 40%, transparent) 62%,
+    transparent 72%
+  );
+  opacity: 0.9;
+  animation: breathe calc(var(--dur-scene) * 9) var(--ease-soft) infinite alternate;
+}
+
+/* Mer : bande turquoise qui ferme l'horizon. */
+.sea {
+  inset-inline: 0;
+  bottom: 0;
+  height: 28%;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surf-300) 70%, transparent) 0%,
+      var(--surf-700) 42%,
+      var(--surf-900) 100%
+    );
+  border-top: 1px solid color-mix(in srgb, var(--sand-100) 45%, transparent);
+}
+
+/* Reflet : une large onde qui glisse lentement sur l'eau. */
+.shimmer {
+  inset-inline: -30%;
+  bottom: 0;
+  height: 28%;
+  background: repeating-linear-gradient(
+    100deg,
+    transparent 0 42px,
+    color-mix(in srgb, var(--sand-100) 16%, transparent) 42px 46px,
+    transparent 46px 96px
+  );
+  opacity: 0.5;
+  animation: drift calc(var(--dur-scene) * 26) linear infinite;
+}
+
+.palms {
+  inset-inline: 0;
+  bottom: 24%;
+  width: 100%;
+  height: clamp(90px, 22vh, 190px);
+  fill: color-mix(in srgb, var(--abyss) 88%, transparent);
+  animation: sway calc(var(--dur-scene) * 11) var(--ease-soft) infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes breathe {
+  from { transform: translateY(2%) scale(0.98); opacity: 0.78; }
+  to   { transform: translateY(-2%) scale(1.03); opacity: 0.95; }
+}
+
+@keyframes drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(96px); }
+}
+
+@keyframes sway {
+  from { transform: rotate(-0.5deg); }
+  to   { transform: rotate(0.5deg); }
+}

@@ -1,0 +1,4 @@
+/* Retour visuel bref apres copie : le vert palmier de la reussite. */
+.copied {
+  color: var(--success);
+}

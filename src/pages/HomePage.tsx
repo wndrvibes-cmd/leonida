@@ -1,15 +1,12 @@
-import PagePlaceholder from '@/components/shared/PagePlaceholder'
+import HomeScreen from '@/features/home/HomeScreen'
 
 /**
- * Fichier d'attente.
- * Cet ecran sera remplace par son implementation definitive ; il n'affiche
- * aucune donnee inventee en attendant.
+ * Accueil de LEONIDA.
+ *
+ * La page est volontairement une coquille : toute la composition vit dans
+ * `src/features/home/`, ou la banniere et l'ordre des sections sont pilotes
+ * par les reglages `home.hero` et `home.sections`.
  */
 export default function HomePage() {
-  return (
-    <PagePlaceholder
-      title="Accueil"
-      description="Le fil d'accueil rassemblera les dernieres actualites, les decouvertes recentes de la carte et les publications de la communaute."
-    />
-  )
+  return <HomeScreen />
 }
