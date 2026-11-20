@@ -1,0 +1,15 @@
+.icon {
+  flex: none;
+  display: block;
+  vertical-align: middle;
+}
+
+/* L'icone « loader » tourne ; elle reste decorative, le vrai indicateur de
+   chargement accessible est <Spinner>. */
+.spin {
+  animation: icon-spin calc(var(--dur-slow) * 2.4) linear infinite;
+}
+
+@keyframes icon-spin {
+  to { transform: rotate(360deg); }
+}

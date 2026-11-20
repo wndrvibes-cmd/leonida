@@ -1,0 +1,78 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  max-width: 100%;
+  border: 1px solid transparent;
+  border-radius: var(--r-full);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.sm {
+  padding: var(--sp-1) var(--sp-2);
+  font-size: var(--text-xs);
+}
+
+.md {
+  padding: var(--sp-1) var(--sp-3);
+  font-size: var(--text-sm);
+}
+
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-full);
+  background: currentColor;
+}
+
+/* ---------------------------------------------------------------------tons */
+.neutral {
+  background: var(--surface-sunken);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+.accent {
+  background: var(--accent-soft);
+  border-color: var(--border-accent);
+  color: var(--surf-300);
+}
+
+.success {
+  background: color-mix(in srgb, var(--palm) 18%, transparent);
+  border-color: color-mix(in srgb, var(--palm) 45%, transparent);
+  color: var(--palm-300);
+}
+
+.warning {
+  background: color-mix(in srgb, var(--sand) 16%, transparent);
+  border-color: color-mix(in srgb, var(--sand) 40%, transparent);
+  color: var(--sand);
+}
+
+.danger {
+  background: color-mix(in srgb, var(--coral) 16%, transparent);
+  border-color: color-mix(in srgb, var(--coral) 42%, transparent);
+  color: var(--coral-300);
+}
+
+.premium {
+  background: var(--grad-sunset);
+  border-color: transparent;
+  color: var(--text-on-accent);
+}

@@ -1,0 +1,106 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  padding-top: var(--safe-top);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-sunken);
+  backdrop-filter: var(--blur-bar);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  height: var(--nav-h);
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: max(var(--gutter), var(--safe-left)) max(var(--gutter), var(--safe-right));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  min-height: 44px;
+  border-radius: var(--r-sm);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+/* ------------------------------------------------------------- recherche -- */
+/* Champ en ligne a partir de 900px ; en dessous, un simple bouton-loupe. */
+.search { display: none; }
+
+.iconLink {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-full);
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-soft),
+              background-color var(--dur-fast) var(--ease-soft);
+}
+.iconLink:hover { color: var(--text); background: var(--surface-hover); }
+
+@media (min-width: 900px) {
+  .search {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    width: clamp(160px, 20vw, 260px);
+    height: 40px;
+    padding-inline: var(--sp-3);
+    border: 1px solid var(--border);
+    border-radius: var(--r-full);
+    background: var(--surface);
+    color: var(--text-subtle);
+    transition: border-color var(--dur-fast) var(--ease-soft);
+  }
+  .search:focus-within { border-color: var(--border-accent); }
+  .iconLink { display: none; }
+}
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  background: none;
+  font-size: var(--text-sm);
+  color: var(--text);
+}
+.input::placeholder { color: var(--text-subtle); }
+.input:focus-visible { outline: none; }
+.input::-webkit-search-cancel-button { filter: grayscale(1); }
+
+/* --------------------------------------------------------------- compte -- */
+.signIn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-left: var(--sp-1);
+  padding-inline: var(--sp-4);
+  border-radius: var(--r-full);
+  background: var(--accent);
+  color: var(--text-on-accent);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  white-space: nowrap;
+  transition: transform var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-soft);
+}
+.signIn:hover {
+  transform: translateY(-1px);
+  background: var(--surf-300);
+  color: var(--text-on-accent);
+}

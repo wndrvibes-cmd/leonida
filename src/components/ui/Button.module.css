@@ -1,0 +1,152 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  border: 1px solid transparent;
+  border-radius: var(--r-md);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-fast) var(--ease-soft),
+    color var(--dur-fast) var(--ease-soft),
+    opacity var(--dur-fast) var(--ease-soft);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--surf-300);
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------------ tailles */
+.sm {
+  min-height: 40px;
+  padding-inline: var(--sp-3);
+  font-size: var(--text-sm);
+}
+
+.md {
+  min-height: 46px;
+  padding-inline: var(--sp-4);
+  font-size: var(--text-base);
+}
+
+.lg {
+  min-height: 54px;
+  padding-inline: var(--sp-5);
+  font-size: var(--text-lg);
+}
+
+/* Au doigt, aucune cible ne descend sous 44px. */
+@media (hover: none) {
+  .sm { min-height: 44px; }
+}
+
+.iconOnly {
+  padding-inline: 0;
+  aspect-ratio: 1;
+}
+
+.iconOnly.sm { min-width: 44px; }
+.iconOnly.md { min-width: 46px; }
+.iconOnly.lg { min-width: 54px; }
+
+.full {
+  width: 100%;
+}
+
+/* ----------------------------------------------------------------- contenu */
+.slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.label {
+  /* Un libelle trop long se tronque plutot que de deformer le bouton. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------- variantes */
+.primary {
+  background: var(--grad-surf);
+  color: var(--text-on-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.secondary {
+  background: var(--surface);
+  backdrop-filter: var(--blur-panel);
+  -webkit-backdrop-filter: var(--blur-panel);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.danger {
+  background: color-mix(in srgb, var(--coral) 16%, transparent);
+  border-color: color-mix(in srgb, var(--coral) 42%, transparent);
+  color: var(--coral-300);
+}
+
+.premium {
+  background: var(--grad-sunset);
+  color: var(--text-on-accent);
+  box-shadow: var(--shadow-md);
+}
+
+/* ----------------------------------------------------- micro-interactions */
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .primary:hover { box-shadow: var(--shadow-glow); }
+  .premium:hover { box-shadow: var(--shadow-lg); }
+  .secondary:hover { background: var(--surface-hover); border-color: var(--border-accent); }
+  .ghost:hover { background: var(--accent-soft); color: var(--text); }
+  .danger:hover { background: color-mix(in srgb, var(--coral) 26%, transparent); color: var(--bone); }
+
+  .btn.isDisabled:hover,
+  .btn.isLoading:hover,
+  .btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.btn:active:not(.isDisabled):not(.isLoading):not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* -------------------------------------------------------------- etats durs */
+.btn:disabled,
+.isDisabled,
+.isLoading {
+  opacity: 0.55;
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.isLoading {
+  cursor: progress;
+}

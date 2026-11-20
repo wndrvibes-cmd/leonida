@@ -1,0 +1,115 @@
+.scroller {
+  /* La rangee d'onglets defile seule : la page ne deborde jamais. */
+  max-width: 100%;
+}
+
+.list {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-1);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+}
+
+.full {
+  display: flex;
+  width: 100%;
+}
+
+.full .tab {
+  flex: 1;
+}
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 40px;
+  padding-inline: var(--sp-4);
+  border-radius: var(--r-full);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--dur-base) var(--ease-soft);
+}
+
+.sm .tab {
+  min-height: 36px;
+  padding-inline: var(--sp-3);
+  font-size: var(--text-sm);
+}
+
+.md .tab {
+  font-size: var(--text-base);
+}
+
+@media (hover: none) {
+  .tab { min-height: 44px; }
+}
+
+@media (hover: hover) {
+  .tab:hover { color: var(--text); }
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--surf-300);
+  outline-offset: 2px;
+}
+
+.tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.active {
+  color: var(--text-on-accent);
+}
+
+/* Pastille coulissante : framer-motion deplace le meme layoutId d'un onglet
+   a l'autre, d'ou l'effet de glissement. */
+.indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-full);
+  background: var(--grad-surf);
+  box-shadow: var(--shadow-sm);
+}
+
+.icon {
+  /* `position: relative` garde le contenu au-dessus de la pastille animee,
+     qui est elle-meme positionnee. */
+  position: relative;
+  display: inline-flex;
+  line-height: 0;
+}
+
+.label {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  padding-inline: var(--sp-1);
+  border-radius: var(--r-full);
+  background: color-mix(in srgb, var(--abyss) 28%, transparent);
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+.tab:not(.active) .badge {
+  background: var(--accent-soft);
+  color: var(--surf-300);
+}

@@ -1,0 +1,190 @@
+/* =============================================================================
+   Intro — coucher de soleil sur Leonida, 100% CSS.
+   Les durees viennent des jetons : si le membre (ou son systeme) demande moins
+   de mouvement, elles valent 0ms et tout apparait d'un coup, sans animation.
+   ========================================================================== */
+
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-intro);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--abyss);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-in);
+}
+
+.root[data-phase='closing'] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------- ciel -- */
+.sky {
+  position: absolute;
+  inset: 0 0 42% 0;
+  background: linear-gradient(
+    180deg,
+    var(--abyss) 0%,
+    var(--deep) 26%,
+    var(--surf-900) 58%,
+    var(--sunset-700) 86%,
+    var(--sunset) 100%
+  );
+}
+
+/* ------------------------------------------------------------------- eau --- */
+.water {
+  position: absolute;
+  inset: 58% 0 0 0;
+  background: linear-gradient(
+    180deg,
+    var(--sunset-700) 0%,
+    var(--surf-700) 12%,
+    var(--surf-900) 34%,
+    var(--deep) 72%,
+    var(--abyss) 100%
+  );
+}
+
+/* ----------------------------------------------------------------- soleil -- */
+.sun {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: min(62vw, 360px);
+  height: min(62vw, 360px);
+  border-radius: var(--r-full);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    var(--sand) 0%,
+    var(--sunset-300) 34%,
+    var(--sunset) 56%,
+    var(--sunset-700) 72%,
+    transparent 74%
+  );
+}
+
+/* --------------------------------------------------------------- horizon --- */
+.horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 58%;
+  height: 2px;
+  transform: scaleX(1);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--surf-300) 16%,
+    var(--sand-100) 50%,
+    var(--surf-300) 84%,
+    transparent 100%
+  );
+}
+
+/* ----------------------------------------------------------- mot-symbole --- */
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  padding-inline: var(--gutter);
+  text-align: center;
+  transform: translateY(-16%);
+}
+
+/* Le logo reste sur la bande sombre du ciel : aucun effet n'est necessaire. */
+
+.mask { overflow: hidden; }
+
+.tagline {
+  display: block;
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--sand);
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------------- bouton --- */
+.skip {
+  position: absolute;
+  right: calc(var(--safe-right) + var(--sp-4));
+  bottom: calc(var(--safe-bottom) + var(--sp-5));
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding-inline: var(--sp-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-full);
+  background: var(--surface-sunken);
+  backdrop-filter: var(--blur-panel);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: color var(--dur-fast) var(--ease-soft),
+              background-color var(--dur-fast) var(--ease-soft);
+}
+
+.skip:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+/* =============================================================================
+   Animation — uniquement pendant la phase `playing`.
+   En phase `checking`, les elements sont deja dans leur etat final : l'ecran
+   couvre l'application sans clignoter le temps que la session se resolve.
+   ========================================================================== */
+
+.root[data-phase='playing'] .horizon {
+  animation: horizon var(--dur-scene) var(--ease-out) both;
+}
+
+.root[data-phase='playing'] .sun {
+  animation: sunrise calc(var(--dur-scene) * 1.3) var(--ease-out) both;
+}
+
+.root[data-phase='playing'] .sky,
+.root[data-phase='playing'] .water {
+  animation: veil var(--dur-slow) var(--ease-soft) both;
+}
+
+.root[data-phase='playing'] .logo {
+  animation: lift var(--dur-slow) var(--ease-out) var(--dur-base) both;
+}
+
+.root[data-phase='playing'] .tagline {
+  animation: reveal var(--dur-slow) var(--ease-out) calc(var(--dur-base) * 2.4) both;
+}
+
+@keyframes horizon {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes sunrise {
+  from { opacity: 0; transform: translate(-50%, -14%) scale(0.84); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes veil {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lift {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal {
+  from { transform: translateY(115%); }
+  to   { transform: translateY(0); }
+}

@@ -1,0 +1,124 @@
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--abyss) 68%, transparent);
+  backdrop-filter: var(--blur-panel);
+  -webkit-backdrop-filter: var(--blur-panel);
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 88dvh;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  box-shadow: var(--shadow-lg);
+  outline: none;
+  overflow: hidden;
+}
+
+.grabber {
+  width: 42px;
+  height: 4px;
+  margin: var(--sp-2) auto 0;
+  border-radius: var(--r-full);
+  background: var(--border-strong);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-4) var(--sp-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.close {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: calc(var(--sp-2) * -1);
+  border-radius: var(--r-full);
+  color: var(--text-muted);
+  transition:
+    background-color var(--dur-fast) var(--ease-soft),
+    color var(--dur-fast) var(--ease-soft);
+}
+
+.close:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--surf-300);
+  outline-offset: 2px;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  padding: var(--sp-4);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  padding-bottom: calc(var(--sp-3) + var(--safe-bottom));
+  border-top: 1px solid var(--border);
+  background: var(--surface-sunken);
+}
+
+.footer > * {
+  flex: 1 1 10rem;
+}
+
+/* ------------------------------------------------- panneau lateral desktop */
+@media (min-width: 768px) {
+  .layer {
+    align-items: stretch;
+  }
+
+  .right { justify-content: flex-end; }
+  .left  { justify-content: flex-start; }
+
+  .panel {
+    width: min(26rem, 92vw);
+    max-height: none;
+    height: 100%;
+    padding-top: var(--safe-top);
+  }
+
+  .right .panel { border-radius: var(--r-xl) 0 0 var(--r-xl); }
+  .left  .panel { border-radius: 0 var(--r-xl) var(--r-xl) 0; }
+
+  .footer {
+    padding-bottom: var(--sp-3);
+  }
+}

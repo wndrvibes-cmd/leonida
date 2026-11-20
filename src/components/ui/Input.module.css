@@ -1,0 +1,82 @@
+.shell {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 46px;
+  padding-inline: var(--sp-3);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition:
+    border-color var(--dur-fast) var(--ease-soft),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-soft);
+}
+
+.shell:focus-within {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-glow);
+  background: var(--surface);
+}
+
+.shellError {
+  border-color: color-mix(in srgb, var(--coral) 55%, transparent);
+}
+
+.shellError:focus-within {
+  box-shadow: none;
+  border-color: var(--coral);
+}
+
+.shellDisabled {
+  opacity: 0.55;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding-block: var(--sp-2);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: var(--text-base);
+  line-height: var(--leading-snug);
+}
+
+.input::placeholder {
+  color: var(--text-subtle);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* Masque les fleches des champs numeriques : encombrantes au doigt. */
+.input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.input[type='number']::-webkit-outer-spin-button,
+.input[type='number']::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  line-height: 0;
+  color: var(--text-subtle);
+}
+
+.addon {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: var(--sp-1);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}

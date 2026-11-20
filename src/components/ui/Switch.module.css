@@ -1,0 +1,92 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  /* Rangee de reglage confortable au doigt. */
+  min-height: 44px;
+  width: 100%;
+}
+
+.bare {
+  display: inline-flex;
+}
+
+.text {
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.description {
+  margin-top: var(--sp-1);
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  color: var(--text-subtle);
+}
+
+.track {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  width: 52px;
+  height: 32px;
+  padding: 3px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-full);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-base) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-soft),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* La zone tactile depasse la piste visible pour atteindre 44px. */
+.track::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: var(--r-full);
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--surf-300);
+  outline-offset: 3px;
+}
+
+.thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--r-full);
+  background: var(--mist);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-base) var(--ease-back),
+    background-color var(--dur-base) var(--ease-soft);
+}
+
+.on {
+  background: var(--grad-surf);
+  border-color: transparent;
+  box-shadow: var(--shadow-glow);
+}
+
+.on .thumb {
+  background: var(--bone);
+  transform: translateX(20px);
+}
+
+.inert {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

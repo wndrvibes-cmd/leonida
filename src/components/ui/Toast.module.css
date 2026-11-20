@@ -1,0 +1,104 @@
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-3);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: var(--blur-panel);
+  -webkit-backdrop-filter: var(--blur-panel);
+  pointer-events: auto;
+}
+
+.icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-full);
+}
+
+.success .icon {
+  background: color-mix(in srgb, var(--palm) 20%, transparent);
+  color: var(--palm-300);
+}
+
+.error .icon {
+  background: color-mix(in srgb, var(--coral) 20%, transparent);
+  color: var(--coral-300);
+}
+
+.info .icon {
+  background: var(--accent-soft);
+  color: var(--surf-300);
+}
+
+/* Liseré de couleur discret : la variante reste lisible sans icone. */
+.success { border-left: 3px solid var(--palm); }
+.error   { border-left: 3px solid var(--coral); }
+.info    { border-left: 3px solid var(--surf); }
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text);
+}
+
+.description {
+  margin-top: var(--sp-1);
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.action {
+  margin-top: var(--sp-2);
+  min-height: 32px;
+  padding-inline: var(--sp-2);
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  color: var(--surf-300);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.action:hover {
+  background: var(--surface-hover);
+}
+
+.close {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: calc(var(--sp-1) * -1) calc(var(--sp-1) * -1) 0 0;
+  border-radius: var(--r-full);
+  color: var(--text-subtle);
+  transition: color var(--dur-fast) var(--ease-soft), background-color var(--dur-fast) var(--ease-soft);
+}
+
+.close:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.close:focus-visible,
+.action:focus-visible {
+  outline: 2px solid var(--surf-300);
+  outline-offset: 2px;
+}

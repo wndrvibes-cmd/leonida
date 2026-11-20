@@ -1,0 +1,39 @@
+.block {
+  display: block;
+  width: 100%;
+  min-height: 0.9em;
+  background: var(--surface-sunken);
+  background-image: linear-gradient(
+    100deg,
+    transparent 20%,
+    color-mix(in srgb, var(--surf-100) 9%, transparent) 42%,
+    transparent 64%
+  );
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  border: 1px solid var(--border);
+  animation: skeleton-shimmer calc(var(--dur-scene) * 1.8) var(--ease-soft) infinite;
+  /* Le bloc ne doit jamais provoquer de debordement horizontal. */
+  max-width: 100%;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  width: 100%;
+}
+
+.short {
+  width: 62%;
+}
+
+.sm   { border-radius: var(--r-sm); }
+.md   { border-radius: var(--r-md); }
+.lg   { border-radius: var(--r-lg); }
+.full { border-radius: var(--r-full); }
+
+@keyframes skeleton-shimmer {
+  from { background-position: 140% 0; }
+  to   { background-position: -40% 0; }
+}

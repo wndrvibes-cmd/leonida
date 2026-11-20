@@ -1,0 +1,27 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.svg {
+  overflow: visible;
+}
+
+.track,
+.head {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: var(--border-strong);
+}
+
+/* 56.5 = perimetre du cercle r=9 ; un quart visible suffit a lire la rotation. */
+.head {
+  stroke: currentColor;
+  stroke-dasharray: 16 42;
+}

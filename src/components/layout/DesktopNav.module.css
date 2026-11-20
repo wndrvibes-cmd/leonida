@@ -1,0 +1,58 @@
+.nav { display: none; }
+
+@media (min-width: 900px) {
+  .nav {
+    display: block;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.list::-webkit-scrollbar { display: none; }
+
+.link,
+.premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 40px;
+  padding-inline: var(--sp-3);
+  border-radius: var(--r-full);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-soft),
+              background-color var(--dur-fast) var(--ease-soft);
+}
+
+.link:hover,
+.premium:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+/* Soulignement discret plutot qu'une pastille pleine : la barre reste calme. */
+.link.active {
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+.premium {
+  margin-left: var(--sp-2);
+  color: var(--sunset-300);
+  border: 1px solid var(--accent-warm-soft);
+}
+.premium:hover { color: var(--sand); background: var(--accent-warm-soft); }
+.premium.active { color: var(--sand); background: var(--accent-warm-soft); }

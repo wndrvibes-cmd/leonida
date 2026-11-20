@@ -1,0 +1,174 @@
+.shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ------------------------------------------------------------- en-tete --- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  padding-top: var(--safe-top);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-sunken);
+  backdrop-filter: var(--blur-bar);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  height: var(--nav-h);
+  padding-inline: max(var(--gutter), var(--safe-left)) max(var(--gutter), var(--safe-right));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-height: 44px;
+  color: var(--text);
+  border-radius: var(--r-sm);
+}
+
+.brandText {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-left: auto;
+}
+
+.exit {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  min-width: 44px;
+  justify-content: center;
+  padding-inline: var(--sp-3);
+  border-radius: var(--r-full);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: color var(--dur-fast) var(--ease-soft),
+              background-color var(--dur-fast) var(--ease-soft);
+}
+.exit:hover { color: var(--text); background: var(--surface-hover); }
+.exitText { display: none; }
+
+@media (min-width: 560px) {
+  .exitText { display: inline; }
+}
+
+/* ------------------------------------------------- navigation mobile ----- */
+.mobileNav {
+  padding: 0 max(var(--gutter), var(--safe-left)) var(--sp-3) max(var(--gutter), var(--safe-right));
+}
+
+.mobileTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  width: 100%;
+  min-height: 44px;
+  padding-inline: var(--sp-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.chevron { transition: transform var(--dur-fast) var(--ease-out); }
+.chevronOpen { transform: rotate(180deg); }
+
+.mobileMenu {
+  margin-top: var(--sp-2);
+  padding: var(--sp-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-md);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 900px) {
+  .mobileNav { display: none; }
+}
+
+/* ---------------------------------------------------------------- corps -- */
+.body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+}
+
+.side { display: none; }
+
+@media (min-width: 900px) {
+  .side {
+    display: block;
+    flex: 0 0 236px;
+    align-self: flex-start;
+    position: sticky;
+    top: calc(var(--nav-h) + var(--safe-top) + var(--sp-4));
+    padding: var(--sp-4) var(--sp-3);
+    max-height: calc(100dvh - var(--nav-h) - var(--safe-top) - var(--sp-6));
+    overflow-y: auto;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--sp-4);
+  border-radius: var(--r-sm);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: color var(--dur-fast) var(--ease-soft),
+              background-color var(--dur-fast) var(--ease-soft);
+}
+.link:hover { color: var(--text); background: var(--surface-hover); }
+
+.link.active {
+  color: var(--text);
+  background: var(--accent-soft);
+  box-shadow: inset 2px 0 0 0 var(--accent);
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: clip;
+  overflow-y: visible;
+  padding: var(--sp-5) max(var(--gutter), var(--safe-left))
+           calc(var(--safe-bottom) + var(--sp-8)) max(var(--gutter), var(--safe-right));
+}

@@ -1,0 +1,59 @@
+.shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition:
+    border-color var(--dur-fast) var(--ease-soft),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-soft);
+}
+
+.shell:focus-within {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-glow);
+  background: var(--surface);
+}
+
+.shellError {
+  border-color: color-mix(in srgb, var(--coral) 55%, transparent);
+}
+
+.shellDisabled {
+  opacity: 0.55;
+}
+
+.select {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  /* Place reservee a droite pour le chevron. */
+  padding: var(--sp-2) var(--sp-7) var(--sp-2) var(--sp-3);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: var(--text-base);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.select:disabled {
+  cursor: not-allowed;
+}
+
+/* Les listes natives s'ouvrent sur fond clair : on force un fond lisible. */
+.select option {
+  background: var(--deep);
+  color: var(--text);
+}
+
+.chevron {
+  position: absolute;
+  right: var(--sp-3);
+  pointer-events: none;
+  color: var(--text-subtle);
+}

@@ -1,0 +1,70 @@
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-nav);
+  padding-bottom: var(--safe-bottom);
+  padding-inline: var(--safe-left) var(--safe-right);
+  border-top: 1px solid var(--border);
+  background: var(--surface-sunken);
+  backdrop-filter: var(--blur-bar);
+}
+
+/* A partir de 900px, la navigation horizontale de la barre du haut suffit. */
+@media (min-width: 900px) {
+  .bar { display: none; }
+}
+
+.list {
+  display: flex;
+  align-items: stretch;
+  height: var(--tabbar-h);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item { flex: 1 1 0; min-width: 0; }
+
+.tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  min-height: 44px;
+  color: var(--text-subtle);
+  transition: color var(--dur-fast) var(--ease-soft);
+}
+
+.tab:hover { color: var(--text-muted); }
+.tab.active { color: var(--surf-300); }
+
+/* Pastille active animee : elle glisse d'un onglet a l'autre (layoutId). */
+.indicator {
+  position: absolute;
+  inset: var(--sp-1) var(--sp-2);
+  border-radius: var(--r-md);
+  background: var(--accent-soft);
+  box-shadow: inset 0 1px 0 0 var(--border-accent);
+}
+
+.icon,
+.label { position: relative; }
+
+.icon { transition: transform var(--dur-base) var(--ease-back); }
+.tab.active .icon { transform: translateY(-1px); }
+
+.label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,178 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.labelRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text);
+}
+
+.counter {
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------ zone de depot */
+.drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-4);
+  text-align: center;
+  background: var(--surface-sunken);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-lg);
+  transition:
+    border-color var(--dur-base) var(--ease-soft),
+    background-color var(--dur-base) var(--ease-soft);
+}
+
+.dragging {
+  border-color: var(--surf);
+  background: var(--accent-soft);
+}
+
+.locked {
+  opacity: 0.6;
+}
+
+.dropIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-full);
+  background: var(--accent-soft);
+  color: var(--surf-300);
+}
+
+.dropText {
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--text-muted);
+  max-width: 34ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-2);
+}
+
+/* -------------------------------------------------------------- progression */
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  color: var(--surf-300);
+}
+
+.progressText {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  display: block;
+  width: min(18rem, 100%);
+  height: 6px;
+  border-radius: var(--r-full);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.barFill {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-full);
+  background: var(--grad-surf);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+/* -------------------------------------------------------------- aide/erreur */
+.hint {
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  color: var(--text-subtle);
+}
+
+.error {
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  color: var(--coral-300);
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------- vignettes */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cell {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface-sunken);
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove {
+  position: absolute;
+  top: var(--sp-1);
+  right: var(--sp-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-full);
+  background: color-mix(in srgb, var(--abyss) 72%, transparent);
+  color: var(--coral-300);
+  transition: background-color var(--dur-fast) var(--ease-soft);
+}
+
+.remove:hover {
+  background: color-mix(in srgb, var(--coral) 32%, transparent);
+  color: var(--bone);
+}
+
+.remove:focus-visible {
+  outline: 2px solid var(--surf-300);
+  outline-offset: 2px;
+}
+
+.remove:disabled {
+  cursor: progress;
+}

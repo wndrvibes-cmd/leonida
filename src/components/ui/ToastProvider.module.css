@@ -1,0 +1,39 @@
+/* Mobile : en bas, au-dessus de la barre d'onglets et de l'encoche. */
+.stack {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--tabbar-total) + var(--sp-3));
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--sp-2);
+  padding-inline: var(--sp-4);
+  pointer-events: none;
+}
+
+.slot {
+  width: 100%;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+/* Desktop : empilement en haut a droite, sous la barre de navigation.
+   Le point de rupture suit MOBILE_QUERY (768px) pour que le sens de
+   l'animation corresponde toujours a la position reelle de la pile. */
+@media (min-width: 768px) {
+  .stack {
+    left: auto;
+    right: var(--sp-5);
+    bottom: auto;
+    top: calc(var(--nav-h) + var(--safe-top) + var(--sp-3));
+    flex-direction: column;
+    width: min(26rem, calc(100vw - var(--sp-8)));
+    padding-inline: 0;
+  }
+
+  .slot {
+    max-width: none;
+    margin-inline: 0;
+  }
+}

@@ -1,0 +1,62 @@
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  background: color-mix(in srgb, var(--coral) 8%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--coral) 32%, transparent);
+  border-radius: var(--r-lg);
+  backdrop-filter: var(--blur-panel);
+  -webkit-backdrop-filter: var(--blur-panel);
+}
+
+.compact {
+  padding: var(--sp-3);
+  gap: var(--sp-2);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: color-mix(in srgb, var(--coral) 16%, transparent);
+  color: var(--coral-300);
+}
+
+.compact .badge {
+  width: 32px;
+  height: 32px;
+}
+
+.body {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text);
+}
+
+.message {
+  margin-top: var(--sp-1);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--text-muted);
+  /* Les messages d'erreur Supabase peuvent etre longs : on laisse couper. */
+  overflow-wrap: anywhere;
+}
+
+.action {
+  flex: none;
+  display: flex;
+  align-items: center;
+}

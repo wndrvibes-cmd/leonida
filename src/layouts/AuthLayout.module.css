@@ -1,0 +1,86 @@
+.shell {
+  position: relative;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: calc(var(--safe-top) + var(--sp-6)) max(var(--gutter), var(--safe-left))
+           calc(var(--safe-bottom) + var(--sp-6)) max(var(--gutter), var(--safe-right));
+  background: var(--bg);
+}
+
+/* Bande d'horizon : nuit tropicale en haut, ocean puis coucher de soleil. */
+.horizon {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      var(--abyss) 0%,
+      var(--deep) 42%,
+      var(--surf-900) 78%,
+      var(--sunset-900) 100%);
+}
+
+/* Halo chaud en bas d'ecran, comme un soleil deja couche. */
+.glow {
+  position: absolute;
+  left: 50%;
+  bottom: -28vh;
+  width: min(140vw, 1100px);
+  height: min(140vw, 1100px);
+  transform: translateX(-50%);
+  border-radius: var(--r-full);
+  background: radial-gradient(
+    circle,
+    var(--sunset-700) 0%,
+    var(--sunset-900) 34%,
+    transparent 66%
+  );
+  opacity: 0.55;
+}
+
+.panel {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-5);
+}
+
+.brand {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  border-radius: var(--r-sm);
+}
+
+.card {
+  width: 100%;
+  padding: var(--sp-6) var(--sp-5);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  background: var(--bg-elevated);
+  backdrop-filter: var(--blur-panel);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 560px) {
+  .card { padding: var(--sp-7) var(--sp-6); }
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding-inline: var(--sp-4);
+  border-radius: var(--r-full);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: color var(--dur-fast) var(--ease-soft),
+              background-color var(--dur-fast) var(--ease-soft);
+}
+.back:hover { color: var(--text); background: var(--surface-hover); }

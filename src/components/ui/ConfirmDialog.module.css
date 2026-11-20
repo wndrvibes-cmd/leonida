@@ -1,0 +1,38 @@
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+}
+
+.iconDanger,
+.iconAccent {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-full);
+}
+
+.iconDanger {
+  background: color-mix(in srgb, var(--coral) 16%, transparent);
+  color: var(--coral-300);
+}
+
+.iconAccent {
+  background: var(--accent-soft);
+  color: var(--surf-300);
+}
+
+.title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.message {
+  margin-top: var(--sp-2);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-muted);
+}

@@ -1,0 +1,50 @@
+.page,
+.inline {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: var(--sp-6) var(--gutter);
+}
+
+.page {
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-start;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  width: 100%;
+}
+
+.bar {
+  display: block;
+  height: 14px;
+  border-radius: var(--r-full);
+  background: linear-gradient(
+    90deg,
+    var(--surface) 0%,
+    var(--surface-hover) 45%,
+    var(--surface) 100%
+  );
+  background-size: 300% 100%;
+  animation: sweep calc(var(--dur-scene) * 1.6) var(--ease-soft) infinite;
+}
+
+.bar:first-child { height: 30px; max-width: 42%; }
+.bar:nth-child(2) { max-width: 88%; animation-delay: var(--dur-fast); }
+.bar:nth-child(3) { max-width: 64%; animation-delay: calc(var(--dur-fast) * 2); }
+
+@keyframes sweep {
+  from { background-position: 150% 0; }
+  to   { background-position: -150% 0; }
+}
+
+/* Sans animation : le squelette reste visible mais immobile. */
+@media (prefers-reduced-motion: reduce) {
+  .bar { animation: none; }
+}
+
+:global(html[data-reduce-motion='true']) .bar { animation: none; }
