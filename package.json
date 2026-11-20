@@ -1,0 +1,31 @@
+{
+  "name": "leonida",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "LEONIDA — application communautaire dediee a GTA VI",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.58.0",
+    "@tanstack/react-query": "^5.90.2",
+    "framer-motion": "^11.18.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.20",
+    "vitest": "^2.1.9"
+  }
+}

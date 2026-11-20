@@ -1,0 +1,190 @@
+/* =============================================================================
+   LEONIDA — Design system
+   -----------------------------------------------------------------------------
+   Palette derivee de l'univers de Leonida : l'ocean turquoise de la carte, le
+   vert des Everglades, le sable des Keys, l'orange des couchers de soleil.
+   Volontairement PAS de neon rose/violet, pas d'esthetique cyberpunk.
+
+   Toutes les valeurs sont des jetons. Aucun composant ne doit ecrire une
+   couleur en dur.
+   ========================================================================== */
+
+:root {
+  /* ----------------------------------------------------------- COULEURS --- */
+  /* Fonds : du plus profond au plus clair (nuit tropicale) */
+  --abyss:        #03121A;   /* fond absolu de l'application */
+  --deep:         #07202B;   /* fond de section */
+  --tide:         #0C2F3D;   /* surface elevee */
+  --shelf:        #12404F;   /* surface survolee */
+
+  /* Turquoise — la couleur signature, celle de l'ocean de la carte */
+  --surf-900:     #0A4F60;
+  --surf-700:     #11829C;
+  --surf:         #1FB6D4;
+  --surf-300:     #5BD4E8;
+  --surf-100:     #B4ECF6;
+
+  /* Vert palmier — vegetation, Everglades */
+  --palm-900:     #14402A;
+  --palm-700:     #276B45;
+  --palm:         #3E9A63;
+  --palm-300:     #74C892;
+
+  /* Orange tropical — couchers de soleil, accents d'action */
+  --sunset-900:   #7A2F10;
+  --sunset-700:   #C2561F;
+  --sunset:       #FF7A3C;
+  --sunset-300:   #FFA877;
+
+  /* Sable — Keys, plages, surfaces chaudes */
+  --sand-700:     #A08A5E;
+  --sand:         #E3CB9B;
+  --sand-100:     #F5EBD6;
+
+  /* Corail — alertes, suppressions */
+  --coral:        #FF5E5B;
+  --coral-300:    #FF928F;
+
+  /* Texte */
+  --bone:         #F3EFE6;   /* blanc casse, texte principal */
+  --mist:         #A8BFC8;   /* texte secondaire */
+  --fade:         #6B8793;   /* texte tertiaire, placeholders */
+
+  /* ------------------------------------------------------- SEMANTIQUE ---- */
+  --bg:               var(--abyss);
+  --bg-elevated:      var(--deep);
+  --surface:          color-mix(in srgb, var(--tide) 88%, transparent);
+  --surface-hover:    color-mix(in srgb, var(--shelf) 90%, transparent);
+  --surface-sunken:   color-mix(in srgb, var(--abyss) 70%, transparent);
+
+  --text:             var(--bone);
+  --text-muted:       var(--mist);
+  --text-subtle:      var(--fade);
+  --text-on-accent:   #06202A;
+
+  --accent:           var(--surf);
+  --accent-soft:      color-mix(in srgb, var(--surf) 16%, transparent);
+  --accent-warm:      var(--sunset);
+  --accent-warm-soft: color-mix(in srgb, var(--sunset) 16%, transparent);
+
+  --success:          var(--palm);
+  --warning:          var(--sand);
+  --danger:           var(--coral);
+
+  --border:           color-mix(in srgb, var(--surf-100) 12%, transparent);
+  --border-strong:    color-mix(in srgb, var(--surf-100) 22%, transparent);
+  --border-accent:    color-mix(in srgb, var(--surf) 45%, transparent);
+
+  /* --------------------------------------------------------- TYPOGRAPHIE - */
+  --font-display: 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+                  'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Echelle fluide : s'adapte de l'iPhone au grand ecran sans palier brutal */
+  --text-xs:   clamp(0.72rem, 0.70rem + 0.10vw, 0.78rem);
+  --text-sm:   clamp(0.82rem, 0.79rem + 0.15vw, 0.90rem);
+  --text-base: clamp(0.94rem, 0.90rem + 0.20vw, 1.02rem);
+  --text-lg:   clamp(1.08rem, 1.02rem + 0.30vw, 1.22rem);
+  --text-xl:   clamp(1.28rem, 1.16rem + 0.60vw, 1.58rem);
+  --text-2xl:  clamp(1.55rem, 1.32rem + 1.10vw, 2.15rem);
+  --text-3xl:  clamp(1.95rem, 1.50rem + 2.20vw, 3.10rem);
+  --text-4xl:  clamp(2.40rem, 1.65rem + 3.60vw, 4.40rem);
+
+  --leading-tight:  1.12;
+  --leading-snug:   1.32;
+  --leading-normal: 1.58;
+
+  --tracking-tight: -0.022em;
+  --tracking-wide:   0.08em;
+  --tracking-caps:   0.14em;
+
+  /* ------------------------------------------------------------ ESPACES -- */
+  --sp-1:  0.25rem;  --sp-2: 0.5rem;   --sp-3: 0.75rem;  --sp-4: 1rem;
+  --sp-5:  1.5rem;   --sp-6: 2rem;     --sp-7: 2.5rem;   --sp-8: 3rem;
+  --sp-9:  4rem;     --sp-10: 5.5rem;  --sp-11: 7rem;
+
+  /* Gouttiere de page : plus serree sur mobile */
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --page-max: 1240px;
+  --reading-max: 68ch;
+
+  /* ------------------------------------------------------------- RAYONS -- */
+  --r-sm: 8px;  --r-md: 14px;  --r-lg: 20px;  --r-xl: 28px;  --r-full: 999px;
+
+  /* ------------------------------------------------------------- OMBRES -- */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.30);
+  --shadow-md: 0 6px 18px -6px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 20px 48px -16px rgb(0 0 0 / 0.60);
+  --shadow-glow: 0 0 0 1px var(--border-accent),
+                 0 10px 40px -12px color-mix(in srgb, var(--surf) 40%, transparent);
+
+  /* ----------------------------------------------------------- PROFONDEUR */
+  --blur-panel: saturate(150%) blur(18px);
+  --blur-bar:   saturate(170%) blur(24px);
+
+  /* ----------------------------------------------------------- MOUVEMENT - */
+  --dur-instant: 90ms;
+  --dur-fast:    160ms;
+  --dur-base:    260ms;
+  --dur-slow:    440ms;
+  --dur-scene:   900ms;
+
+  --ease-out:  cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in:   cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --------------------------------------------------------------- PLANS - */
+  --z-base: 0;  --z-sticky: 50;  --z-nav: 100;  --z-drawer: 200;
+  --z-modal: 300;  --z-toast: 400;  --z-intro: 500;
+
+  /* ------------------------------------------- ZONES DE SECURITE iPHONE -- */
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+
+  /* Hauteurs des barres de navigation */
+  --nav-h: 60px;
+  --tabbar-h: 58px;
+  --tabbar-total: calc(var(--tabbar-h) + var(--safe-bottom));
+
+  /* --------------------------------- FOND PERSONNALISE PAR L'UTILISATEUR -- */
+  /* Pilote au runtime par useAppBackground(). Par defaut : aucun. */
+  --user-bg-image: none;
+  --user-bg-position: center;
+  --user-bg-scale: 1;
+  --user-bg-dim: 0.55;
+}
+
+/* ---------------------------------------------------------------------------
+   Degrades et textures reutilisables
+   -------------------------------------------------------------------------- */
+:root {
+  --grad-sunset: linear-gradient(135deg, var(--sunset) 0%, var(--coral) 55%, var(--sunset-700) 100%);
+  --grad-surf:   linear-gradient(135deg, var(--surf-300) 0%, var(--surf) 48%, var(--surf-700) 100%);
+  --grad-palm:   linear-gradient(135deg, var(--palm-300) 0%, var(--palm) 60%, var(--palm-900) 100%);
+  --grad-dusk:   linear-gradient(180deg, color-mix(in srgb, var(--sunset) 22%, transparent) 0%,
+                                         transparent 45%,
+                                         color-mix(in srgb, var(--surf-900) 55%, transparent) 100%);
+  --grad-scrim:  linear-gradient(180deg, transparent 0%,
+                                         color-mix(in srgb, var(--abyss) 55%, transparent) 55%,
+                                         color-mix(in srgb, var(--abyss) 94%, transparent) 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Accessibilite : respect de la preference systeme ET du reglage interne.
+   `data-reduce-motion="true"` est pose sur <html> par les preferences membre.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 0ms; --dur-fast: 0ms; --dur-base: 0ms;
+    --dur-slow: 0ms;    --dur-scene: 0ms;
+  }
+}
+
+html[data-reduce-motion='true'] {
+  --dur-instant: 0ms; --dur-fast: 0ms; --dur-base: 0ms;
+  --dur-slow: 0ms;    --dur-scene: 0ms;
+}

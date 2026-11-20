@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+.vite
+coverage
+*.local
+.env
+.env.*
+!.env.example
+.DS_Store
+*.tsbuildinfo
+.vercel
+.claude/settings.local.json
+supabase/.temp
