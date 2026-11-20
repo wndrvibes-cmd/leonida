@@ -1,0 +1,119 @@
+.head {
+  margin-bottom: var(--sp-5);
+}
+
+.title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--sp-2);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.actions {
+  margin-top: var(--sp-2);
+}
+
+/* Message d'erreur global du formulaire (identifiants, reseau, quota). */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--danger) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--danger) 38%, transparent);
+  color: var(--text);
+  font-size: var(--text-sm);
+}
+
+.alert svg { flex: 0 0 auto; color: var(--danger); margin-top: 2px; }
+
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success) 34%, transparent);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.notice svg { flex: 0 0 auto; color: var(--success); margin-top: 2px; }
+
+.foot {
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.inlineLink {
+  display: inline-block;
+  margin-top: var(--sp-1);
+  font-weight: 600;
+}
+
+.forgot {
+  align-self: flex-end;
+  font-size: var(--text-sm);
+  margin-top: calc(var(--sp-2) * -1);
+}
+
+/* ----------------------------------------------- robustesse du mot de passe */
+.strength {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-top: calc(var(--sp-2) * -1);
+}
+
+.bars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-1);
+}
+
+.bar {
+  height: 4px;
+  border-radius: var(--r-full);
+  background: var(--surface-sunken);
+  transition: background-color var(--dur-base) var(--ease-out);
+}
+
+.bar[data-filled='true'][data-level='1'] { background: var(--coral); }
+.bar[data-filled='true'][data-level='2'] { background: var(--sand); }
+.bar[data-filled='true'][data-level='3'] { background: var(--surf); }
+.bar[data-filled='true'][data-level='4'] { background: var(--palm); }
+
+.strengthLabel {
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+}
+
+/* Regles de pseudo rappelees sous le champ. */
+.rules {
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+  line-height: var(--leading-snug);
+}
+
+.checking {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+}
