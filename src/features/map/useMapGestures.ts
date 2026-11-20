@@ -104,6 +104,15 @@ export function useMapGestures(options: MapGestureOptions): MapGestures {
     if (event.pointerType === 'mouse' && event.button !== 0) return
     const target = event.target as Element | null
 
+    /*
+     * L'habillage pose sur la carte (commandes de zoom, bandeau de placement)
+     * garde ses propres gestes. Sans ce filtre, appuyer sur « Continuer »
+     * declencherait AUSSI un appui carte — donc un repere pose sous le
+     * bouton — et un glissement sur une commande serait pris pour un
+     * deplacement de la carte.
+     */
+    if (target?.closest?.('[data-map-ui]')) return
+
     pointersRef.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
     movedRef.current = false
     downRef.current = {

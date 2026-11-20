@@ -50,9 +50,19 @@ const PUBLISH_RATIO = 0.02
 export const MapViewport = forwardRef<MapViewportHandle, MapViewportProps>(
   function MapViewport(props, ref) {
     const {
-      imageUrl, naturalWidth, naturalHeight, minZoom, maxZoom, alt,
+      imageUrl, naturalWidth, naturalHeight, alt,
       children, overlay, onViewChange, onMapTap, placing = false, className,
     } = props
+
+    /*
+     * Garde-fou sur les bornes de `map.config`. Un `min_zoom` nul ou negatif
+     * — reglage errone cote administration — donnerait `k = 0`, donc une
+     * image de taille nulle, et rendrait indefini le seuil de publication
+     * (division par l'echelle precedente). On borne donc ici plutot que de
+     * faire confiance au reglage.
+     */
+    const minZoom = Math.max(props.minZoom, 0.05)
+    const maxZoom = Math.max(props.maxZoom, minZoom * 1.01)
 
     const frameRef = useRef<HTMLDivElement>(null)
     const layerRef = useRef<HTMLDivElement>(null)
@@ -219,19 +229,6 @@ export const MapViewport = forwardRef<MapViewportHandle, MapViewportProps>(
 
     /* --------------------------------------------------------------- rendu */
 
-    if (status === 'error') {
-      return (
-        <div className={[s.frame, s.frameError, className].filter(Boolean).join(' ')}>
-          <ErrorState
-            title="Carte indisponible"
-            description="L'image de la carte n'a pas pu etre chargee. Verifiez votre connexion, puis reessayez."
-            retryLabel="Recharger l'image"
-            onRetry={() => { setStatus('loading'); setReloadKey((n) => n + 1) }}
-          />
-        </div>
-      )
-    }
-
     return (
       <div
         ref={frameRef}
@@ -264,12 +261,26 @@ export const MapViewport = forwardRef<MapViewportHandle, MapViewportProps>(
         </div>
 
         {status === 'loading' ? (
-          <div className={s.loading}>
+          <div className={s.sheet}>
             <Spinner size="lg" label="Chargement de la carte" />
           </div>
         ) : null}
 
-        <div className={s.controls}>
+        {/* L'erreur est posee EN SURCOUCHE, sans demonter le cadre : un
+            remplacement d'arbre detacherait le `ResizeObserver` et la vue ne
+            serait plus mesuree apres un nouvel essai. */}
+        {status === 'error' ? (
+          <div className={`${s.sheet} ${s.sheetError}`} data-map-ui>
+            <ErrorState
+              title="Carte indisponible"
+              description="L'image de la carte n'a pas pu etre chargee. Verifiez votre connexion, puis reessayez."
+              retryLabel="Recharger l'image"
+              onRetry={() => { setStatus('loading'); setReloadKey((n) => n + 1) }}
+            />
+          </div>
+        ) : null}
+
+        <div className={s.controls} data-map-ui>
           <Button
             variant="secondary" size="md" iconOnly aria-label="Zoomer"
             onClick={() => zoomCentre(1.5)} disabled={uiScale >= maxZoom}
@@ -290,7 +301,11 @@ export const MapViewport = forwardRef<MapViewportHandle, MapViewportProps>(
           </Button>
         </div>
 
-        {overlay}
+        {overlay ? (
+          <div className={s.overlay} data-map-ui>
+            {overlay}
+          </div>
+        ) : null}
       </div>
     )
   },

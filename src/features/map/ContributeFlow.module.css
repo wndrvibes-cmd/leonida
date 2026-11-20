@@ -17,6 +17,8 @@
   background: color-mix(in srgb, var(--tide) 94%, transparent);
   backdrop-filter: var(--blur-panel);
   box-shadow: var(--shadow-lg);
+  /* Reactive les gestes : la couche d'habillage qui le porte est inerte. */
+  pointer-events: auto;
   animation: bannerIn var(--dur-base) var(--ease-out) both;
 }
 

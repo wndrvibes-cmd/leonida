@@ -1,0 +1,143 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  text-align: left;
+  color: var(--text);
+}
+
+.card:hover { color: var(--text); }
+
+/* Rumeur : signalee par la forme autant que par la couleur. Le badge
+   « Rumeur » reste la source d'information ; ce liseré ne fait que la rendre
+   reperable en diagonale dans une grille. */
+.rumor {
+  border-left: 3px solid var(--warning);
+}
+
+/* ------------------------------------------------------------- COUVERTURE */
+.cover {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--surface-sunken);
+}
+
+.compact .cover { aspect-ratio: 16 / 9; }
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .image { transform: scale(1.04); }
+}
+
+/* Pas de visuel : on l'assume, on n'invente pas d'illustration. */
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--text-subtle);
+  background:
+    radial-gradient(120% 100% at 50% 0%,
+      color-mix(in srgb, var(--surf) 10%, transparent) 0%,
+      transparent 70%);
+}
+
+/* ------------------------------------------------------------------ CORPS */
+.body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+}
+
+.compact .body {
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.category {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding-inline: var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* Familles de jetons portees par `news_categories.accent` (migration 0007). */
+.surf   { color: var(--surf-300);   border-color: color-mix(in srgb, var(--surf) 42%, transparent);   background: color-mix(in srgb, var(--surf) 14%, transparent); }
+.palm   { color: var(--palm-300);   border-color: color-mix(in srgb, var(--palm) 42%, transparent);   background: color-mix(in srgb, var(--palm) 14%, transparent); }
+.sunset { color: var(--sunset-300); border-color: color-mix(in srgb, var(--sunset) 42%, transparent); background: color-mix(in srgb, var(--sunset) 14%, transparent); }
+.sand   { color: var(--sand);       border-color: color-mix(in srgb, var(--sand) 38%, transparent);   background: color-mix(in srgb, var(--sand) 12%, transparent); }
+
+.title {
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+.compact .title { font-size: var(--text-base); }
+
+.excerpt {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-4);
+  margin-top: auto;
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--border);
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+}
+
+.date { white-space: nowrap; }
+.undated { font-style: italic; }
+
+.source {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.source svg { flex: 0 0 auto; }
+
+/* --------------------------------------------------------------- SQUELETTE */
+.skeleton {
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.skeleton .body { gap: var(--sp-3); }

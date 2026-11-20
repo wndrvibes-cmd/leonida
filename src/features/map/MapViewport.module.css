@@ -23,13 +23,6 @@
   outline-offset: -2px;
 }
 
-.frameError {
-  display: grid;
-  place-items: center;
-  padding: var(--sp-5);
-  cursor: default;
-}
-
 .dragging { cursor: grabbing; }
 .placing  { cursor: crosshair; }
 
@@ -57,12 +50,27 @@
   -webkit-user-drag: none;
 }
 
-.loading {
+/* Surcouche pleine page du cadre : chargement ou erreur. */
+.sheet {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
+  padding: var(--sp-5);
   background: color-mix(in srgb, var(--abyss) 70%, transparent);
+}
+
+.sheetError {
+  background: color-mix(in srgb, var(--abyss) 92%, transparent);
+  cursor: default;
+}
+
+/* Habillage fourni par la page (bandeaux, mentions). Inerte par defaut :
+   chaque element interactif reactive lui-meme `pointer-events`. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
 /* Commandes de zoom : colonne flottante, hors du calque transforme. */

@@ -44,11 +44,12 @@ const PARAM = {
   tag: 'tag',
 } as const
 
-function asReliability(value: string | null): Reliability | '' {
+/** Conversion sure d'une valeur venue de l'URL ou d'un `<select>`. */
+export function asReliability(value: string | null): Reliability | '' {
   return RELIABILITY_VALUES.includes(value as Reliability) ? (value as Reliability) : ''
 }
 
-function asSort(value: string | null): NewsSort {
+export function asSort(value: string | null): NewsSort {
   return value === 'oldest' ? 'oldest' : 'recent'
 }
 
