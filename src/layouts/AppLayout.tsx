@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { RouteFallback } from '@/app/RouteFallback'
 import { Intro } from '@/components/brand/Intro'
 import { PageTransition } from '@/app/PageTransition'
+import { useAppBackground } from '@/hooks/useAppBackground'
 import { TabBar } from '@/components/layout/TabBar'
 import { TopBar } from '@/components/layout/TopBar'
 import s from './AppLayout.module.css'
@@ -14,6 +15,10 @@ import s from './AppLayout.module.css'
  */
 export function AppLayout() {
   const { pathname, hash } = useLocation()
+
+  // Fond personnalise du membre. A monter ICI et nulle part ailleurs : il
+  // s'applique a toute l'application, pas seulement a l'ecran de reglages.
+  useAppBackground()
 
   // Chaque changement de page repart du haut — sauf si une ancre est visee.
   useEffect(() => {
