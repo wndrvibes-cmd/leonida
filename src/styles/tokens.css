@@ -158,6 +158,34 @@
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 
+  /* ------------------------------------------------ COMPOSITION EDITORIALE */
+  /* Rythme de mise en page. Une grille editoriale ne repete pas une seule
+     taille de carte : elle alterne une piece maitresse et des satellites.
+     Ces jetons donnent le vocabulaire, chaque module choisit sa combinaison. */
+  --card-sm: 232px;    /* vignette de carrousel */
+  --card-md: 300px;    /* carte standard de grille */
+  --card-lg: 420px;    /* carte secondaire mise en avant */
+  --feature-min: 560px; /* largeur sous laquelle une piece maitresse se replie */
+
+  /* Ratios d'image, pour que les visuels ne sautent pas pendant le chargement. */
+  --ratio-wide: 16 / 9;
+  --ratio-card: 4 / 3;
+  --ratio-tall: 3 / 4;
+  --ratio-hero: 21 / 9;
+
+  /* --------------------------------------------------------- MOUVEMENT + */
+  /* Ressorts nommes, pour que tout le produit bouge de la meme facon.
+     Les valeurs sont reprises telles quelles par framer-motion via
+     src/app/motion.ts — un seul endroit a regler. */
+  --spring-soft:  linear(0, 0.26 7%, 0.72 18%, 0.96 28%, 1.03 38%, 1 54%);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit:     cubic-bezier(0.7, 0, 0.84, 0);
+
+  /* Decalage en cascade d'une liste : au-dela de ~6 elements l'attente se
+     voit, on plafonne donc le retard cumule. */
+  --stagger-step: 45ms;
+  --stagger-max: 270ms;
+
   /* --------------------------------------------------------------- PLANS - */
   --z-base: 0;  --z-sticky: 50;  --z-nav: 100;  --z-drawer: 200;
   --z-modal: 300;  --z-toast: 400;  --z-intro: 500;

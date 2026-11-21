@@ -24,7 +24,7 @@
   background: var(--bg-elevated);
   border: 1px solid var(--border-strong);
   border-radius: var(--r-xl) var(--r-xl) 0 0;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--edge-strong), var(--shadow-float);
   outline: none;
   overflow: hidden;
 }
