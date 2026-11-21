@@ -1,0 +1,142 @@
+# LEONIDA — suivi de projet
+
+Document de reprise. Mis a jour a chaque etape importante.
+**Derniere mise a jour : 21 novembre 2026** — fin de l'audit, avant refonte.
+
+---
+
+## 1. Ou en est le projet
+
+| | |
+|---|---|
+| Depot | [wndrvibes-cmd/leonida](https://github.com/wndrvibes-cmd/leonida) |
+| Supabase | projet `pwnusnklfpprrtgnijcy` (eu-central-1) — **ne pas confondre** avec `ihtgwqzqvjxrhuxhnkwd`, qui heberge CREWUP et ne doit pas etre touche |
+| Compilation | `tsc --noEmit` → **0 erreur** (verifie le 21/11/2026) |
+| Serveur de dev | fonctionnel sur `http://localhost:5173` |
+| Fichiers source | ~250 dans `src/` |
+
+### Environnement — limitation importante
+
+**Node n'est pas installe sur la machine.** Le serveur de dev tourne grace au
+Node embarque dans `ChatGPT.app`, avec deux contournements :
+
+- plusieurs paquets npm avaient ete tronques par une installation interrompue
+  (esbuild faisait 1,3 Mo au lieu de 9,8) — l'arbre a ete refait ;
+- `rollup` est remplace par `@rollup/wasm-node` car ce Node tourne en
+  *hardened runtime* et refuse de charger tout module natif tiers.
+
+**Consequence : `npm run build` ne fonctionne pas.** Seul le mode dev marche.
+Correctif definitif : installer Node LTS depuis nodejs.org (.pkg macOS),
+puis `rm -rf node_modules && npm install`.
+
+---
+
+## 2. Audit du 21 novembre 2026
+
+### Ce qui est sain et doit etre conserve
+
+**La base de donnees.** 11 migrations appliquees et reellement testees a
+l'attaque (comptes de test, tentatives d'escalade). Toutes bloquees :
+auto-promotion admin, auto-attribution LEONIDA+, contribution carte sans
+abonnement, auto-validation d'une contribution, modification du contenu
+d'autrui, gonflage de compteurs, fausses notifications, lecture des brouillons
+du Radar, ecriture d'un reglage admin. Les 25 tables publiques ont la RLS
+active et au moins une policy. Advisors securite : 27 alertes → 5, les 5
+restantes etant les verificateurs de role, necessairement executables par
+`authenticated` puisque les policies RLS les evaluent.
+
+**Le design system.** `src/styles/tokens.css` + CSS Modules partout.
+**0 couleur en dur** sur l'ensemble des fichiers `.module.css` : la discipline
+a tenu. C'est la fondation de la refonte visuelle, elle n'est pas a refaire.
+
+**Qualite du code.** 0 `any`, 0 `@ts-ignore`, 0 `TODO` oublie, 0 bouton mort
+(aucun `onClick={() => {}}`). 21 primitives d'interface, 15 services, 14 hooks.
+
+**Modules termines** : socle UI, navigation, authentification (4 ecrans),
+engagement partage, carte, accueil, actualites, communaute.
+
+### Ce qui doit etre corrige
+
+| Probleme | Ampleur | Gravite |
+|---|---|---|
+| **Accents francais manquants** dans les textes d'interface | 323 occurrences, 65 fichiers | elevee — tres visible |
+| Composants homonymes `NewsCard` et `PostCard` (version compacte accueil / version complete liste) | 4 fichiers | moyenne — piege de maintenance |
+| Dossiers vides laissses par les modules non construits | 8 | faible |
+| `LEONIDA_PROGRESS.md` inexistant | — | corrige par ce fichier |
+
+L'origine des accents manquants est identifiee : les consignes de construction
+avaient ete redigees sans accents pour eviter des problemes d'encodage, et ce
+style s'est propage aux textes visibles. La correction doit etre ciblee : seuls
+les textes d'interface sont concernes, **jamais** les identifiants, chemins de
+route, slugs ou noms de classes, qui doivent rester en ASCII.
+
+### Ce qui n'existe pas encore
+
+- **Espace administrateur** : quasi inexistant (1 fichier dans `src/pages/admin/`).
+- **Espace membre** : profil et notifications ecrits, parametres encore en attente.
+- **Pages en fichier d'attente** : `AiPage`, `ContestsPage`, `ContestPage`,
+  `MomentsPage`, `PremiumPage`, `SearchPage`, `SettingsPage`, `AdminRoutes`.
+- **Decouvertes** : pas de section dediee (les donnees existent dans `map_markers`).
+- **Edge Functions** : dossier vide — Stripe, Radar et LEONIDA AI non ecrits.
+- **Documentation** : seul le README existe.
+
+### Contraintes a assumer, pas a contourner
+
+**Les images GTA VI.** Je n'ai aucune image de GTA VI dont les droits
+permettent l'integration, et je ne peux pas en fabriquer : une image generee
+qui pretendrait montrer le jeu serait un mensonge. La seule voie honnete est
+que l'administrateur televerse ses propres visuels — c'est precisement ce que
+la mediatheque et les buckets Storage permettent. En attendant, l'interface
+utilise des etats visuels temporaires (degrades, compositions typographiques)
+qui ne pretendent jamais representer le jeu.
+
+**Le fond de carte.** `map.config.image_url` est nul : la page carte affiche un
+etat d'attente explicite. Aucune carte de substitution n'est dessinee.
+
+**Stripe, Radar, LEONIDA AI.** Desactives par reglage (`stripe_enabled`,
+`radar.config.enabled`, `ai.config.enabled` a `false`). Les interfaces le
+disent explicitement et ne simulent aucune reponse.
+
+---
+
+## 3. Plan de refonte
+
+Travail sequentiel, verifie et commite a chaque etape. Pas de vagues d'agents.
+
+| # | Etape | Etat |
+|---|---|---|
+| 0 | Audit et correction de la compilation | **termine** |
+| 1 | Hygiene : accents, fusion des composants homonymes, dossiers vides | a faire |
+| 2 | Direction artistique : enrichir les jetons, composition des cartes, profondeur | a faire |
+| 3 | Navigation et accueil : hierarchie, transitions de page, etats actifs | a faire |
+| 4 | Espace membre complet (profil, parametres, favoris, notifications) | a faire |
+| 5 | Espace administrateur | a faire |
+| 6 | Moments et Decouvertes | a faire |
+| 7 | Cadeaux, LEONIDA+, LEONIDA AI, recherche | a faire |
+| 8 | Edge Functions (Stripe test, Radar, IA) | a faire |
+| 9 | Verification finale : responsive, permissions, performances | a faire |
+
+### Prochaine tache
+
+**Etape 1 — hygiene.** Passe systematique sur les accents (323 occurrences,
+textes d'interface uniquement), fusion de `NewsCard` et `PostCard` en un
+composant a variantes, suppression des dossiers vides. Verification par
+`tsc --noEmit` et controle visuel avant commit.
+
+---
+
+## 4. Journal des decisions
+
+- **20/11** — LEONIDA separe de PassLoyal : dossier, depot et projet Supabase
+  dedies. CREWUP (`ihtgwqzqvjxrhuxhnkwd`) laisse intact.
+- **20/11** — Roles hors table `profiles` (table `user_roles` dediee) et statut
+  premium ecrit uniquement par `service_role` : l'auto-attribution devient
+  structurellement impossible, pas seulement interdite par convention.
+- **20/11** — Coordonnees de marqueurs relatives (0..1) a l'image d'origine
+  plutot qu'en pixels : les reperes restent exacts a tout zoom et sur tout ecran.
+- **20/11** — Moteur de carte ecrit a la main plutot que Leaflet : controle total
+  du placement tactile et du flux de contribution, sans dependance de 145 Ko.
+- **21/11** — `src/services/query.ts` reprend le type `PostgrestSingleResponse`
+  de postgrest-js au lieu d'en redeclarer un equivalent. La redeclaration
+  faisait echouer l'inference de TypeScript, qui retombait sur `never` et
+  cassait 14 fichiers.
