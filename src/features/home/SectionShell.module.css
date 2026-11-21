@@ -1,6 +1,33 @@
 .section {
+  position: relative;
+  isolation: isolate;
   padding-block: var(--sp-7);
 }
+
+/* Rythme vertical : une section sur deux repose sur une bande a peine plus
+   claire, soulignee d'un filet. L'ecart est volontairement minime — il doit
+   se sentir, pas se voir. */
+.section:nth-of-type(even)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--band);
+  border-block: 1px solid var(--band-edge);
+}
+
+/* Halo d'ambiance : une diffusion coloree tres large derriere le contenu,
+   alternee d'une section a l'autre pour que la page ne soit pas monochrome. */
+.section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--halo-surf);
+}
+
+.section:nth-of-type(even)::after { background: var(--halo-sunset); }
 
 @media (min-width: 900px) {
   .section { padding-block: var(--sp-8); }

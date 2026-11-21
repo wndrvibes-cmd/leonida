@@ -253,17 +253,20 @@
    ecrasait les palmes en formes d'etoile. */
 .palm {
   bottom: calc(var(--waterline) - 2px);
-  height: clamp(120px, 28vh, 260px);
+  /* Dimensionnes sur la LARGEUR, pas la hauteur : en `vh`, un ecran etroit et
+     haut (un iPhone en portrait) les rendait enormes et ils se percutaient au
+     centre. La largeur est ce qui determine s'ils ont la place. */
+  height: clamp(86px, 21vw, 250px);
   width: auto;
   fill: color-mix(in srgb, var(--abyss) 93%, transparent);
   transform-origin: bottom center;
   animation: sway calc(var(--dur-scene) * 12) var(--ease-soft) infinite alternate;
 }
 
-.palmLeft  { left: clamp(-26px, 2vw, 40px); }
+.palmLeft  { left: clamp(-30px, 1vw, 38px); }
 .palmRight {
-  right: clamp(-20px, 4vw, 90px);
-  height: clamp(95px, 22vh, 205px);
+  right: clamp(-18px, 3vw, 86px);
+  height: clamp(70px, 17vw, 200px);
   scale: -1 1;
   animation-delay: calc(var(--dur-scene) * -4);
 }

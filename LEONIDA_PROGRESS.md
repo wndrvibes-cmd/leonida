@@ -107,7 +107,7 @@ Travail sequentiel, verifie et commite a chaque etape. Pas de vagues d'agents.
 |---|---|---|
 | 0 | Audit et correction de la compilation | **termine** |
 | 1 | Hygiene : accents (**fait**), fusion des composants homonymes, dossiers vides (**fait**) | partiel |
-| 2 | Direction artistique : enrichir les jetons, composition des cartes, profondeur | a faire |
+| 2 | Direction artistique : jetons d'elevation, scene d'accueil, profondeur des sections | **termine** |
 | 3 | Navigation et accueil : hierarchie, transitions de page, etats actifs | a faire |
 | 4 | Espace membre complet (profil, parametres, favoris, notifications) | a faire |
 | 5 | Espace administrateur | a faire |
@@ -143,10 +143,45 @@ automatique introduirait des fautes. A reprendre a la main si besoin.
 **Verifications** : `tsc --noEmit` → 0 erreur ; routes, slugs et cles d'union
 controles intacts ; rendu verifie dans le navigateur.
 
+### Etape 2 — ce qui a ete fait le 21/11
+
+**Libelles en base (migration 0012).** La passe d'accents ne couvrait que le
+code ; `app_settings`, `news_categories` et `map_categories` affichaient encore
+« Actualites recentes ». Seules les valeurs sont accentuees : slugs et cles
+JSON restent en ASCII.
+
+**Scene d'accueil reecrite.** Deux bugs reels :
+- `preserveAspectRatio="none"` etirait le SVG des palmiers sur toute la
+  largeur — les palmes se reduisaient a des formes d'etoile. Chaque palmier a
+  maintenant son propre SVG, proportions preservees ;
+- le degrade de ciel mettait l'orange le plus vif tout en bas, sous la mer, au
+  lieu de le concentrer a l'horizon.
+
+Composition : halo separe du disque solaire (un calque unique se lisait comme
+une tache floue), soleil couchant DANS l'eau, brume d'horizon plutot qu'un
+trait net, chemin de lumiere en trapeze qui s'elargit au premier plan, grain
+leger contre les paliers de degrade.
+
+Les palmiers sont dimensionnes en `vw` et non en `vh` : en hauteur de fenetre,
+un iPhone en portrait les rendait enormes et ils se percutaient au centre.
+
+**Systeme d'elevation** (`tokens.css`) : `--edge` / `--edge-strong` (arete
+lumineuse sur le bord superieur, ce qui fait lire une surface comme du verre),
+`--shadow-lift` / `--shadow-float`, `--band` / `--band-edge` pour le rythme
+vertical, `--halo-surf` / `--halo-sunset` pour l'ambiance.
+Applique aux cartes et aux sections d'accueil (alternance une section sur deux).
+
+**Barre du haut** : la recherche ne s'ouvre qu'a 1100px ; en dessous les
+onglets n'avaient plus la place et defilaient discretement, « Cadeaux » etait
+coupe.
+
+**Verifie** : `tsc --noEmit` → 0 erreur ; rendu controle en 1240px, 390px et
+375x812.
+
 ### Prochaine tache
 
-**Fin de l'etape 1** : fusionner `NewsCard` / `PostCard` (versions compacte et
-complete) en un composant a variantes. Puis **etape 2**, direction artistique.
+Fusionner `NewsCard` / `PostCard` (reliquat de l'etape 1), puis **etape 3** :
+navigation et accueil — transitions de page, etats actifs, hierarchie.
 
 ---
 

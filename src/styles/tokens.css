@@ -123,6 +123,29 @@
   --blur-panel: saturate(150%) blur(18px);
   --blur-bar:   saturate(170%) blur(24px);
 
+  /* ------------------------------------------------- ELEVATION & MATIERE -- */
+  /* Arete lumineuse : un filet clair sur le bord superieur. C'est ce detail
+     qui fait lire une surface comme du verre pose sur un fond, et non comme
+     un rectangle peint. */
+  --edge:        inset 0 1px 0 color-mix(in srgb, var(--surf-100) 9%, transparent);
+  --edge-strong: inset 0 1px 0 color-mix(in srgb, var(--surf-100) 17%, transparent);
+
+  /* Ombres portees : plus diffuses et plus basses a mesure que l'element
+     s'eleve, comme une vraie source lumineuse zenithale. */
+  --shadow-float: 0 28px 64px -28px rgb(0 0 0 / 0.72);
+  --shadow-lift:  0 16px 36px -16px rgb(0 0 0 / 0.58);
+
+  /* Bandes de section : alternance a peine perceptible qui donne un rythme
+     vertical sans decouper la page en blocs. */
+  --band:        color-mix(in srgb, var(--deep) 42%, transparent);
+  --band-edge:   color-mix(in srgb, var(--surf-100) 6%, transparent);
+
+  /* Halos d'ambiance poses derriere une section pour la faire respirer. */
+  --halo-surf:   radial-gradient(60% 70% at 15% 0%,
+                   color-mix(in srgb, var(--surf) 11%, transparent) 0%, transparent 70%);
+  --halo-sunset: radial-gradient(55% 65% at 85% 10%,
+                   color-mix(in srgb, var(--sunset) 9%, transparent) 0%, transparent 70%);
+
   /* ----------------------------------------------------------- MOUVEMENT - */
   --dur-instant: 90ms;
   --dur-fast:    160ms;

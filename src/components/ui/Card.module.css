@@ -30,12 +30,14 @@
 }
 
 /* --------------------------------------------------------------- variantes */
+/* Toutes les variantes portent l'arete lumineuse : c'est elle qui donne
+   l'impression d'une surface posee, pas l'ombre. */
 .flat {
-  box-shadow: none;
+  box-shadow: var(--edge);
 }
 
 .raised {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--edge), var(--shadow-lift);
 }
 
 .interactive {
