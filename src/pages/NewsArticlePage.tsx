@@ -17,13 +17,17 @@ import {
 } from '@/features/engagement'
 import { formatDate } from '@/lib/format'
 import { publicUrl } from '@/lib/supabase'
-import { ArticleBody } from '@/features/news/ArticleBody'
-import { ArticleGallery } from '@/features/news/ArticleGallery'
-import { asCategoryAccent } from '@/features/news/categories'
-import { RelatedArticles } from '@/features/news/RelatedArticles'
-import { ReliabilityBadge } from '@/features/news/ReliabilityBadge'
-import { ARTICLE_STATUS_LABELS } from '@/features/news/status'
-import { useArticleViewOnce, useNewsArticle, useRelatedNews } from '@/features/news/useNews'
+import {
+  ARTICLE_STATUS_LABELS,
+  ArticleBody,
+  ArticleGallery,
+  asCategoryAccent,
+  RelatedArticles,
+  ReliabilityBadge,
+  useArticleViewOnce,
+  useNewsArticle,
+  useRelatedNews,
+} from '@/features/news'
 import s from '@/features/news/ArticlePage.module.css'
 
 export default function NewsArticlePage() {
@@ -115,17 +119,18 @@ export default function NewsArticlePage() {
       ) : null}
 
       <header className={s.head}>
-        <div className={s.badges}>
-          {category ? (
+        {/* Le niveau de fiabilite n'est PAS repete ici : il est rendu plus bas
+            avec son explication (`withHelp`), une seule fois. */}
+        {category ? (
+          <div className={s.badges}>
             <Link
               className={cx(s.category, s[accent])}
               to={`/actualites?categorie=${encodeURIComponent(category.slug)}`}
             >
               {category.label}
             </Link>
-          ) : null}
-          <ReliabilityBadge reliability={article.reliability} />
-        </div>
+          </div>
+        ) : null}
 
         <h1 className={s.title}>{article.title}</h1>
 
@@ -140,7 +145,9 @@ export default function NewsArticlePage() {
           )}
         </div>
 
-        <ReliabilityBadge reliability={article.reliability} size="sm" withHelp className={s.help} />
+        {/* Seule occurrence du niveau de fiabilite sur la page, en taille
+            normale puisqu'elle ne double plus un badge place plus haut. */}
+        <ReliabilityBadge reliability={article.reliability} withHelp className={s.help} />
       </header>
 
       {cover ? (

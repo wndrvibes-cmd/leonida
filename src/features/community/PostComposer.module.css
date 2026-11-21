@@ -1,0 +1,82 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* ------------------------------------------------------------- BROUILLON -- */
+.draft {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--r-md);
+  background: var(--accent-soft);
+  color: var(--surf-100);
+  font-size: var(--text-sm);
+}
+
+.draftText { flex: 1 1 auto; }
+
+.warning {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+/* ---------------------------------------------------------- SAISIE FERMEE - */
+.locked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-4);
+  text-align: center;
+}
+
+.lockIcon { color: var(--text-subtle); }
+
+.lockedText {
+  max-width: 34ch;
+  color: var(--text-muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-snug);
+}
+
+.lockedAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 48px;
+  padding-inline: var(--sp-5);
+  border-radius: var(--r-md);
+  background: var(--grad-surf);
+  color: var(--text-on-accent);
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.lockedAction:hover { color: var(--text-on-accent); }
+
+@media (hover: hover) and (pointer: fine) {
+  .lockedAction:hover { transform: translateY(-1px); }
+}
+
+.lockedLink {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}

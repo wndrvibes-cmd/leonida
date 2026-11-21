@@ -1,0 +1,98 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.media {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.mediaPreview {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.uploader { flex: 1 1 auto; }
+
+.hint {
+  color: var(--text-subtle);
+  font-size: var(--text-sm);
+}
+
+.note {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+/* ---------------------------------------------------------------- BANNIERE */
+.bannerPreview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 1;
+  min-height: 90px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bannerEmpty {
+  padding: var(--sp-3);
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+  text-align: center;
+}
+
+.bannerActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  align-items: flex-start;
+}
+
+/* ---------------------------------------------------------------- IDENTITE */
+.availability {
+  padding-inline: var(--sp-2);
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------- ENREGISTRER */
+.save {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  position: sticky;
+  bottom: calc(var(--tabbar-total) + var(--sp-2));
+  z-index: var(--z-sticky);
+  padding: var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--bg-elevated) 94%, transparent);
+  backdrop-filter: var(--blur-bar);
+}
+
+@media (min-width: 900px) {
+  .save {
+    position: static;
+    align-items: flex-start;
+    background: none;
+    border: none;
+    padding: 0;
+    backdrop-filter: none;
+  }
+}

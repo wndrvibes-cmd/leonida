@@ -1,0 +1,39 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding-block: var(--sp-6) var(--sp-8);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  align-self: flex-start;
+  min-height: 44px;
+  padding-inline: var(--sp-3);
+  border-radius: var(--r-full);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  transition:
+    background var(--dur-fast) var(--ease-soft),
+    color var(--dur-fast) var(--ease-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .back:hover { background: var(--surface-hover); color: var(--text); }
+}
+
+/* -------------------------------------------------------------- SQUELETTE -- */
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  max-width: var(--reading-max);
+}
+
+.skeletonHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}

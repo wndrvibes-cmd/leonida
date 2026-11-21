@@ -1,0 +1,41 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding-block: var(--sp-5) var(--sp-8);
+}
+
+/* La rangee d'onglets defile seule : trois libelles longs ne doivent jamais
+   elargir la page sur iPhone. */
+.tabs {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--safe-top));
+  z-index: var(--z-sticky);
+  padding-block: var(--sp-2);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: var(--blur-bar);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  min-height: 200px;
+}
+
+.privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-md);
+  color: var(--text-subtle);
+  font-size: var(--text-sm);
+}
+
+.privacyLink {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

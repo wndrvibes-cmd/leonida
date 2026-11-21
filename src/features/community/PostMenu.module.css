@@ -1,0 +1,39 @@
+.wrap {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.panel {
+  position: absolute;
+  top: calc(100% + var(--sp-1));
+  inset-inline-end: 0;
+  z-index: var(--z-drawer);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: min(15rem, calc(100vw - 2 * var(--sp-5)));
+  padding: var(--sp-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--bg-elevated);
+  backdrop-filter: var(--blur-panel);
+  box-shadow: var(--shadow-lg);
+}
+
+/* `display: flex` ci-dessus l'emporterait sur le `display: none` du
+   navigateur : l'attribut `hidden` doit donc etre repris explicitement. */
+.panel[hidden] { display: none; }
+
+/* Classe redoublee : elle doit l'emporter sur `.btn` de Button.module.css
+   quel que soit l'ordre d'injection des feuilles. */
+.item.item {
+  width: 100%;
+  justify-content: flex-start;
+  min-height: 44px;
+}
+
+.danger.danger { color: var(--coral-300); }
+
+@media (hover: hover) and (pointer: fine) {
+  .danger.danger:hover { color: var(--coral); }
+}

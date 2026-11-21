@@ -1,0 +1,327 @@
+/* =============================================================================
+   Page article — /actualites/:slug
+   -----------------------------------------------------------------------------
+   Mise en page de lecture : une colonne, mesure limitee a `--reading-max` pour
+   tout ce qui se lit, couverture et galerie libres d'aller plus large.
+
+   Aucune couleur, rayon, duree ni ombre en dur : tout vient de tokens.css.
+   ========================================================================== */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding-block: var(--sp-5) var(--sp-8);
+}
+
+/* ------------------------------------------------------------------ RETOUR */
+/* Cible tactile de 44px : c'est le chemin de sortie le plus utilise sur
+   iPhone, il ne doit pas se rater. */
+.back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding-inline: var(--sp-3);
+  margin-inline-start: calc(var(--sp-3) * -1);
+  border-radius: var(--r-full);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition:
+    color var(--dur-fast) var(--ease-soft),
+    background-color var(--dur-fast) var(--ease-soft);
+}
+
+.back svg {
+  flex: 0 0 auto;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .back:hover {
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  .back:hover svg { transform: translateX(-2px); }
+}
+
+/* --------------------------------------------------- AVERTISSEMENT STAFF - */
+/* Article non publie : visible uniquement par l'equipe (la RLS laisse le
+   staff lire les brouillons). Le ton est informatif, pas alarmant. */
+.draft {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  max-width: var(--reading-max);
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--warning);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.draft svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--warning);
+}
+
+/* ----------------------------------------------------------------- EN-TETE */
+.head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  max-width: var(--reading-max);
+  padding-bottom: var(--sp-5);
+}
+
+/* Filet couchant -> ocean, comme en tete du fil : la meme signature relie la
+   liste et l'article. */
+.head::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--sunset) 0%,
+    var(--surf) 42%,
+    transparent 100%
+  );
+  opacity: 0.6;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+/* Pastille de categorie. C'est un lien vers le fil filtre : zone tactile
+   portee a 32px de haut, la rangee entiere restant au-dessus de 44px grace a
+   l'espacement de l'en-tete. */
+.category {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding-inline: var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    filter var(--dur-fast) var(--ease-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .category:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.12);
+  }
+}
+
+/* Familles de jetons portees par `news_categories.accent` (migration 0007).
+   Memes teintes que NewsCard : une categorie garde sa couleur partout. */
+.surf   { color: var(--surf-300);   border-color: color-mix(in srgb, var(--surf) 42%, transparent);   background: color-mix(in srgb, var(--surf) 14%, transparent); }
+.palm   { color: var(--palm-300);   border-color: color-mix(in srgb, var(--palm) 42%, transparent);   background: color-mix(in srgb, var(--palm) 14%, transparent); }
+.sunset { color: var(--sunset-300); border-color: color-mix(in srgb, var(--sunset) 42%, transparent); background: color-mix(in srgb, var(--sunset) 14%, transparent); }
+.sand   { color: var(--sand);       border-color: color-mix(in srgb, var(--sand) 38%, transparent);   background: color-mix(in srgb, var(--sand) 12%, transparent); }
+
+.title {
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+.excerpt {
+  color: var(--text-muted);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+}
+
+/* Signature : auteur a gauche, date a droite quand la place le permet. */
+.byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-4);
+  padding-top: var(--sp-2);
+}
+
+.published {
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+}
+
+/* Date absente : on le dit, on n'invente pas une date de publication. */
+.undated { font-style: italic; }
+
+/* Enveloppe du badge de fiabilite ET de sa phrase d'explication
+   (`ReliabilityBadge withHelp`). La mise en forme de la phrase appartient a
+   ReliabilityBadge.module.css : on ne fait ici que donner au bloc sa mesure
+   de lecture. C'est la SEULE place du badge dans l'en-tete, il n'est pas
+   repete dans la rangee de la categorie. */
+.help {
+  display: block;
+  max-width: var(--reading-max);
+}
+
+/* ------------------------------------------------------------- COUVERTURE */
+.cover {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-sunken);
+  box-shadow: var(--shadow-lg);
+}
+
+.cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+@media (min-width: 720px) {
+  .cover img { aspect-ratio: 21 / 9; }
+}
+
+/* ----------------------------------------------------------------- ACTIONS */
+/* Favori / partage / signalement. `wrap` plutot que defilement : sur un
+   iPhone etroit les boutons passent a la ligne, ils ne sortent pas de
+   l'ecran et gardent leur cible de 44px. */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+  padding-block: var(--sp-3);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ------------------------------------------------------------------ SOURCE */
+.source {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  max-width: var(--reading-max);
+  padding: var(--sp-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.sourceLabel {
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+/* Lien sortant : nomme la destination et porte l'icone « externe », pour que
+   le membre sache qu'il quitte LEONIDA avant de cliquer. */
+.sourceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  color: var(--accent);
+  font-size: var(--text-base);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  transition: color var(--dur-fast) var(--ease-soft);
+}
+
+.sourceLink svg {
+  flex: 0 0 auto;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sourceLink:hover { color: var(--surf-300); }
+  .sourceLink:hover svg { transform: translate(2px, -2px); }
+}
+
+/* Source citee sans lien : du texte, surtout pas un faux lien. */
+.sourceName {
+  color: var(--text);
+  font-size: var(--text-base);
+  overflow-wrap: anywhere;
+}
+
+/* -------------------------------------------------------------------- TAGS */
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.tagsLabel {
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding-inline: var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  background: var(--surface-sunken);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  transition:
+    color var(--dur-fast) var(--ease-soft),
+    background-color var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-fast) var(--ease-soft),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tag:hover {
+    color: var(--surf-300);
+    background: var(--accent-soft);
+    border-color: var(--border-accent);
+    transform: translateY(-1px);
+  }
+}
+
+/* --------------------------------------------------------------- REACTIONS */
+.reactions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding-top: var(--sp-2);
+}

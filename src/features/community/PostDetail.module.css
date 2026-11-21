@@ -1,0 +1,116 @@
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  max-width: var(--page-max);
+}
+
+/* ---------------------------------------------------------------- MASQUEE -- */
+.hidden {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid color-mix(in srgb, var(--sand) 40%, transparent);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--sand) 10%, transparent);
+  color: var(--sand-100);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+/* ----------------------------------------------------------------- EN-TETE */
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding-bottom: var(--sp-4);
+  position: relative;
+}
+
+/* Filet couchant -> ocean : la signature Leonida, discrete. */
+.head::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--sunset) 0%, var(--surf) 42%, transparent 100%);
+  opacity: 0.55;
+}
+
+.kickers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.title {
+  font-size: var(--text-2xl);
+  max-width: var(--reading-max);
+  overflow-wrap: anywhere;
+}
+
+/* -------------------------------------------------------------------- CORPS */
+.body {
+  max-width: var(--reading-max);
+  color: var(--text);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  /* Texte brut : les retours a la ligne du membre sont la seule mise en forme. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.media { display: block; }
+
+/* --------------------------------------------------------------------- TAGS */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  background: var(--surface-sunken);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  transition:
+    background var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-fast) var(--ease-soft),
+    color var(--dur-fast) var(--ease-soft);
+}
+
+.tag:hover {
+  border-color: var(--border-accent);
+  background: var(--accent-soft);
+  color: var(--surf-100);
+}
+
+/* --------------------------------------------------------------- ENGAGEMENT */
+.engagement {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding-block: var(--sp-4);
+  border-block: 1px solid var(--border);
+}
+
+.engagementActions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.comments { display: block; }

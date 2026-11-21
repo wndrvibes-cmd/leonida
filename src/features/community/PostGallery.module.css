@@ -1,0 +1,205 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+/* ---------------------------------------------------------------- VIGNETTES */
+.grid {
+  display: grid;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.count1 { grid-template-columns: 1fr; }
+.count2 { grid-template-columns: repeat(2, 1fr); }
+.count3,
+.count4 { grid-template-columns: repeat(2, 1fr); }
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  min-width: 0;
+}
+
+.shot {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  transition: border-color var(--dur-fast) var(--ease-soft),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+.shot img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.count1 .shot img { aspect-ratio: 16 / 9; }
+
+@media (hover: hover) and (pointer: fine) {
+  .shot:hover { border-color: var(--border-accent); transform: translateY(-1px); }
+  .shot:hover .zoom { opacity: 1; }
+}
+
+.zoom,
+.more {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoom {
+  inset-block-end: var(--sp-2);
+  inset-inline-end: var(--sp-2);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-full);
+  background: color-mix(in srgb, var(--abyss) 72%, transparent);
+  color: var(--bone);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-soft);
+}
+
+/* Toujours visible au doigt : aucun survol sur iPhone. */
+@media (hover: none) {
+  .zoom { opacity: 0.85; }
+}
+
+.more {
+  inset: 0;
+  background: color-mix(in srgb, var(--abyss) 62%, transparent);
+  color: var(--bone);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------------ LEGENDE */
+.caption {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+}
+
+/* -------------------------------------------------------------------- VIDEO */
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin: 0;
+}
+
+.video {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+}
+
+/* ----------------------------------------------------------- LIEN EXTERIEUR */
+.external {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-height: 44px;
+  padding: var(--sp-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  color: var(--text);
+  transition: border-color var(--dur-fast) var(--ease-soft),
+              background var(--dur-fast) var(--ease-soft);
+}
+
+.external:hover {
+  border-color: var(--border-accent);
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.thumb,
+.thumbFallback {
+  flex: 0 0 auto;
+  width: 112px;
+  height: 64px;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  background: var(--surface);
+}
+
+.thumbFallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--surf-300);
+  background: var(--accent-soft);
+}
+
+.externalText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.externalTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.host {
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+  overflow-wrap: anywhere;
+}
+
+.externalIcon {
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  color: var(--text-subtle);
+}
+
+/* ------------------------------------------------------------ AGRANDISSEMENT */
+.zoomed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin: 0;
+}
+
+.zoomed img {
+  width: 100%;
+  max-height: 72dvh;
+  object-fit: contain;
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+}
+
+.zoomNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+}
+
+.zoomCount {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------- MODE FIL (dense) */
+.compact .grid { gap: var(--sp-1); }
+.compact .shot img { aspect-ratio: 4 / 3; }
+.compact .count1 .shot img { aspect-ratio: 16 / 9; }

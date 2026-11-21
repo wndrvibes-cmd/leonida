@@ -1,15 +1,14 @@
-import PagePlaceholder from '@/components/shared/PagePlaceholder'
+import { useParams } from 'react-router-dom'
+import { ProfileScreen } from '@/features/profile'
 
 /**
- * Fichier d'attente.
- * Cet ecran sera remplace par son implementation definitive ; il n'affiche
- * aucune donnee inventee en attendant.
+ * Profil public d'un membre — `/profil/:username`.
+ *
+ * Consultable sans compte. La page est une coquille : toute la composition
+ * vit dans `src/features/profile/`.
  */
 export default function ProfilePage() {
-  return (
-    <PagePlaceholder
-      title="Profil"
-      description="Le profil public d'un membre : sa presentation et ses contributions."
-    />
-  )
+  const { username } = useParams<{ username: string }>()
+
+  return <ProfileScreen username={username} />
 }

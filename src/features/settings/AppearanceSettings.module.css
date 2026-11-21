@@ -1,0 +1,228 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.note {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+/* --------------------------------------------------------------- APERCU --- */
+.preview {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 180px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg);
+}
+
+.previewImage {
+  position: absolute;
+  inset: 0;
+  background-image: var(--preview-image);
+  background-size: cover;
+  background-position: var(--preview-position);
+  background-repeat: no-repeat;
+  transform: scale(var(--preview-scale));
+  transform-origin: center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.previewScrim {
+  position: absolute;
+  inset: 0;
+  /* Meme voile que `body::after` dans global.css, mais exprime uniquement
+     avec les jetons : l'opacite vient du reglage, la couleur de --abyss. */
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--abyss) calc(var(--preview-dim) * 92%), transparent) 0%,
+    color-mix(in srgb, var(--abyss) calc(var(--preview-dim) * 100%), transparent) 40%,
+    color-mix(in srgb, var(--abyss) min(100%, calc(var(--preview-dim) * 106%)), transparent) 100%
+  );
+}
+
+/* Sans image, l'apercu montre le fond reel de l'application. */
+.preview[data-has-image='false'] .previewScrim { opacity: 0; }
+
+.previewContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-4);
+}
+
+.previewTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--surf-300);
+}
+
+.previewText {
+  max-width: 46ch;
+  color: var(--text);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.warning {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border: 1px solid color-mix(in srgb, var(--warning) 40%, transparent);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--warning) 10%, transparent);
+  color: var(--sand);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+/* -------------------------------------------------------------- CADRAGE --- */
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.legend {
+  padding: 0;
+  color: var(--text);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.anchors {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-2);
+  width: min(100%, 220px);
+}
+
+.anchor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  transition: border-color var(--dur-fast) var(--ease-soft),
+              background-color var(--dur-fast) var(--ease-soft),
+              transform var(--dur-instant) var(--ease-out);
+}
+
+.anchor:disabled { opacity: 0.45; }
+
+.anchor:not(:disabled):active { transform: scale(0.96); }
+
+@media (hover: hover) and (pointer: fine) {
+  .anchor:not(:disabled):hover { border-color: var(--border-accent); }
+}
+
+.anchorOn {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.anchorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: var(--text-subtle);
+}
+
+.anchorOn .anchorDot { background: var(--accent); }
+
+/* ------------------------------------------------------------- CURSEURS --- */
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.sliderLabel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.sliderValue {
+  color: var(--surf-300);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.sliderHint {
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+}
+
+/* Piste et poignee dessinees avec les jetons : aucune couleur en dur. */
+.range {
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.range:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: var(--r-full);
+  background: var(--shelf);
+}
+
+.range::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  margin-top: -9px;
+  border: 2px solid var(--bg-elevated);
+  border-radius: var(--r-full);
+  background: var(--surf);
+  box-shadow: var(--shadow-sm);
+}
+
+.range::-moz-range-track {
+  height: 6px;
+  border-radius: var(--r-full);
+  background: var(--shelf);
+}
+
+.range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--bg-elevated);
+  border-radius: var(--r-full);
+  background: var(--surf);
+}
+
+/* ------------------------------------------------------------- ACTIONS --- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}

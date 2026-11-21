@@ -2,18 +2,19 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Button, EmptyState, Icon } from '@/components/ui'
 import { useDebounce } from '@/hooks/useDebounce'
-import { indexCategories } from '@/features/news/categories'
 import {
   DEFAULT_NEWS_FILTERS,
   hasActiveNewsFilters,
+  indexCategories,
+  NewsFilterBar,
+  NewsGrid,
   readNewsFilters,
+  ReliabilityLegend,
+  useNewsCategories,
+  useNewsList,
   writeNewsFilters,
   type NewsFilters,
-} from '@/features/news/newsFilters'
-import { NewsFilterBar } from '@/features/news/NewsFilterBar'
-import { NewsGrid } from '@/features/news/NewsGrid'
-import { ReliabilityLegend } from '@/features/news/ReliabilityLegend'
-import { useNewsCategories, useNewsList } from '@/features/news/useNews'
+} from '@/features/news'
 import s from '@/features/news/NewsPage.module.css'
 
 /** Delai de frappe avant d'interroger la base. */

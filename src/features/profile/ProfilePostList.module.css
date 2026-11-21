@@ -1,0 +1,137 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* ------------------------------------------------------------------- LISTE */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row.row {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: flex-start;
+}
+
+.thumb {
+  flex: 0 0 auto;
+  width: 72px;
+  overflow: hidden;
+  border-radius: var(--r-md);
+}
+
+.rowBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.rowHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.rowTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.rowLink {
+  display: inline-block;
+  min-height: 24px;
+  color: var(--text);
+  transition: color var(--dur-fast) var(--ease-soft);
+  overflow-wrap: anywhere;
+}
+
+.rowLink:hover { color: var(--accent); }
+
+.rowPreview {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.rowMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4);
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+@media (min-width: 768px) {
+  .thumb { width: 96px; }
+}
+
+/* ------------------------------------------------------------------ MOMENTS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.tileLink {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition: transform var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-soft);
+}
+
+.tileLink:hover { border-color: var(--border-accent); }
+
+@media (hover: hover) and (pointer: fine) {
+  .tileLink:hover { transform: translateY(-2px); }
+}
+
+.tileMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding-inline: var(--sp-1);
+  color: var(--text-subtle);
+  font-size: var(--text-xs);
+}
+
+@media (min-width: 640px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ------------------------------------------------------------------- SUITE */
+.more {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--sp-2);
+}
