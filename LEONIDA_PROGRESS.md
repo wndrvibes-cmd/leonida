@@ -109,7 +109,7 @@ Travail sequentiel, verifie et commite a chaque etape. Pas de vagues d'agents.
 | 1 | Hygiene : accents (**fait**), fusion des composants homonymes, dossiers vides (**fait**) | partiel |
 | 2 | Direction artistique : jetons d'elevation, scene d'accueil, profondeur des sections | **termine** |
 | 3 | Navigation : transitions de page, indicateur actif anime | **termine** |
-| 4 | Espace membre complet (profil, parametres, favoris, notifications) | a faire |
+| 4 | Espace membre complet (profil, parametres, favoris, notifications) | **termine** |
 | 5 | Espace administrateur | a faire |
 | 6 | Moments et Decouvertes | a faire |
 | 7 | Cadeaux, LEONIDA+, LEONIDA AI, recherche | a faire |
@@ -215,10 +215,53 @@ un defaut de l'application** (verifie : aucun verrou de defilement, aucun
 cela signifie que je n'ai pas pu voir les sections basses animees. A controler
 visuellement dans un vrai navigateur.
 
+### Etape 4 — ce qui a ete fait le 21/11
+
+Les briques de reglages existaient (profil, apparence, notifications) mais
+**rien ne les assemblait** : `SettingsPage` etait un fichier d'attente.
+
+**Trois panneaux ecrits** :
+- `AccessibilitySettings` : reduction des animations (cumulee avec
+  `prefers-reduced-motion` du systeme, qu'elle ne peut pas annuler) et
+  relecture de l'introduction.
+- `SubscriptionSettings` : statut LEONIDA+ reel, lu dans `subscriptions` —
+  table qu'aucun utilisateur ne peut ecrire. Affiche l'etat serveur, pas une
+  supposition du navigateur. Dit explicitement qu'aucun paiement n'est
+  possible tant que `stripe_enabled` est faux.
+- `AccountSettings` : e-mail, date d'inscription, changement de mot de passe
+  via `supabase.auth.updateUser`, deconnexion avec confirmation, et section
+  de suppression de compte.
+
+**`SettingsScreen`** assemble les six onglets. L'onglet actif vit dans l'URL
+(`?onglet=`) et non dans un etat local : un lien vers un reglage precis reste
+partageable, le bouton Retour fonctionne, un rechargement ne ramene pas au
+premier onglet. Barre d'onglets collante sous la barre du haut.
+
+**Deux defauts corriges en cours de route** :
+- j'avais ecrit la cle `sessionStorage` de l'intro de memoire
+  (`leonida.intro.seen`) alors qu'elle vaut `leonida.intro.vue`. Elle est
+  desormais **exportee depuis `Intro.tsx`** : une seule source, pas de derive.
+- j'avais invente une adresse de contact (`contact@leonida.app`) pour la
+  suppression de compte. Une adresse plausible mais fausse est pire qu'aucune
+  adresse : le membre ecrit dans le vide. Elle devient le reglage
+  `app.identity.contact_email` (migration 0013), nul par defaut, et le texte
+  s'adapte tant qu'il n'est pas renseigne.
+
+**Suppression de compte** : volontairement NON automatisee. L'operation exige
+la cle `service_role`, donc une Edge Function qui n'existe pas encore. Plutot
+qu'un bouton qui echouerait — ou pire, qui ferait croire a une suppression —
+l'ecran explique la procedure reelle et ce qui serait efface.
+
+**Verification reelle** : compte de test cree, connexion effectuee, les six
+onglets parcourus dans le navigateur, liens profonds `?onglet=` controles,
+requetes Supabase validees une a une (profiles, user_settings, subscriptions,
+app_settings, rpc is_premium, notifications : toutes OK). Compte supprime
+ensuite — la base est revenue a 0 compte.
+
 ### Prochaine tache
 
-Fusionner `NewsCard` / `PostCard` (reliquat de l'etape 1), puis **etape 4** :
-espace membre complet (profil, parametres, favoris, notifications).
+Fusionner `NewsCard` / `PostCard` (reliquat de l'etape 1), puis **etape 5** :
+l'espace administrateur, qui reste le plus gros manque du projet.
 
 ---
 

@@ -93,6 +93,12 @@ export interface AppIdentity {
   name: string
   tagline: string | null
   logoUrl: string | null
+  /**
+   * Adresse de contact de l'administration. `null` tant qu'elle n'est pas
+   * renseignee : l'interface doit alors adapter son texte plutot que
+   * d'afficher une adresse par defaut qui n'existerait pas.
+   */
+  contactEmail: string | null
 }
 
 export function parseAppIdentity(value: Json | null | undefined): AppIdentity {
@@ -101,6 +107,7 @@ export function parseAppIdentity(value: Json | null | undefined): AppIdentity {
     name: readString(raw?.name, 'LEONIDA'),
     tagline: readNullableString(raw?.tagline, 'La communauté GTA VI'),
     logoUrl: readNullableString(raw?.logo_url, null),
+    contactEmail: readNullableString(raw?.contact_email, null),
   }
 }
 

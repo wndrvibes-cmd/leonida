@@ -6,7 +6,10 @@ import { Logo } from '@/components/layout/Logo'
 import s from './Intro.module.css'
 
 /** Marqueur de session pour les visiteurs non connectes. */
-const SESSION_KEY = 'leonida.intro.vue'
+/** Exportee pour que les parametres puissent remettre l'intro a zero
+    sans redefinir la cle de leur cote (elle finirait par deriver). */
+export const INTRO_SESSION_KEY = 'leonida.intro.vue'
+const SESSION_KEY = INTRO_SESSION_KEY
 
 /**
  * `checking` : la session n'est pas encore resolue, on couvre l'ecran sans animer.

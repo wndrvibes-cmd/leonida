@@ -1,0 +1,35 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding-block: var(--sp-6) var(--sp-9);
+}
+
+.head { display: flex; flex-direction: column; gap: var(--sp-2); }
+
+.title { font-size: var(--text-2xl); }
+
+.subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* La barre d'onglets reste collee sous la barre du haut pendant le
+   defilement : avec six sections, on perdrait sinon le reperage. */
+.tabs {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--safe-top));
+  z-index: var(--z-sticky);
+  padding-block: var(--sp-2);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: var(--blur-bar);
+  -webkit-backdrop-filter: var(--blur-bar);
+  border-bottom: 1px solid var(--border);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+  max-width: 760px;
+}
