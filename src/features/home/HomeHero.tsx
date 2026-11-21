@@ -62,7 +62,7 @@ export function HomeHero({ hero, isLoading }: HomeHeroProps) {
         )}
       </div>
 
-      <div className={s.scrim} aria-hidden="true" />
+      <div className={cx(s.scrim, !showImage && s.scrimArt)} aria-hidden="true" />
 
       <div className={cx('page', s.inner)}>
         <h1 className={s.title}>{hero.title}</h1>
@@ -110,17 +110,46 @@ function HorizonArt() {
   return (
     <div className={s.horizon}>
       <span className={s.sky} />
+      <span className={s.bloom} />
       <span className={s.sun} />
+      <span className={s.haze} />
       <span className={s.sea} />
+      <span className={s.sunpath} />
       <span className={s.shimmer} />
-      <svg className={s.palms} viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true">
-        <path
-          d="M34 120V62c-9-6-18-7-26-4 7-9 17-12 26-9V44c-8-8-18-11-28-9 9-8 20-9 28-5-3-9-1-16 5-21 3 7 4 14 2 21 8-6 18-7 27 1-10-1-19 2-27 9v6c9-4 19-2 27 6-9-3-18-2-27 4-1 1-2 2-3 2v62z"
-        />
-        <path
-          d="M352 120V74c-7-5-15-6-22-3 6-8 14-10 22-8v-7c-7-7-15-9-23-7 7-7 17-8 23-4-2-8-1-13 4-18 3 6 4 12 2 18 7-5 15-6 23 1-9-1-16 2-23 7v5c8-3 16-1 23 5-8-2-15-1-23 4v33z"
-        />
-      </svg>
+      <PalmSilhouette className={cx(s.palm, s.palmLeft)} />
+      <PalmSilhouette className={cx(s.palm, s.palmRight)} />
+      <span className={s.grain} />
     </div>
+  )
+}
+
+/** Angles des palmes autour de la couronne, en degres. */
+const FROND_ANGLES = [-152, -118, -84, -44, -8, 30, 68]
+
+/**
+ * Silhouette de palmier.
+ *
+ * Le viewBox est volontairement etroit et `preserveAspectRatio` garde sa
+ * valeur par defaut : l'element est dimensionne en hauteur par le CSS et sa
+ * largeur suit, donc les proportions ne peuvent pas etre ecrasees.
+ */
+function PalmSilhouette({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="-72 -118 144 120" aria-hidden="true" focusable="false">
+      {/* tronc legerement incline, affine vers la couronne */}
+      <path d="M-6 0 C-4 -32 0 -60 2 -86 L11 -86 C9 -60 6 -32 6 0 Z" />
+      <g transform="translate(6 -86)">
+        {FROND_ANGLES.map((angle) => (
+          <path
+            key={angle}
+            transform={`rotate(${angle})`}
+            d="M0 0 C17 -7 36 -5 53 6 C38 -2 19 -3 3 6 Z"
+          />
+        ))}
+      </g>
+      {/* regime de noix, juste sous la couronne */}
+      <circle cx="3" cy="-81" r="3.2" />
+      <circle cx="10" cy="-78" r="2.6" />
+    </svg>
   )
 }

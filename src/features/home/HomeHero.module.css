@@ -77,101 +77,226 @@
   background: var(--grad-scrim);
 }
 
+/* Avec la scene CSS, il n'y a pas de photo a assombrir : un voile diagonal
+   suffit a tenir le contraste du texte, a gauche, sans eteindre le couchant. */
+.scrimArt {
+  background:
+    linear-gradient(
+      100deg,
+      color-mix(in srgb, var(--abyss) 86%, transparent) 0%,
+      color-mix(in srgb, var(--abyss) 55%, transparent) 42%,
+      transparent 72%
+    ),
+    linear-gradient(180deg, color-mix(in srgb, var(--abyss) 45%, transparent) 0%, transparent 30%);
+}
+
 /* ------------------------------------------- HORIZON TROPICAL EN CSS --- */
+
+/*
+ * Coucher de soleil sur Leonida, entierement en CSS + SVG.
+ *
+ * Ce n'est PAS une capture de GTA VI et ne pretend pas l'etre : c'est un
+ * visuel d'attente, affiche uniquement tant qu'aucune image n'a ete
+ * televersee depuis l'administration. Des qu'une image existe, elle prend
+ * toute la place.
+ *
+ * Empilement, du fond vers l'avant :
+ *   ciel -> halo -> disque solaire -> brume d'horizon -> mer -> chemin de
+ *   lumiere -> ondulations -> palmiers -> grain
+ *
+ * L'horizon est a 32 % du bas : une seule variable le pilote, toutes les
+ * couches s'y alignent.
+ */
 
 .horizon {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  --waterline: 32%;
 }
 
 .horizon > * {
   position: absolute;
   display: block;
+  pointer-events: none;
 }
 
+/* Ciel : nuit profonde en haut, chaleur concentree JUSTE au-dessus de l'eau.
+   C'est ce resserrement du chaud pres de l'horizon qui fait lire un coucher
+   de soleil plutot qu'un simple degrade. */
 .sky {
   inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      var(--abyss) 0%,
-      var(--surf-900) 34%,
-      var(--sunset-700) 72%,
-      var(--sunset) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    var(--abyss)                                            0%,
+    color-mix(in srgb, var(--surf-900) 70%, var(--abyss))  26%,
+    color-mix(in srgb, var(--sunset-900) 60%, var(--surf-900)) 50%,
+    var(--sunset-700)                                      62%,
+    var(--sunset)                                          68%
+  );
 }
 
-/* Soleil : halo chaud qui respire tres lentement. */
+/* Halo : large diffusion chaude derriere le soleil. Separe du disque, sinon
+   l'ensemble se lit comme une tache floue au lieu d'un astre. */
+.bloom {
+  left: 50%;
+  bottom: var(--waterline);
+  width: min(130vw, 1100px);
+  aspect-ratio: 2 / 1;
+  translate: -50% 50%;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--sunset-300) 55%, transparent) 0%,
+    color-mix(in srgb, var(--sunset) 26%, transparent)    38%,
+    transparent                                           70%
+  );
+  filter: blur(14px);
+  animation: breathe calc(var(--dur-scene) * 10) var(--ease-soft) infinite alternate;
+}
+
+/* Disque : bord net, legerement voile sur les derniers pourcents seulement.
+   Sa moitie basse passe derriere la mer : le soleil se couche DANS l'eau. */
 .sun {
   left: 50%;
-  bottom: 24%;
-  width: min(62vw, 420px);
+  bottom: var(--waterline);
+  width: min(42vw, 260px);
   aspect-ratio: 1;
-  margin-left: min(-31vw, -210px);
+  translate: -50% 42%;
   border-radius: var(--r-full);
   background: radial-gradient(
-    circle at center,
-    var(--sand-100) 0%,
-    var(--sunset-300) 38%,
-    color-mix(in srgb, var(--sunset) 40%, transparent) 62%,
-    transparent 72%
+    circle at 50% 44%,
+    #FFF6E2          0%,
+    var(--sand-100)  22%,
+    #FFC27A          48%,
+    var(--sunset)    80%,
+    var(--sunset-700) 97%,
+    transparent     100%
   );
-  opacity: 0.9;
-  animation: breathe calc(var(--dur-scene) * 9) var(--ease-soft) infinite alternate;
+  box-shadow: 0 0 90px 10px color-mix(in srgb, var(--sunset) 40%, transparent);
 }
 
-/* Mer : bande turquoise qui ferme l'horizon. */
+/* Brume : remplace le trait net entre ciel et mer par une transition douce. */
+.haze {
+  inset-inline: -5%;
+  bottom: calc(var(--waterline) - 7%);
+  height: 14%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--sand) 22%, transparent) 45%,
+    transparent 100%
+  );
+  filter: blur(10px);
+}
+
 .sea {
   inset-inline: 0;
   bottom: 0;
-  height: 28%;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--surf-300) 70%, transparent) 0%,
-      var(--surf-700) 42%,
-      var(--surf-900) 100%
-    );
-  border-top: 1px solid color-mix(in srgb, var(--sand-100) 45%, transparent);
+  height: var(--waterline);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--sunset) 52%, var(--surf-300))  0%,
+    var(--surf)                                            14%,
+    var(--surf-700)                                        38%,
+    var(--surf-900)                                        68%,
+    color-mix(in srgb, var(--abyss) 72%, var(--surf-900)) 100%
+  );
 }
 
-/* Reflet : une large onde qui glisse lentement sur l'eau. */
+/* Chemin de lumiere : la colonne de reflets sous le soleil. C'est le detail
+   qui ancre l'astre dans l'eau ; sans lui la mer parait peinte. */
+.sunpath {
+  left: 50%;
+  bottom: 0;
+  width: min(54vw, 340px);
+  height: var(--waterline);
+  translate: -50% 0;
+  /* Un vrai chemin de lumiere s'elargit en se rapprochant : trapeze, etroit
+     sous le soleil, large au premier plan. */
+  clip-path: polygon(38% 0%, 62% 0%, 100% 100%, 0% 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--sand-100) 52%, transparent) 0%,
+    color-mix(in srgb, var(--sunset-300) 20%, transparent) 34%,
+    transparent 78%
+  );
+  /* Stries fines et irregulieres : des lignes regulieres donnaient un effet
+     de store venitien au lieu de reflets. */
+  -webkit-mask-image: repeating-linear-gradient(
+    177deg, #000 0 1px, transparent 1px 3px, #000 3px 4px, transparent 4px 9px
+  );
+  mask-image: repeating-linear-gradient(
+    177deg, #000 0 1px, transparent 1px 3px, #000 3px 4px, transparent 4px 9px
+  );
+  opacity: 0.55;
+  filter: blur(1.2px);
+}
+
+/* Ondulations : une nappe large qui derive lentement sur l'eau. */
 .shimmer {
   inset-inline: -30%;
   bottom: 0;
-  height: 28%;
+  height: var(--waterline);
   background: repeating-linear-gradient(
     100deg,
-    transparent 0 42px,
-    color-mix(in srgb, var(--sand-100) 16%, transparent) 42px 46px,
-    transparent 46px 96px
+    transparent 0 46px,
+    color-mix(in srgb, var(--sand-100) 11%, transparent) 46px 50px,
+    transparent 50px 104px
   );
-  opacity: 0.5;
+  opacity: 0.45;
   animation: drift calc(var(--dur-scene) * 26) linear infinite;
 }
 
-.palms {
-  inset-inline: 0;
-  bottom: 24%;
-  width: 100%;
-  height: clamp(90px, 22vh, 190px);
-  fill: color-mix(in srgb, var(--abyss) 88%, transparent);
-  animation: sway calc(var(--dur-scene) * 11) var(--ease-soft) infinite alternate;
+/* Palmiers : deux silhouettes distinctes posees sur la ligne d'eau.
+   Chacune a son propre SVG dimensionne par le CSS, plutot qu'un seul SVG
+   etire sur toute la largeur : c'est ce `preserveAspectRatio="none"` qui
+   ecrasait les palmes en formes d'etoile. */
+.palm {
+  bottom: calc(var(--waterline) - 2px);
+  height: clamp(120px, 28vh, 260px);
+  width: auto;
+  fill: color-mix(in srgb, var(--abyss) 93%, transparent);
   transform-origin: bottom center;
+  animation: sway calc(var(--dur-scene) * 12) var(--ease-soft) infinite alternate;
+}
+
+.palmLeft  { left: clamp(-26px, 2vw, 40px); }
+.palmRight {
+  right: clamp(-20px, 4vw, 90px);
+  height: clamp(95px, 22vh, 205px);
+  scale: -1 1;
+  animation-delay: calc(var(--dur-scene) * -4);
+}
+
+/* Grain : bruit tres leger qui casse les bandes du degrade et donne de la
+   matiere. Sans lui, les grands aplats montrent des paliers sur certains
+   ecrans. */
+.grain {
+  inset: 0;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @keyframes breathe {
-  from { transform: translateY(2%) scale(0.98); opacity: 0.78; }
-  to   { transform: translateY(-2%) scale(1.03); opacity: 0.95; }
+  from { transform: scale(0.97); opacity: 0.80; }
+  to   { transform: scale(1.04); opacity: 1; }
 }
 
 @keyframes drift {
   from { transform: translateX(0); }
-  to   { transform: translateX(96px); }
+  to   { transform: translateX(104px); }
 }
 
 @keyframes sway {
-  from { transform: rotate(-0.5deg); }
-  to   { transform: rotate(0.5deg); }
+  from { transform: rotate(-0.4deg); }
+  to   { transform: rotate(0.4deg); }
 }
+
+/* Mouvement reduit : la scene reste, elle cesse simplement de bouger. */
+@media (prefers-reduced-motion: reduce) {
+  .bloom, .shimmer, .palm { animation: none; }
+}
+html[data-reduce-motion='true'] .bloom,
+html[data-reduce-motion='true'] .shimmer,
+html[data-reduce-motion='true'] .palm { animation: none; }
