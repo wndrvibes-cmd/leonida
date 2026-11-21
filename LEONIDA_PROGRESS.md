@@ -110,7 +110,7 @@ Travail sequentiel, verifie et commite a chaque etape. Pas de vagues d'agents.
 | 2 | Direction artistique : jetons d'elevation, scene d'accueil, profondeur des sections | **termine** |
 | 3 | Navigation : transitions de page, indicateur actif anime | **termine** |
 | 4 | Espace membre complet (profil, parametres, favoris, notifications) | **termine** |
-| 5 | Espace administrateur | a faire |
+| 5 | Espace administrateur : tableau de bord + file de validation | **en cours** |
 | 6 | Moments et Decouvertes | a faire |
 | 7 | Cadeaux, LEONIDA+, LEONIDA AI, recherche | a faire |
 | 8 | Edge Functions (Stripe test, Radar, IA) | a faire |
@@ -258,10 +258,56 @@ requetes Supabase validees une a une (profiles, user_settings, subscriptions,
 app_settings, rpc is_premium, notifications : toutes OK). Compte supprime
 ensuite — la base est revenue a 0 compte.
 
+### Etape 5 — ce qui a ete fait le 21/11
+
+La couche de services d'administration existait deja (`services/admin.ts`,
+352 lignes) ainsi que la barre laterale a 10 sections. Il manquait les ecrans.
+
+**Tableau de bord** : huit mesures, chacune issue d'un `count: 'exact'` sur la
+base. Aucun chiffre estime ni ecrit en dur. `premium` vaut `null` pour un
+moderateur — la RLS lui ferme `subscriptions` et afficher « 0 » serait FAUX ;
+l'ecran affiche « — » et explique pourquoi. Les deux files d'attente
+(contributions, signalements) passent en teinte chaude des qu'elles ne sont
+pas vides.
+
+**File de validation des contributions carte** : auteur, categorie, date,
+description, instructions, coordonnees relatives, recompense estimee, mention
+« testee par l'auteur », image. Trois actions : valider et publier, refuser
+avec motif obligatoire (transmis a l'auteur), et marquer « Verifiee LEONIDA »
+— volontairement separee de la validation, car elle atteste que l'equipe a
+reellement teste.
+
+**Un bug reel trouve et corrige** : `/admin` exactement n'affichait RIEN. Le
+routeur ne declarait qu'un enfant `path="*"`, qui ne capte pas un reste vide.
+Une route `index` a ete ajoutee. `/admin/carte` fonctionnait, ce qui rendait
+le defaut facile a manquer.
+
+**Migration 0014** : troisieme source d'accents manquants decouverte — les
+chaines ecrites en dur DANS LES DECLENCHEURS PL/pgSQL, qui produisent les
+notifications (« Votre decouverte est publiee »). Corrigees.
+
+**Verification de bout en bout**, avec un admin et un abonne de test :
+contribution proposee avec `status='approved'` force en `pending` par le
+declencheur, affichee dans la file, validee, notification `marker_approved`
+creee pour l'auteur, marqueur devenu visible publiquement — et verification
+restee `author_tested`, PAS `staff_verified`. Comptes et marqueur supprimes
+ensuite : la base est revenue a 0 compte.
+
+Note : le clic sur « Valider et publier » n'a pas abouti via l'outil de
+navigation (volet masque = coordonnees non fiables). Le service a donc ete
+appele directement pour verifier la chaine. L'interaction au clic reste a
+confirmer dans un vrai navigateur.
+
+### Reste de l'etape 5
+
+Sept sections d'administration sont encore des ecrans d'attente honnetes :
+actualites, communaute, cadeaux, radar, signalements, membres, medias,
+reglages. Les services existent deja pour membres, signalements et medias.
+
 ### Prochaine tache
 
-Fusionner `NewsCard` / `PostCard` (reliquat de l'etape 1), puis **etape 5** :
-l'espace administrateur, qui reste le plus gros manque du projet.
+Poursuivre l'etape 5 : signalements et membres (services deja ecrits), puis
+actualites et medias.
 
 ---
 

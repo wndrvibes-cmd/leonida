@@ -1,0 +1,109 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.head { display: flex; flex-direction: column; gap: var(--sp-2); }
+.title { font-size: var(--text-2xl); }
+.subtitle { font-size: var(--text-sm); color: var(--text-muted); max-width: 66ch; }
+
+/* ------------------------------------------------------------ mesures --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--sp-3);
+}
+
+.cardLink { display: block; text-decoration: none; color: inherit; }
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  height: 100%;
+  transition: transform var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-soft);
+}
+
+.cardLink:hover .metric {
+  transform: translateY(-2px);
+  border-color: var(--border-accent);
+}
+
+.metricIcon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-md);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.metricValue {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  line-height: 1;
+  color: var(--text);
+}
+
+.metricLabel { font-size: var(--text-sm); color: var(--text-muted); }
+
+.metricNote {
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+}
+
+.unavailable { color: var(--text-subtle); }
+
+/* File non vide : teinte chaude, pour qu'elle se remarque sans clignoter. */
+.urgent {
+  border-color: color-mix(in srgb, var(--sunset) 40%, transparent);
+}
+.urgent .metricIcon {
+  color: var(--sunset);
+  background: var(--accent-warm-soft);
+}
+
+/* ------------------------------------------------------------- files ---- */
+.queues { display: flex; flex-direction: column; gap: var(--sp-4); }
+
+.sectionTitle {
+  font-size: var(--text-lg);
+  color: var(--text);
+}
+
+.queueRow {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 860px) {
+  .queueRow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.queue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  align-items: flex-start;
+}
+
+.queueHead { display: flex; gap: var(--sp-3); align-items: flex-start; }
+
+.queueIcon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  color: var(--text-muted);
+  background: var(--surface-sunken);
+}
+
+.queueIconActive { color: var(--sunset); background: var(--accent-warm-soft); }
+
+.queueTitle { font-size: var(--text-base); color: var(--text); }
+.queueText { margin-top: var(--sp-1); font-size: var(--text-sm); color: var(--text-muted); }

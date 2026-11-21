@@ -89,7 +89,10 @@ export function AppRouter() {
 
         {/* ------------------------------------------------ administration - */}
         <Route path="admin" element={<RequireStaff><AdminLayout /></RequireStaff>}>
-          {/* Le module admin declare ses propres sous-routes (<Routes> imbriquees). */}
+          {/* Le module admin declare ses propres sous-routes (<Routes> imbriquees).
+              La route `index` est indispensable : un enfant `path="*"` ne capte
+              pas un reste VIDE, donc /admin exactement n'affichait rien. */}
+          <Route index element={<AdminRoutes />} />
           <Route path="*" element={<AdminRoutes />} />
         </Route>
       </Routes>
