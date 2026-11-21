@@ -3,6 +3,8 @@ import PagePlaceholder from '@/components/shared/PagePlaceholder'
 import { ADMIN_SECTIONS } from '@/layouts/AdminLayout'
 import { AdminContributions } from '@/features/admin/AdminContributions'
 import { AdminDashboard } from '@/features/admin/AdminDashboard'
+import { AdminMembers } from '@/features/admin/AdminMembers'
+import { AdminReports } from '@/features/admin/AdminReports'
 
 /**
  * Routes de l'administration.
@@ -14,13 +16,15 @@ import { AdminDashboard } from '@/features/admin/AdminDashboard'
  */
 
 /** Chemins relatifs deja implementes : ils ne recoivent pas d'ecran d'attente. */
-const IMPLEMENTED = new Set(['', 'carte'])
+const IMPLEMENTED = new Set(['', 'carte', 'signalements', 'membres'])
 
 export default function AdminRoutes() {
   return (
     <Routes>
       <Route index element={<AdminDashboard />} />
       <Route path="carte" element={<AdminContributions />} />
+      <Route path="signalements" element={<AdminReports />} />
+      <Route path="membres" element={<AdminMembers />} />
 
       {ADMIN_SECTIONS.map((section) => {
         const relative = section.to === '/admin' ? '' : section.to.slice('/admin/'.length)

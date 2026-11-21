@@ -304,10 +304,47 @@ Sept sections d'administration sont encore des ecrans d'attente honnetes :
 actualites, communaute, cadeaux, radar, signalements, membres, medias,
 reglages. Les services existent deja pour membres, signalements et medias.
 
+### Etape 5, suite — 21/11
+
+**Menage.** Graphe d'imports construit depuis `main.tsx`. Premiere version du
+script : 231 fichiers « morts » dont `HomePage` — elle oubliait les
+`lazy(() => import(...))`. Corrigee : **7 orphelins reels**, dont 4 supprimes
+(doublons `useMediaQuery` / `useLockBodyScroll`, deux barils jamais importes).
+`services/search.ts` et `types/index.ts` conserves avec justification.
+
+**Bug trouve par ce menage** : `useAppBackground` n'etait monte nulle part —
+il n'apparaissait que dans des COMMENTAIRES. « Personnaliser mon fond »
+enregistrait en base sans rien afficher. Monte dans `AppLayout`. Verifie :
+sur l'accueil, `data-user-bg="true"` et les quatre variables CSS portent les
+valeurs du membre.
+
+**Ecrans Signalements et Membres.** File de moderation (filtres par statut,
+motif, auteur du signalement, lien vers le contenu quand une route existe —
+aucun lien fabrique pour `news`/`contest` qui s'adressent par slug, prise en
+charge, traitement, rejet, note interne). Annuaire des membres (recherche,
+filtre suspendus, changement de role, suspension motivee, reactivation ;
+actions desactivees sur son propre compte).
+
+**Migration 0015 — bug de securite serveur.** Les quatre declencheurs
+`tg_protect_*` annulaient silencieusement toute ecriture venue du SERVEUR :
+`auth.uid()` y vaut NULL, donc `is_staff()` renvoyait faux. Une suspension
+lancee par une Edge Function n'avait aucun effet, sans erreur. Nouvelle
+fonction `is_trusted_actor()` (staff OU contexte serveur). Sur : les policies
+d'UPDATE de ces tables sont toutes `TO authenticated`, un `auth.uid()` NULL
+ne peut donc pas etre un visiteur.
+
+**Non-regression revalidee apres cette modification** : suspension serveur OK,
+et un membre reste incapable de lever une suspension, de s'auto-valider un
+marqueur (force en `pending/false/unverified`) ou de gonfler ses compteurs.
+
+**Accents, 4e source** : les libelles de `src/lib/constants.ts`
+(« Spam ou publicite », « Harcelement », « Confirmee »...). 15 corriges apres
+relecture de la totalite du fichier.
+
 ### Prochaine tache
 
-Poursuivre l'etape 5 : signalements et membres (services deja ecrits), puis
-actualites et medias.
+Etape 5, suite : actualites, medias et cadeaux (services deja ecrits pour les
+medias). Puis reglages d'application et Radar.
 
 ---
 
