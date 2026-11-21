@@ -4,6 +4,8 @@ import { useAuth } from '@/app/AuthProvider'
 import { useHomeHero, useHomeSections } from '@/hooks/useAppSettings'
 import type { HomeSection } from '@/services/settings'
 import { DEFAULT_HOME_SECTIONS, isHomeSectionKey } from './constants'
+import { FeaturedHomeArticle } from './FeaturedHomeArticle'
+import type { SectionDensity } from './SectionShell'
 import { HomeHero } from './HomeHero'
 import { Reveal } from './Reveal'
 import { RowSkeleton } from './SectionRow'
@@ -36,18 +38,37 @@ const FALLBACK_TITLES: Record<string, string> = {
  * parallele, et une cle inconnue (ajoutee en base plus tard) est simplement
  * ignoree au lieu de casser la page.
  */
+/**
+ * Densite de chaque rubrique.
+ *
+ * C'est ici que se joue le rythme de l'accueil : les rubriques de contenu
+ * vivant respirent, les acces secondaires se font discrets. Sans cette
+ * alternance, la page redevient une pile de blocs identiques.
+ */
+const SECTION_DENSITY: Record<string, SectionDensity> = {
+  news: 'major',
+  community: 'major',
+  moments: 'major',
+  discoveries: 'default',
+  map: 'default',
+  contests: 'default',
+  ai: 'minor',
+  premium: 'minor',
+}
+
 function HomeSectionByKey({ section }: { section: HomeSection }) {
   const title = section.label.trim() || FALLBACK_TITLES[section.key] || section.key
+  const density = SECTION_DENSITY[section.key] ?? 'default'
 
   switch (section.key) {
-    case 'news':        return <NewsSection title={title} />
-    case 'discoveries': return <DiscoveriesSection title={title} />
-    case 'community':   return <CommunitySection title={title} />
-    case 'moments':     return <MomentsSection title={title} />
-    case 'map':         return <MapSection title={title} />
-    case 'contests':    return <ContestsSection title={title} />
-    case 'ai':          return <AiSection title={title} />
-    case 'premium':     return <PremiumSection title={title} />
+    case 'news':        return <NewsSection title={title} density={density} />
+    case 'discoveries': return <DiscoveriesSection title={title} density={density} />
+    case 'community':   return <CommunitySection title={title} density={density} />
+    case 'moments':     return <MomentsSection title={title} density={density} />
+    case 'map':         return <MapSection title={title} density={density} />
+    case 'contests':    return <ContestsSection title={title} density={density} />
+    case 'ai':          return <AiSection title={title} density={density} />
+    case 'premium':     return <PremiumSection title={title} density={density} />
     default:            return null
   }
 }
@@ -108,6 +129,11 @@ export default function HomeScreen() {
   return (
     <div className={s.screen}>
       <HomeHero hero={hero.data} isLoading={hero.isPending} />
+
+      {/* Temps fort editorial, juste apres la banniere. Ne rend rien tant
+          qu'aucune actualite n'est publiee : un bloc vide de cette taille
+          donnerait l'impression d'une application a l'abandon. */}
+      {visible.some((section) => section.key === 'news') ? <FeaturedHomeArticle /> : null}
 
       {sections.isPending ? (
         <HomeSkeleton />

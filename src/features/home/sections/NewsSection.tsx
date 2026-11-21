@@ -6,14 +6,16 @@ import { NewsCard } from '../cards/NewsCard'
 import { HOME_LIMITS, HOME_QUERY_SCOPE, HOME_STALE_TIME, TAXONOMY_STALE_TIME } from '../constants'
 import { SectionBody, SectionShell } from '../SectionShell'
 import { RowSkeleton, SectionRow, SectionRowItem } from '../SectionRow'
+import type { SectionDensity } from '../SectionShell'
 
 const NEWS_FILTERS = { scope: HOME_QUERY_SCOPE, limit: HOME_LIMITS.news } as const
 
 export interface NewsSectionProps {
   title: string
+  density?: SectionDensity
 }
 
-export function NewsSection({ title }: NewsSectionProps) {
+export function NewsSection({ title, density }: NewsSectionProps) {
   const articles = useQuery({
     queryKey: qk.news(NEWS_FILTERS),
     queryFn: () => listNews({ limit: HOME_LIMITS.news }),
@@ -38,6 +40,7 @@ export function NewsSection({ title }: NewsSectionProps) {
 
   return (
     <SectionShell
+      density={density}
       icon="news"
       title={title}
       subtitle="Ce que l'on sait de Leonida, source par source."

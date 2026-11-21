@@ -1,0 +1,117 @@
+.wrap { padding-block: var(--sp-7) 0; }
+
+/*
+ * Mobile : l'image au-dessus, le texte dessous.
+ * A partir de --feature-min, on passe en deux colonnes avec l'image
+ * majoritaire — c'est elle qui porte l'attention sur une piece maitresse.
+ */
+.card {
+  position: relative;
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  backdrop-filter: var(--blur-panel);
+  -webkit-backdrop-filter: var(--blur-panel);
+  box-shadow: var(--edge), var(--shadow-lift);
+  overflow: hidden;
+  transition: border-color var(--dur-base) var(--ease-soft),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--halo-sunset);
+  opacity: 0.8;
+}
+
+.card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--edge-strong), var(--shadow-float);
+}
+
+@media (min-width: 760px) {
+  .card {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--sp-6);
+    padding: var(--sp-5);
+  }
+}
+
+.media {
+  position: relative;
+  z-index: 1;
+  display: block;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+/* Le titre d'une piece maitresse doit dominer la page : il monte d'un cran
+   par rapport aux titres de section. */
+.title {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+@media (min-width: 760px) {
+  .title { font-size: var(--text-3xl); }
+}
+
+.titleLink { color: var(--text); text-decoration: none; }
+.titleLink:hover { color: var(--sand); }
+
+/* Toute la carte est cliquable, sans imbriquer de liens : le lien du titre
+   s'etend par-dessus la carte entiere. */
+.titleLink::after { content: ''; position: absolute; inset: 0; z-index: 2; }
+
+.excerpt {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-muted);
+  max-width: 54ch;
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-1);
+  font-size: var(--text-sm);
+  color: var(--text-subtle);
+}
+
+.source { display: inline-flex; align-items: center; gap: var(--sp-1); }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-left: auto;
+  color: var(--accent);
+  font-weight: 600;
+}
+.card:hover .cta { color: var(--surf-300); }
+
+/* --------------------------------------------------------- chargement -- */
+.mediaSkeleton { width: 100%; aspect-ratio: var(--ratio-wide); }
+.textSkeleton { display: flex; flex-direction: column; gap: var(--sp-3); }

@@ -106,3 +106,31 @@
   background: var(--accent-soft);
   border: 1px solid var(--border);
 }
+
+/* ===================================================== DENSITE EDITORIALE */
+/*
+ * Le rythme vertical de l'accueil. Une section « majeure » respire et porte
+ * un titre ample ; une section « mineure » se fait discrete. C'est cette
+ * alternance qui distingue une composition editoriale d'une pile de blocs.
+ */
+
+.major { padding-block: var(--sp-9); }
+.major .title { font-size: var(--text-2xl); letter-spacing: var(--tracking-tight); }
+.major .subtitle { font-size: var(--text-base); max-width: 56ch; }
+.major .icon { width: 42px; height: 42px; border-radius: var(--r-lg); }
+.major .head { margin-bottom: var(--sp-6); }
+
+.minor { padding-block: var(--sp-5); }
+.minor .title { font-size: var(--text-base); }
+.minor .subtitle { font-size: var(--text-xs); }
+.minor .icon { width: 30px; height: 30px; }
+.minor .head { margin-bottom: var(--sp-4); }
+
+@media (min-width: 900px) {
+  .major { padding-block: var(--sp-10); }
+}
+
+/* L'alternance de bandes suit la densite plutot que la parite : une section
+   majeure merite toujours son fond, une mineure jamais. */
+.major::before { opacity: 1; }
+.minor::before { opacity: 0; }

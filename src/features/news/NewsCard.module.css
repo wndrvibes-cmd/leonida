@@ -141,3 +141,33 @@
 }
 
 .skeleton .body { gap: var(--sp-3); }
+
+/* ===================================================== VARIANTE A LA UNE */
+/*
+ * En composition horizontale, l'image prend la moitie gauche et le texte
+ * respire a droite. En dessous de 680px on garde l'empilement vertical :
+ * deux colonnes y seraient illisibles.
+ */
+@media (min-width: 680px) {
+  .featured {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .featured .cover { height: 100%; aspect-ratio: auto; min-height: 240px; }
+
+  .featured .body { justify-content: center; gap: var(--sp-3); padding: var(--sp-5); }
+
+  .featured .title {
+    font-size: var(--text-xl);
+    line-height: var(--leading-tight);
+    -webkit-line-clamp: 3;
+  }
+
+  .featured .excerpt { -webkit-line-clamp: 3; font-size: var(--text-base); }
+}
+
+@media (min-width: 1100px) {
+  .featured .title { font-size: var(--text-2xl); }
+}

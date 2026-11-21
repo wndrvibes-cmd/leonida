@@ -5,6 +5,7 @@ import { PostCard } from '../cards/PostCard'
 import { HOME_LIMITS, HOME_QUERY_SCOPE, HOME_STALE_TIME } from '../constants'
 import { SectionBody, SectionShell } from '../SectionShell'
 import { RowSkeleton, SectionRow, SectionRowItem } from '../SectionRow'
+import type { SectionDensity } from '../SectionShell'
 
 const COMMUNITY_FILTERS = {
   scope: HOME_QUERY_SCOPE, surface: 'community', limit: HOME_LIMITS.community,
@@ -12,9 +13,10 @@ const COMMUNITY_FILTERS = {
 
 export interface CommunitySectionProps {
   title: string
+  density?: SectionDensity
 }
 
-export function CommunitySection({ title }: CommunitySectionProps) {
+export function CommunitySection({ title, density }: CommunitySectionProps) {
   const posts = useQuery({
     queryKey: qk.posts(COMMUNITY_FILTERS),
     queryFn: () => listPosts({ surface: 'community', limit: HOME_LIMITS.community }),
@@ -24,6 +26,7 @@ export function CommunitySection({ title }: CommunitySectionProps) {
 
   return (
     <SectionShell
+      density={density}
       icon="community"
       title={title}
       subtitle="Les dernières discussions, astuces et questions des membres."

@@ -12,6 +12,12 @@ export interface NewsCardProps {
   category?: NewsCategory | null
   /** Variante dense, utilisee par les articles lies. */
   compact?: boolean
+  /**
+   * Mise en avant editoriale : la carte occupe deux colonnes et bascule en
+   * composition horizontale. Reservee au PREMIER article d'une liste — au-dela,
+   * plus rien ne se detache et on retombe sur une grille uniforme.
+   */
+  featured?: boolean
 }
 
 /**
@@ -24,7 +30,7 @@ export interface NewsCardProps {
  * `view_count` n'est volontairement pas affiche : la base n'autorise son
  * incrementation qu'au staff, le compteur ne mesure donc pas l'audience.
  */
-export function NewsCard({ article, category, compact = false }: NewsCardProps) {
+export function NewsCard({ article, category, compact = false, featured = false }: NewsCardProps) {
   const cover = publicUrl('news', article.cover_url)
   const isRumor = article.reliability === 'rumor'
   const accent = asCategoryAccent(category?.accent)
@@ -33,7 +39,7 @@ export function NewsCard({ article, category, compact = false }: NewsCardProps) 
     <Card
       to={`/actualites/${article.slug}`}
       padding="none"
-      className={cx(s.card, compact && s.compact, isRumor && s.rumor)}
+      className={cx(s.card, compact && s.compact, featured && s.featured, isRumor && s.rumor)}
     >
       <div className={s.cover}>
         {cover ? (

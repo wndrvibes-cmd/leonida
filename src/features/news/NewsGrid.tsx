@@ -77,15 +77,18 @@ export function NewsGrid({
   return (
     <>
       <p className={s.count} role="status">
-        {articles.length === 1 ? '1 actualité affichée' : `${articles.length} actualites affichees`}
+        {articles.length === 1 ? '1 actualité affichée' : `${articles.length} actualités affichées`}
         {hasNextPage ? ' — il en reste a charger.' : null}
       </p>
 
       <ul className={s.grid}>
-        {articles.map((article) => (
-          <li key={article.id}>
+        {articles.map((article, index) => (
+          // Seul le premier article est mis en avant : au-dela, plus rien ne
+          // se detacherait et la grille redeviendrait uniforme.
+          <li key={article.id} data-featured={index === 0 ? 'true' : undefined}>
             <NewsCard
               article={article}
+              featured={index === 0}
               category={article.category_id ? categoriesById.get(article.category_id) ?? null : null}
             />
           </li>

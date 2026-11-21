@@ -4,9 +4,11 @@ import { useMapConfigSetting } from '@/hooks/useAppSettings'
 import { CoverArt } from '../CoverArt'
 import { PitchCard } from '../PitchCard'
 import { SectionBody, SectionShell } from '../SectionShell'
+import type { SectionDensity } from '../SectionShell'
 
 export interface MapSectionProps {
   title: string
+  density?: SectionDensity
 }
 
 /**
@@ -17,13 +19,14 @@ export interface MapSectionProps {
  * d'afficher un apercu casse ou une carte empruntee ailleurs. La mention
  * d'origine du visuel (`disclaimer`) est reprise telle quelle.
  */
-export function MapSection({ title }: MapSectionProps) {
+export function MapSection({ title, density }: MapSectionProps) {
   const { isStaff } = useAuth()
   const config = useMapConfigSetting()
   const hasImage = Boolean(config.data?.imageUrl)
 
   return (
     <SectionShell
+      density={density}
       icon="map"
       title={title}
       subtitle="Repérez les découvertes de la communauté sur le plan de Leonida."

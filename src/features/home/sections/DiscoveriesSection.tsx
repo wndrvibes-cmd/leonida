@@ -9,6 +9,7 @@ import {
 } from '../constants'
 import { SectionBody, SectionShell } from '../SectionShell'
 import { RowSkeleton, SectionRow, SectionRowItem } from '../SectionRow'
+import type { SectionDensity } from '../SectionShell'
 
 const MARKER_FILTERS = { scope: HOME_QUERY_SCOPE, limit: HOME_LIMITS.discoveries } as const
 
@@ -19,6 +20,7 @@ interface CategoryView {
 
 export interface DiscoveriesSectionProps {
   title: string
+  density?: SectionDensity
 }
 
 /**
@@ -28,7 +30,7 @@ export interface DiscoveriesSectionProps {
  * service, double par la RLS) : une contribution en attente de validation
  * n'apparaît jamais sur l'accueil.
  */
-export function DiscoveriesSection({ title }: DiscoveriesSectionProps) {
+export function DiscoveriesSection({ title, density }: DiscoveriesSectionProps) {
   const markers = useQuery({
     queryKey: qk.mapMarkers(MARKER_FILTERS),
     queryFn: () => listMarkers({ limit: HOME_LIMITS.discoveries }),
@@ -51,6 +53,7 @@ export function DiscoveriesSection({ title }: DiscoveriesSectionProps) {
 
   return (
     <SectionShell
+      density={density}
       icon="compass"
       title={title}
       subtitle="Les trouvailles de la communauté, validées par l'équipe."

@@ -57,3 +57,10 @@
   color: var(--text-subtle);
   font-size: var(--text-sm);
 }
+
+/* ================================================= MISE EN AVANT ======== */
+/* Le premier article occupe deux colonnes. C'est ce qui transforme une
+   grille uniforme — un tableau de publications — en composition editoriale. */
+@media (min-width: 680px) {
+  .grid > li[data-featured='true'] { grid-column: span 2; }
+}

@@ -3,9 +3,11 @@ import { useAuth } from '@/app/AuthProvider'
 import { useAiConfig } from '@/hooks/useAppSettings'
 import { PitchCard } from '../PitchCard'
 import { SectionBody, SectionShell } from '../SectionShell'
+import type { SectionDensity } from '../SectionShell'
 
 export interface AiSectionProps {
   title: string
+  density?: SectionDensity
 }
 
 /**
@@ -15,7 +17,7 @@ export interface AiSectionProps {
  * serveur (`ai.config.enabled`). Dans ce cas le bouton est DESACTIVE et la
  * raison est affichee : pas de faux parcours, pas de conversation simulee.
  */
-export function AiSection({ title }: AiSectionProps) {
+export function AiSection({ title, density }: AiSectionProps) {
   const { isStaff } = useAuth()
   const ai = useAiConfig()
   const config = ai.data
@@ -30,6 +32,7 @@ export function AiSection({ title }: AiSectionProps) {
 
   return (
     <SectionShell
+      density={density}
       icon="sparkles"
       title={title}
       subtitle="Un assistant dédié a l'univers de Leonida."

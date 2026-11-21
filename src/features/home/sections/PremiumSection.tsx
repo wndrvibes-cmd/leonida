@@ -4,9 +4,11 @@ import { formatPrice } from '@/lib/format'
 import { PitchCard } from '../PitchCard'
 import { SectionBody, SectionShell } from '../SectionShell'
 import s from './PremiumSection.module.css'
+import type { SectionDensity } from '../SectionShell'
 
 export interface PremiumSectionProps {
   title: string
+  density?: SectionDensity
 }
 
 const INTERVAL_LABELS: Record<string, string> = {
@@ -22,7 +24,7 @@ const INTERVAL_LABELS: Record<string, string> = {
  * parcours de paiement n'est propose — seul le lien vers la page de l'offre
  * reste actif, puisque cette page existe reellement.
  */
-export function PremiumSection({ title }: PremiumSectionProps) {
+export function PremiumSection({ title, density }: PremiumSectionProps) {
   const premium = usePremiumConfig()
   const config = premium.data
 
@@ -34,6 +36,7 @@ export function PremiumSection({ title }: PremiumSectionProps) {
 
   return (
     <SectionShell
+      density={density}
       icon="crown"
       title={title}
       subtitle="Soutenir Leonida et débloquer les outils de contribution."

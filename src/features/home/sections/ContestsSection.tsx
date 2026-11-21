@@ -5,6 +5,7 @@ import { ContestCard } from '../cards/ContestCard'
 import { HOME_LIMITS, HOME_QUERY_SCOPE, HOME_STALE_TIME } from '../constants'
 import { SectionBody, SectionShell } from '../SectionShell'
 import { RowSkeleton, SectionRow, SectionRowItem } from '../SectionRow'
+import type { SectionDensity } from '../SectionShell'
 
 const CONTEST_FILTERS = {
   scope: HOME_QUERY_SCOPE, active: true, limit: HOME_LIMITS.contests,
@@ -12,10 +13,11 @@ const CONTEST_FILTERS = {
 
 export interface ContestsSectionProps {
   title: string
+  density?: SectionDensity
 }
 
 /** Operations OUVERTES uniquement : annoncer un concours clos serait trompeur. */
-export function ContestsSection({ title }: ContestsSectionProps) {
+export function ContestsSection({ title, density }: ContestsSectionProps) {
   const contests = useQuery({
     queryKey: qk.contests(CONTEST_FILTERS),
     queryFn: () => listContests({ active: true, limit: HOME_LIMITS.contests }),
@@ -24,6 +26,7 @@ export function ContestsSection({ title }: ContestsSectionProps) {
 
   return (
     <SectionShell
+      density={density}
       icon="gift"
       title={title}
       subtitle="Les opérations ouvertes, avec leurs conditions et leurs dates."

@@ -4,6 +4,20 @@ import { Button, EmptyState, ErrorState, Icon, cx, type IconName } from '@/compo
 import { useAuth } from '@/app/AuthProvider'
 import s from './SectionShell.module.css'
 
+/**
+ * Densite d'une section.
+ *
+ * C'EST LE LEVIER EDITORIAL de l'accueil. Quand toutes les sections ont la
+ * meme densite, la page se lit comme une pile de blocs identiques — c'est
+ * exactement ce qu'on cherche a eviter. En alternant, on cree un rythme :
+ * une section ample attire l'oeil, une section dense le laisse filer.
+ *
+ *   'major'   titre large, respiration importante — un temps fort
+ *   'default' le rythme courant
+ *   'minor'   compacte, pour les rappels et les acces secondaires
+ */
+export type SectionDensity = 'major' | 'default' | 'minor'
+
 export interface SectionShellProps {
   icon: IconName
   /** Titre venu du reglage `home.sections`, avec repli cote section. */
@@ -12,13 +26,16 @@ export interface SectionShellProps {
   /** Destination du lien « tout voir ». */
   to?: To
   linkLabel?: string
+  density?: SectionDensity
   children: ReactNode
 }
 
 /** En-tete + corps d'une section d'accueil. Aucune donnee, seulement la mise en page. */
-export function SectionShell({ icon, title, subtitle, to, linkLabel, children }: SectionShellProps) {
+export function SectionShell({
+  icon, title, subtitle, to, linkLabel, density = 'default', children,
+}: SectionShellProps) {
   return (
-    <section className={s.section}>
+    <section className={cx(s.section, s[density])} data-density={density}>
       <div className={cx('page', s.head)}>
         <div className={s.heading}>
           <span className={s.icon} aria-hidden="true">

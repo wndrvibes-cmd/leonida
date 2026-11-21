@@ -5,6 +5,7 @@ import { MomentCard } from '../cards/MomentCard'
 import { HOME_LIMITS, HOME_QUERY_SCOPE, HOME_STALE_TIME } from '../constants'
 import { SectionBody, SectionShell } from '../SectionShell'
 import { RowSkeleton, SectionRow, SectionRowItem } from '../SectionRow'
+import type { SectionDensity } from '../SectionShell'
 
 const MOMENTS_FILTERS = {
   scope: HOME_QUERY_SCOPE, surface: 'moment', sort: 'popular', limit: HOME_LIMITS.moments,
@@ -12,13 +13,14 @@ const MOMENTS_FILTERS = {
 
 export interface MomentsSectionProps {
   title: string
+  density?: SectionDensity
 }
 
 /**
  * Moments les plus reagis. Le tri `popular` s'appuie sur `reaction_count`,
  * une colonne maintenue par la base : le classement n'est pas simule.
  */
-export function MomentsSection({ title }: MomentsSectionProps) {
+export function MomentsSection({ title, density }: MomentsSectionProps) {
   const moments = useQuery({
     queryKey: qk.posts(MOMENTS_FILTERS),
     queryFn: () =>
@@ -29,6 +31,7 @@ export function MomentsSection({ title }: MomentsSectionProps) {
 
   return (
     <SectionShell
+      density={density}
       icon="moments"
       title={title}
       subtitle="Les captures et séquences qui ont le plus fait réagir."

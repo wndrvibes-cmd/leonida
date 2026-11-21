@@ -341,10 +341,53 @@ marqueur (force en `pending/false/unverified`) ou de gonfler ses compteurs.
 (« Spam ou publicite », « Harcelement », « Confirmee »...). 15 corriges apres
 relecture de la totalite du fichier.
 
+### Refonte visuelle — 21/11 (chantier distinct de l'administration)
+
+**Audit.** Systeme de composants solide (Button dans 49 fichiers, Icon 81,
+Badge 21, ~7900 lignes de CSS Modules, 0 couleur en dur). Trois faiblesses
+reelles mesurees :
+- le vocabulaire d'elevation cree a l'etape 2 n'etait employe que dans
+  **3 fichiers sur une soixantaine** ;
+- **toutes les sections d'accueil etaient des carrousels horizontaux** — meme
+  densite partout, d'ou l'impression de pile de blocs ;
+- **grilles uniformes** : toutes les cartes a la meme taille.
+
+**Systeme de mouvement** (`src/app/motion.ts`). Le mouvement se declare une
+fois : courbes nommees (entree lente et detendue, sortie rapide — une
+interface doit paraitre reactive, jamais collante), ressorts, variantes
+d'entree, et une cascade dont le pas est CALCULE selon le nombre d'elements
+pour que le retard cumule ne depasse jamais 270 ms.
+
+**Jetons de composition editoriale** : trois tailles de carte, seuil de repli
+d'une piece maitresse, ratios d'image pour que les visuels ne sautent pas au
+chargement.
+
+**Elevation propagee** : Modal, Sheet, Toast, Input, Select, Textarea, Tabs.
+De 3 a 9 fichiers.
+
+**Densite de section** (`SectionShell`). `major` / `default` / `minor`
+changent le titre, la respiration et le fond. Les rubriques de contenu vivant
+respirent, les acces secondaires se font discrets. C'est cette alternance qui
+distingue une composition editoriale d'une pile de blocs.
+
+**Piece maitresse d'accueil** (`FeaturedArticle`). Composition deux colonnes,
+image sur une vraie surface, titre d'un cran au-dessus des titres de section.
+Ne rend RIEN tant qu'aucune actualite n'est publiee : un emplacement vide de
+cette taille donnerait l'impression d'une application abandonnee.
+
+**Grille d'actualites editoriale** : le premier article occupe deux colonnes
+et bascule en composition horizontale. Seul le premier — au-dela, plus rien ne
+se detacherait.
+
+**Verification** : contenu de demonstration cree temporairement (titres
+annoncant explicitement leur nature, aucune fausse information sur GTA VI),
+rendu controle en 1240px et 390px, puis supprime. Base revenue a 0 article.
+
 ### Prochaine tache
 
-Etape 5, suite : actualites, medias et cadeaux (services deja ecrits pour les
-medias). Puis reglages d'application et Radar.
+Poursuivre la refonte : communaute (flux social), moments (galerie), carte
+(fiches et filtres), profil. Puis la suite de l'administration (actualites,
+medias, cadeaux), chantier separe.
 
 ---
 
