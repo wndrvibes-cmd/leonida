@@ -112,7 +112,7 @@ export type RealtimeStatus = 'inactif' | 'connexion' | 'connecte' | 'indisponibl
  * A monter UNE SEULE FOIS, haut dans l'arbre (layout applicatif) : plusieurs
  * instances ouvriraient plusieurs canaux pour rien.
  *
- * Le filtre `user_id=eq.<id>` est applique cote serveur et la RLS s'applique
+ * Le filtre `user_id=eq.<id>` est applique côté serveur et la RLS s'applique
  * aussi au temps reel : un membre ne peut pas ecouter les notifications d'un
  * autre, meme en modifiant ce code.
  *

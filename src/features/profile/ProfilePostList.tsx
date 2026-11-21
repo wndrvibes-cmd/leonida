@@ -89,7 +89,7 @@ export function ProfilePostList({ authorId, surface, name, isSelf }: ProfilePost
         title={isSelf ? "Vous n'avez rien publié" : `${name} n'a rien publié pour l'instant`}
         description={
           isSelf
-            ? 'Vos discussions, astuces et questions apparaîtront ici des votre première publication.'
+            ? 'Vos discussions, astuces et questions apparaîtront ici dès votre première publication.'
             : "Aucune publication visible sur ce profil pour le moment."
         }
         action={

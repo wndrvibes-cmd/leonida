@@ -92,7 +92,7 @@ export function writeCommunityFilters(filters: CommunityFilters): URLSearchParam
   return params
 }
 
-/** `true` des qu'un filtre ecarte le fil de son etat par defaut. */
+/** `true` dès qu'un filtre ecarte le fil de son etat par defaut. */
 export function hasActiveCommunityFilters(filters: CommunityFilters): boolean {
   return Boolean(filters.type || filters.tag || filters.q)
 }

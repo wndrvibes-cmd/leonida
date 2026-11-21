@@ -26,7 +26,7 @@ export function ContestsSection({ title }: ContestsSectionProps) {
     <SectionShell
       icon="gift"
       title={title}
-      subtitle="Les operations ouvertes, avec leurs conditions et leurs dates."
+      subtitle="Les opérations ouvertes, avec leurs conditions et leurs dates."
       to="/cadeaux"
     >
       <SectionBody
@@ -38,7 +38,7 @@ export function ContestsSection({ title }: ContestsSectionProps) {
         empty={{
           title: 'Aucune opération en cours',
           description:
-            'Concours, cadeaux et offres apparaîtront ici pendant leur période de validite.',
+            'Concours, cadeaux et offres apparaîtront ici pendant leur période de validité.',
           icon: 'gift',
           adminTo: '/admin/cadeaux',
           adminLabel: 'Creer une opération',

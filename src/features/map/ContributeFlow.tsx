@@ -74,7 +74,7 @@ function AccessGate({ flow }: { flow: ContributeFlow }) {
         </p>
         <div className={s.gateActions}>
           <Button as="link" to="/premium" variant="premium" size="lg" fullWidth>
-            Decouvrir LEONIDA+
+            Découvrir LEONIDA+
           </Button>
           <Button variant="ghost" size="lg" onClick={flow.cancel} fullWidth>
             Plus tard
@@ -132,7 +132,7 @@ function SentPanel({ flow }: { flow: ContributeFlow }) {
         Elle est en file de validation. L'équipe la relit, puis elle apparaît sur
         la carte publique une fois approuvee — pas avant. Vous suivez son statut
         dans l'onglet « Mes contributions », et vous recevrez une notification
-        des qu'une décision est prise.
+        dès qu'une décision est prise.
       </p>
       <div className={s.gateActions}>
         <Button variant="primary" size="lg" onClick={flow.cancel} fullWidth>

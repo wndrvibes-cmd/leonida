@@ -41,7 +41,7 @@ const ITEMS: Item[] = [
     key: 'notify_replies',
     label: 'Réponses a mes messages',
     description:
-      'Quand un membre répond a votre commentaire ou commente votre publication.',
+      'Quand un membre répond à votre commentaire ou commente votre publication.',
     honored: true,
   },
   {
@@ -127,7 +127,7 @@ export function NotificationSettings() {
               <p className={s.pendingNote}>
                 {item.key === 'notify_moderation'
                   ? "A savoir : les décisions sur vos découvertes sont envoyées par la base sans consulter ce réglage. Vous les recevrez donc même désactivé — votre choix est conserve pour le jour ou ce filtre sera applique."
-                  : 'A savoir : aucune notification de ce type n\'est encore emise. Votre choix est enregistre et s\'appliquera des le premier envoi.'}
+                  : 'A savoir : aucune notification de ce type n\'est encore emise. Votre choix est enregistré et s\'appliquera dès le premier envoi.'}
               </p>
             ) : null}
           </li>

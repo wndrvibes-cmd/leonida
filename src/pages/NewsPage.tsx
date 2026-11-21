@@ -117,7 +117,7 @@ export default function NewsPage() {
   ) : hasActiveNewsFilters(filters) ? (
     <EmptyState
       title="Aucune actualité ne correspond"
-      description="Aucun article publié ne répond a ces criteres. Elargissez la recherche ou changez de catégorie."
+      description="Aucun article publié ne répond a ces critères. Elargissez la recherche ou changez de catégorie."
       action={
         <Button variant="secondary" onClick={reset} iconLeft={<Icon name="refresh" size={18} />}>
           Reinitialiser les filtres
@@ -128,7 +128,7 @@ export default function NewsPage() {
     <EmptyState
       illustration={<Icon name="news" size={40} />}
       title="Aucune actualité publiée pour l'instant"
-      description="Rien n'a encore été publié. Des qu'un article paraitra, il apparaîtra ici avec sa source et son niveau de fiabilité — jamais avant vérification."
+      description="Rien n'a encore été publié. Dès qu'un article paraitra, il apparaîtra ici avec sa source et son niveau de fiabilité — jamais avant vérification."
       action={
         <Button as="link" to="/communaute" variant="secondary" iconLeft={<Icon name="community" size={18} />}>
           Voir la communauté

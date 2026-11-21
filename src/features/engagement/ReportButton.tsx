@@ -174,8 +174,7 @@ export function ReportButton({
           <p className={s.note} role="status">
             <Icon name="check" size={18} className={s.noteIcon} />
             <span>
-              Vous avez déjà signale ce contenu. Un seul signalement par membre est
-              enregistre ; l'équipe de modération l'a bien recu.
+              Vous avez déjà signale ce contenu. Un seul signalement par membre est enregistré ; l'équipe de modération l'a bien recu.
             </span>
           </p>
         ) : (
@@ -207,7 +206,7 @@ export function ReportButton({
 
             <Textarea
               label="Détails (facultatif)"
-              hint="Precisez ce qui pose problème. Cela aide la modération a decider."
+              hint="Précisez ce qui pose problème. Cela aide la modération a decider."
               value={details}
               onChange={(event) => setDetails(event.target.value)}
               maxLength={REPORT_DETAILS_MAX}

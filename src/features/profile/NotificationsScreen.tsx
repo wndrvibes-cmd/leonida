@@ -186,14 +186,14 @@ export function NotificationsScreen() {
 
   function handleRead(id: string) {
     markRead.mutate(id, {
-      onError: (error) => toast.error('Mise a jour impossible', readableError(error)),
+      onError: (error) => toast.error('Mise à jour impossible', readableError(error)),
     })
   }
 
   function handleMarkAll() {
     markAll.mutate(undefined, {
       onSuccess: () => toast.success('Toutes vos notifications sont marquees comme lues'),
-      onError: (error) => toast.error('Mise a jour impossible', readableError(error)),
+      onError: (error) => toast.error('Mise à jour impossible', readableError(error)),
     })
   }
 
@@ -266,7 +266,7 @@ export function NotificationsScreen() {
         <EmptyState
           illustration={<Icon name="bell" size={38} />}
           title="Aucune notification"
-          description="Des qu'un membre repondra a vos messages ou qu'une de vos découvertes sera relue, vous le saurez ici."
+          description="Dès qu'un membre repondra a vos messages ou qu'une de vos découvertes sera relue, vous le saurez ici."
         />
       ) : (
         <div className={s.groups}>

@@ -258,7 +258,7 @@ export function FavoritesScreen() {
       {!user ? (
         <EmptyState
           title="Connectez-vous pour retrouver vos favoris"
-          description="Vos favoris sont attaches a votre compte et ne quittent jamais votre session."
+          description="Vos favoris sont attaches à votre compte et ne quittent jamais votre session."
           action={
             <Button as="link" to="/connexion" variant="primary">
               Se connecter

@@ -32,7 +32,7 @@ export function AiSection({ title }: AiSectionProps) {
     <SectionShell
       icon="sparkles"
       title={title}
-      subtitle="Un assistant dedie a l'univers de Leonida."
+      subtitle="Un assistant dédié a l'univers de Leonida."
       to={enabled ? '/ia' : undefined}
       linkLabel="Ouvrir l'assistant"
     >
@@ -50,7 +50,7 @@ export function AiSection({ title }: AiSectionProps) {
           description={
             enabled
               ? 'L\'assistant répond sur les actualités, la carte et les découvertes de la communauté.'
-              : 'L\'assistant sera disponible des qu\'un fournisseur sera configure cote serveur. En attendant, rien n\'est simule : aucune réponse ne peut être générée.'
+              : 'L\'assistant sera disponible dès qu\'un fournisseur sera configuré côté serveur. En attendant, rien n\'est simulé : aucune réponse ne peut être générée.'
           }
           bullets={bullets}
           note={config?.note ?? null}
@@ -70,7 +70,7 @@ export function AiSection({ title }: AiSectionProps) {
                   variant="secondary"
                   disabled
                   iconLeft={<Icon name="lock" size={16} />}
-                  title="Aucun fournisseur d'IA n'est configure."
+                  title="Aucun fournisseur d'IA n'est configuré."
                 >
                   Assistant indisponible
                 </Button>

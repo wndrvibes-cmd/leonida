@@ -44,9 +44,11 @@
 }
 
 /* Soulignement discret plutot qu'une pastille pleine : la barre reste calme. */
+/* Le fond de l'onglet actif est dessine par la pastille animee (.indicator),
+   pas ici : un fond statique sauterait d'un onglet a l'autre pendant que la
+   pastille, elle, glisse. */
 .link.active {
   color: var(--text);
-  background: var(--accent-soft);
 }
 
 .premium {
@@ -56,3 +58,25 @@
 }
 .premium:hover { color: var(--sand); background: var(--accent-warm-soft); }
 .premium.active { color: var(--sand); background: var(--accent-warm-soft); }
+
+/* ------------------------------------------------- INDICATEUR ACTIF ---- */
+/* La pastille est posee DERRIERE le libelle (z-index), sinon elle le
+   recouvrirait pendant le glissement d'un onglet a l'autre. */
+.link,
+.premium {
+  position: relative;
+  isolation: isolate;
+}
+
+.indicator {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--r-full);
+  background: var(--accent-soft);
+  box-shadow: var(--edge), inset 0 0 0 1px var(--border-accent);
+}
+
+.label {
+  position: relative;
+}

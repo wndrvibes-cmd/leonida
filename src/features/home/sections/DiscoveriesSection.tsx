@@ -66,7 +66,7 @@ export function DiscoveriesSection({ title }: DiscoveriesSectionProps) {
         empty={{
           title: 'Aucune découverte validée pour le moment',
           description:
-            'Les contributions des membres passent par une file de validation avant d\'apparaitre ici.',
+            'Les contributions des membres passent par une file de validation avant d\'apparaître ici.',
           icon: 'compass',
           adminTo: '/admin/carte',
           adminLabel: 'Ouvrir la file de validation',

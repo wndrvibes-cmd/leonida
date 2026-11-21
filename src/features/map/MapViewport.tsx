@@ -273,7 +273,7 @@ export const MapViewport = forwardRef<MapViewportHandle, MapViewportProps>(
           <div className={`${s.sheet} ${s.sheetError}`} data-map-ui>
             <ErrorState
               title="Carte indisponible"
-              description="L'image de la carte n'a pas pu être chargée. Vérifiez votre connexion, puis reessayez."
+              description="L'image de la carte n'a pas pu être chargée. Vérifiez votre connexion, puis réessayez."
               retryLabel="Recharger l'image"
               onRetry={() => { setStatus('loading'); setReloadKey((n) => n + 1) }}
             />

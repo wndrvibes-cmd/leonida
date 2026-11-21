@@ -45,7 +45,7 @@ export function PostEditor({ post, onClose }: PostEditorProps) {
       },
       {
         onSuccess: () => {
-          toast.success('Publication mise a jour')
+          toast.success('Publication mise à jour')
           onClose()
         },
         onError: (error) => toast.error('Modification impossible', readableError(error)),

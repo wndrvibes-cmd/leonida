@@ -108,7 +108,7 @@ Travail sequentiel, verifie et commite a chaque etape. Pas de vagues d'agents.
 | 0 | Audit et correction de la compilation | **termine** |
 | 1 | Hygiene : accents (**fait**), fusion des composants homonymes, dossiers vides (**fait**) | partiel |
 | 2 | Direction artistique : jetons d'elevation, scene d'accueil, profondeur des sections | **termine** |
-| 3 | Navigation et accueil : hierarchie, transitions de page, etats actifs | a faire |
+| 3 | Navigation : transitions de page, indicateur actif anime | **termine** |
 | 4 | Espace membre complet (profil, parametres, favoris, notifications) | a faire |
 | 5 | Espace administrateur | a faire |
 | 6 | Moments et Decouvertes | a faire |
@@ -178,10 +178,47 @@ coupe.
 **Verifie** : `tsc --noEmit` → 0 erreur ; rendu controle en 1240px, 390px et
 375x812.
 
+### Etape 3 — ce qui a ete fait le 21/11
+
+**Transitions de page** (`src/app/PageTransition.tsx`). Choix explicite :
+seule l'ENTREE est animee. Avec `AnimatePresence mode="wait"`, la page
+sortante doit finir son animation avant que l'entrante commence — la
+navigation parait deux fois plus lente, et le probleme empire sur les routes
+chargees en `lazy` ou l'attente reseau s'ajoute a l'attente d'animation.
+Ici la cle `pathname` force le remontage : l'animation d'entree se declenche
+sans retard ajoute. Deplacement court (10px) pour que l'oeil lise la page
+plutot que de suivre le mouvement. Neutralisee si mouvement reduit.
+
+**Indicateur actif de la navigation desktop** : pastille partagee via
+`layoutId`, comme la barre d'onglets mobile. Il a fallu retirer le
+`background` de `.link.active` : un fond statique sautait d'un onglet a
+l'autre pendant que la pastille, elle, glissait. Le bouton Premium garde son
+fond statique — il n'appartient pas au groupe a pastille partagee, il n'y a
+rien a faire glisser vers lui.
+
+**Accents, suite** : locutions figees (`a jour`, `jusqu'a`, `a partir`...),
+formes verbales oubliees, et desambiguisation par le contexte des participes
+ecartes a l'etape 1 (`est simule` -> `est simulé`, `sera configure` ->
+`sera configuré`, `des qu'` -> `dès qu'`).
+
+**Une regression introduite et corrigee** : la regex de participes ajoutait
+« é » au lieu de remplacer le « e » final, produisant « configureé ».
+5 occurrences, toutes reparees ; controle `grep 'eé'` desormais a zero.
+
+### Limite de verification a connaitre
+
+Le volet navigateur de l'outil passe en `visibilityState: "hidden"`. Le
+navigateur suspend alors le rendu et l'IntersectionObserver : les sections
+basses de l'accueil restent a `opacity: 0` dans mes captures. **Ce n'est pas
+un defaut de l'application** (verifie : aucun verrou de defilement, aucun
+`overflow` bloquant, la page mesure bien 4110px pour 568px de fenetre), mais
+cela signifie que je n'ai pas pu voir les sections basses animees. A controler
+visuellement dans un vrai navigateur.
+
 ### Prochaine tache
 
-Fusionner `NewsCard` / `PostCard` (reliquat de l'etape 1), puis **etape 3** :
-navigation et accueil — transitions de page, etats actifs, hierarchie.
+Fusionner `NewsCard` / `PostCard` (reliquat de l'etape 1), puis **etape 4** :
+espace membre complet (profil, parametres, favoris, notifications).
 
 ---
 

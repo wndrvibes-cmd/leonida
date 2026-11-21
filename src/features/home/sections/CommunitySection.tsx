@@ -38,7 +38,7 @@ export function CommunitySection({ title }: CommunitySectionProps) {
         empty={{
           title: 'Aucune publication pour le moment',
           description:
-            'Les discussions des membres apparaîtront ici des la première publication.',
+            'Les discussions des membres apparaîtront ici dès la première publication.',
           icon: 'community',
           adminTo: '/admin/communaute',
           adminLabel: 'Modérer la communauté',

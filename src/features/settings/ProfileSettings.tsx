@@ -68,7 +68,7 @@ export function ProfileSettings() {
   const [submitted, setSubmitted] = useState(false)
 
   // Le profil arrive apres le premier rendu (session resolue en parallele) :
-  // on initialise le formulaire des qu'il est connu, et a chaque changement
+  // on initialise le formulaire dès qu'il est connu, et a chaque changement
   // d'identite.
   useEffect(() => {
     if (!profile) return

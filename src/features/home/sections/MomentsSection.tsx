@@ -31,7 +31,7 @@ export function MomentsSection({ title }: MomentsSectionProps) {
     <SectionShell
       icon="moments"
       title={title}
-      subtitle="Les captures et sequences qui ont le plus fait réagir."
+      subtitle="Les captures et séquences qui ont le plus fait réagir."
       to="/moments"
     >
       <SectionBody
@@ -41,7 +41,7 @@ export function MomentsSection({ title }: MomentsSectionProps) {
         onRetry={() => void moments.refetch()}
         isEmpty={(moments.data?.length ?? 0) === 0}
         empty={{
-          title: 'Aucun moment partage pour le moment',
+          title: 'Aucun moment partagé pour le moment',
           description:
             'Les captures et vidéos partagées par les membres s\'afficheront ici.',
           icon: 'moments',

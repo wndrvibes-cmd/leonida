@@ -175,7 +175,7 @@ export default function MapPage() {
           description={
             isStaff
               ? "Aucune image n'a encore été téléversée. Rendez-vous dans l'administration pour envoyer le fond de carte et renseigner ses dimensions : les marqueurs et les contributions s'activeront aussitot."
-              : "L'équipe LEONIDA n'a pas encore publié le fond de carte. Les lieux, secrets et découvertes proposes par les membres apparaîtront ici des qu'elle sera en ligne."
+              : "L'équipe LEONIDA n'a pas encore publié le fond de carte. Les lieux, secrets et découvertes proposes par les membres apparaîtront ici dès qu'elle sera en ligne."
           }
           illustration={<Icon name="map" size={40} />}
           action={

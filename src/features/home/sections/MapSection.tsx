@@ -26,7 +26,7 @@ export function MapSection({ title }: MapSectionProps) {
     <SectionShell
       icon="map"
       title={title}
-      subtitle="Reperez les découvertes de la communauté sur le plan de Leonida."
+      subtitle="Repérez les découvertes de la communauté sur le plan de Leonida."
       to="/carte"
       linkLabel="Ouvrir la carte"
     >

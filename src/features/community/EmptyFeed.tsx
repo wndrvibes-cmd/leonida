@@ -90,7 +90,7 @@ export function EmptyFeed({
       <Shore />
 
       <div className={s.text}>
-        <p className={s.kicker}>La communauté demarre ici</p>
+        <p className={s.kicker}>La communauté démarre ici</p>
         <h2 className={s.title}>Aucune publication pour le moment</h2>
         <p className={s.lead}>
           Le fil est vide, et c'est normal : rien n'a encore été publié. Pas de faux

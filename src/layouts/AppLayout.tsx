@@ -2,6 +2,7 @@ import { Suspense, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { RouteFallback } from '@/app/RouteFallback'
 import { Intro } from '@/components/brand/Intro'
+import { PageTransition } from '@/app/PageTransition'
 import { TabBar } from '@/components/layout/TabBar'
 import { TopBar } from '@/components/layout/TopBar'
 import s from './AppLayout.module.css'
@@ -28,7 +29,9 @@ export function AppLayout() {
 
       <main id="contenu" className={`${s.main} app-scroll-area`}>
         <Suspense fallback={<RouteFallback />}>
-          <Outlet />
+          <PageTransition>
+            <Outlet />
+          </PageTransition>
         </Suspense>
       </main>
 

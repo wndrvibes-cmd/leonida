@@ -14,11 +14,11 @@ export function relativeTime(date: string | Date | null | undefined): string {
   if (Number.isNaN(d.getTime())) return ''
   const diff = (d.getTime() - Date.now()) / 1000
   const abs = Math.abs(diff)
-  if (abs < 45) return "a l'instant"
+  if (abs < 45) return "à l'instant"
   for (const [unit, secs] of UNITS) {
     if (abs >= secs) return rtf.format(Math.round(diff / secs), unit)
   }
-  return "a l'instant"
+  return "à l'instant"
 }
 
 export function formatDate(date: string | Date | null | undefined, withTime = false): string {

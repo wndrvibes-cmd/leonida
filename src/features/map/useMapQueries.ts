@@ -30,7 +30,7 @@ export function useMapCategories(): UseQueryResult<MapCategory[]> {
 
 /**
  * Marqueurs publics : UNIQUEMENT les decouvertes validees (le service impose
- * `status: 'approved'` par defaut, et la RLS le garantit cote serveur).
+ * `status: 'approved'` par defaut, et la RLS le garantit côté serveur).
  *
  * Le filtrage par categorie et la recherche sont volontairement appliques
  * cote client dans la page : les marqueurs tiennent tous en memoire, et

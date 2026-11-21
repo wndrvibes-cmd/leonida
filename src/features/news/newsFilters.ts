@@ -75,7 +75,7 @@ export function writeNewsFilters(filters: NewsFilters): URLSearchParams {
   return params
 }
 
-/** `true` des qu'un filtre ecarte l'ecran de son etat par defaut. */
+/** `true` dès qu'un filtre ecarte l'ecran de son etat par defaut. */
 export function hasActiveNewsFilters(filters: NewsFilters): boolean {
   return Boolean(filters.q || filters.category || filters.reliability || filters.tag)
 }

@@ -16,7 +16,7 @@ const CELL_PX = 58
  * La grille est definie en pixels d'ecran puis ramenee en coordonnees
  * relatives : plus on zoome, plus l'image affichee est grande, donc plus les
  * cellules deviennent petites en coordonnees image — les regroupements se
- * dissolvent naturellement jusqu'a laisser apparaitre chaque épingle. C'est
+ * dissolvent naturellement jusqu'a laisser apparaître chaque épingle. C'est
  * le principe des cartes classiques, sans dependance externe.
  *
  * @param entries  marqueurs deja filtres

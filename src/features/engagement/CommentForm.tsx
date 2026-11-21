@@ -52,7 +52,7 @@ export function CommentForm({
   const locked =
     disabledReason ??
     (!user
-      ? 'Connectez-vous pour participer a la discussion.'
+      ? 'Connectez-vous pour participer à la discussion.'
       : isSuspended
         ? 'Votre compte est suspendu : vous ne pouvez pas publier de commentaire.'
         : null)

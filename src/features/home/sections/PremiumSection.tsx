@@ -36,7 +36,7 @@ export function PremiumSection({ title }: PremiumSectionProps) {
     <SectionShell
       icon="crown"
       title={title}
-      subtitle="Soutenir Leonida et debloquer les outils de contribution."
+      subtitle="Soutenir Leonida et débloquer les outils de contribution."
       to="/premium"
       linkLabel="Voir l'offre"
     >
@@ -51,7 +51,7 @@ export function PremiumSection({ title }: PremiumSectionProps) {
         <PitchCard
           icon="crown"
           heading="LEONIDA+"
-          description="Un abonnement pour soutenir le projet et participer a la carte communautaire."
+          description="Un abonnement pour soutenir le projet et participer à la carte communautaire."
           bullets={config?.benefits ?? []}
           note={
             config && !config.stripeEnabled
@@ -65,21 +65,21 @@ export function PremiumSection({ title }: PremiumSectionProps) {
               variant="premium"
               iconRight={<Icon name="arrow-right" size={18} />}
             >
-              Decouvrir LEONIDA+
+              Découvrir LEONIDA+
             </Button>
           }
           aside={
             price ? (
               <div className={s.price}>
                 <Badge tone="premium" size="sm" icon={<Icon name="crown" size={13} />}>
-                  Tarif prevu
+                  Tarif prévu
                 </Badge>
                 <p className={s.amount}>
                   {price}
                   {interval ? <span className={s.interval}>{interval}</span> : null}
                 </p>
                 <p className={s.hint}>
-                  Tarif annonce par l'équipe. Il ne sera preleve qu'a l'ouverture des
+                  Tarif annoncé par l'équipe. Il ne sera prélevé qu'a l'ouverture des
                   abonnements.
                 </p>
               </div>

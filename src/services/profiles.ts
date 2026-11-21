@@ -40,7 +40,7 @@ export async function updateProfile(id: string, patch: ProfileEditable): Promise
     await supabase.from('profiles').update(patch).eq('id', id).select('*').maybeSingle(),
   )
   if (!row) {
-    throw new Error("Le profil n'a pas pu être mis a jour : droits insuffisants ou profil absent.")
+    throw new Error("Le profil n'a pas pu être mis à jour : droits insuffisants ou profil absent.")
   }
   return row
 }

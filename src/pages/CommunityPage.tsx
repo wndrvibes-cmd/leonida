@@ -147,7 +147,7 @@ export default function CommunityPage() {
         <h1 className={s.title}>Ce que les joueurs trouvent, testent et racontent</h1>
         <p className={s.lead}>
           Astuces, découvertes, captures et questions, publiées par les membres sous leur
-          propre nom. Rien n'est écrit par l'équipe LEONIDA a leur place.
+          propre nom. Rien n'est écrit par l'équipe LEONIDA à leur place.
         </p>
       </header>
 
