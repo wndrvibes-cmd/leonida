@@ -1,0 +1,45 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  max-width: var(--reading-max);
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  color: var(--text);
+}
+
+/* Les retours a la ligne simples du texte en base sont conserves. */
+.body p { white-space: pre-line; }
+
+/* Lettrine sobre sur le premier paragraphe : un signe d'edition soignee, pas
+   un effet. */
+.body p:first-of-type::first-letter {
+  float: left;
+  margin-right: var(--sp-2);
+  color: var(--sunset-300);
+  font-family: var(--font-display);
+  font-size: 3.1em;
+  font-weight: 600;
+  line-height: 0.82;
+}
+
+.missing {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  max-width: var(--reading-max);
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent-warm);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.missing svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--accent-warm);
+}

@@ -14,6 +14,19 @@
   list-style: none;
 }
 
+/* Apparition des cartes : opacite + translation uniquement, et la duree vient
+   d'un jeton — le reglage « reduire les animations » la met donc a 0ms.
+   L'animation porte sur le <li> et non sur la carte : la carte garde ainsi son
+   propre `transform` de survol, qu'un `animation-fill-mode` ecraserait. */
+.grid > li {
+  animation: news-item-in var(--dur-base) var(--ease-out) both;
+}
+
+@keyframes news-item-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 @media (min-width: 640px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
