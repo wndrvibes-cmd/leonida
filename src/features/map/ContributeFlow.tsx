@@ -23,7 +23,7 @@ export function ContributeButton({ flow }: { flow: ContributeFlow }) {
       disabled={active}
       iconLeft={<Icon name="plus" size={18} />}
     >
-      Ajouter une decouverte
+      Ajouter une découverte
     </Button>
   )
 }
@@ -39,8 +39,8 @@ export function PlacementBanner({ flow }: { flow: ContributeFlow }) {
         <Icon name={placed ? 'check' : 'target'} size={18} />
         <span>
           {placed
-            ? 'Repere pose. Faites-le glisser pour l\'ajuster au bon endroit.'
-            : 'Touchez la carte pour placer votre decouverte.'}
+            ? 'Repère pose. Faites-le glisser pour l\'ajuster au bon endroit.'
+            : 'Touchez la carte pour placer votre découverte.'}
         </span>
       </div>
       <div className={s.bannerActions}>
@@ -66,11 +66,11 @@ function AccessGate({ flow }: { flow: ContributeFlow }) {
         <span className={s.gateMark} aria-hidden="true">
           <Icon name="crown" size={26} />
         </span>
-        <h3 className={s.gateTitle}>Proposer une decouverte, c'est LEONIDA+</h3>
+        <h3 className={s.gateTitle}>Proposer une découverte, c'est LEONIDA+</h3>
         <p className={s.gateBody}>
-          Les contributions a la carte sont reservees aux membres LEONIDA+. Vos
-          decouvertes sont relues par l'equipe, puis publiees avec votre nom
-          d'auteur et leur niveau de verification.
+          Les contributions a la carte sont réservées aux membres LEONIDA+. Vos
+          découvertes sont relues par l'équipe, puis publiées avec votre nom
+          d'auteur et leur niveau de vérification.
         </p>
         <div className={s.gateActions}>
           <Button as="link" to="/premium" variant="premium" size="lg" fullWidth>
@@ -91,7 +91,7 @@ function AccessGate({ flow }: { flow: ContributeFlow }) {
       </span>
       <h3 className={s.gateTitle}>Connectez-vous pour contribuer</h3>
       <p className={s.gateBody}>
-        Les decouvertes de la carte sont signees par leur auteur. Connectez-vous
+        Les découvertes de la carte sont signees par leur auteur. Connectez-vous
         pour proposer la votre.
       </p>
       <div className={s.gateActions}>
@@ -126,13 +126,13 @@ function SentPanel({ flow }: { flow: ContributeFlow }) {
         <Icon name="check" size={26} />
       </span>
       <h3 className={s.gateTitle}>
-        {flow.editing ? 'Correction enregistree' : 'Decouverte envoyee'}
+        {flow.editing ? 'Correction enregistrée' : 'Découverte envoyée'}
       </h3>
       <p className={s.gateBody}>
-        Elle est en file de validation. L'equipe la relit, puis elle apparait sur
+        Elle est en file de validation. L'équipe la relit, puis elle apparaît sur
         la carte publique une fois approuvee — pas avant. Vous suivez son statut
         dans l'onglet « Mes contributions », et vous recevrez une notification
-        des qu'une decision est prise.
+        des qu'une décision est prise.
       </p>
       <div className={s.gateActions}>
         <Button variant="primary" size="lg" onClick={flow.cancel} fullWidth>
@@ -157,7 +157,7 @@ export function ContributeDialog({ flow, categories, userId }: ContributeDialogP
   const open = flow.step === 'gate' || flow.step === 'form' || flow.step === 'sent'
 
   const title = flow.step === 'form'
-    ? (flow.editing ? 'Corriger ma decouverte' : 'Decrire votre decouverte')
+    ? (flow.editing ? 'Corriger ma découverte' : 'Décrire votre découverte')
     : undefined
 
   return (
@@ -168,7 +168,7 @@ export function ContributeDialog({ flow, categories, userId }: ContributeDialogP
       ariaLabel={title ? undefined : 'Contribuer a la carte'}
       description={
         flow.step === 'form'
-          ? 'Toute contribution passe par la validation de l\'equipe avant publication.'
+          ? 'Toute contribution passe par la validation de l\'équipe avant publication.'
           : undefined
       }
       size={flow.step === 'form' ? 'md' : 'sm'}

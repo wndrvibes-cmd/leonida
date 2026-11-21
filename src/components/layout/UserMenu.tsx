@@ -52,7 +52,7 @@ export function UserMenu() {
       setOpen(false)
       navigate('/')
     } catch (error) {
-      toast.error('Deconnexion impossible', readableError(error))
+      toast.error('Déconnexion impossible', readableError(error))
     } finally {
       setBusy(false)
     }
@@ -99,7 +99,7 @@ export function UserMenu() {
           <Icon name="heart" size={18} /> Mes favoris
         </Link>
         <Link to="/parametres" className={s.item} role="menuitem">
-          <Icon name="settings" size={18} /> Parametres
+          <Icon name="settings" size={18} /> Paramètres
         </Link>
 
         {isStaff && (

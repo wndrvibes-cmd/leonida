@@ -46,7 +46,7 @@ export function ProfileStatsRow({ stats, isPending, isError, error, onRetry }: P
         compact
         error={error}
         title="Statistiques indisponibles"
-        description="Les compteurs n'ont pas pu etre lus. Rien n'est affiche plutot qu'un chiffre approximatif."
+        description="Les compteurs n'ont pas pu être lus. Rien n'est affiche plutôt qu'un chiffre approximatif."
         onRetry={onRetry}
       />
     )
@@ -58,14 +58,14 @@ export function ProfileStatsRow({ stats, isPending, isError, error, onRetry }: P
     {
       key: 'proposed',
       icon: 'compass',
-      label: 'Decouvertes proposees',
+      label: 'Découvertes proposees',
       value: stats.markersProposed,
       help:
         stats.markersProposed === null
-          ? "Ce total inclut des contributions non publiques : il n'est visible que par le membre lui-meme et par l'equipe."
+          ? "Ce total inclut des contributions non publiques : il n'est visible que par le membre lui-même et par l'équipe."
           : undefined,
     },
-    { key: 'approved', icon: 'check', label: 'Decouvertes validees', value: stats.markersApproved },
+    { key: 'approved', icon: 'check', label: 'Découvertes validées', value: stats.markersApproved },
   ]
 
   return (

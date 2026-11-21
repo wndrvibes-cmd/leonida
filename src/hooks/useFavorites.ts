@@ -62,7 +62,7 @@ export function useToggleFavorite(targetType: TargetType, targetId: string) {
 
   return useMutation({
     mutationFn: () => {
-      if (!user) throw new Error('Vous devez etre connecte pour enregistrer un favori.')
+      if (!user) throw new Error('Vous devez être connecte pour enregistrer un favori.')
       return toggleFavorite(user.id, targetType, targetId)
     },
     onSuccess: (favorited) => {

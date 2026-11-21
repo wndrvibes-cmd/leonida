@@ -33,7 +33,7 @@ export interface CommentFormProps {
 export function CommentForm({
   onSubmit,
   initialValue = '',
-  placeholder = 'Ecrire un commentaire...',
+  placeholder = 'Écrire un commentaire...',
   submitLabel = 'Publier',
   onCancel,
   autoFocus = false,

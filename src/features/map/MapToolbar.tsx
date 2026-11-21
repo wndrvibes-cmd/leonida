@@ -19,11 +19,11 @@ export interface MapToolbarProps {
   onClearCategories: () => void
   query: string
   onQueryChange: (value: string) => void
-  /** Marqueurs affiches apres filtrage. */
+  /** Marqueurs affiches après filtrage. */
   resultCount: number
-  /** Marqueurs validees chargees, toutes categories confondues. */
+  /** Marqueurs validées chargées, toutes catégories confondues. */
   totalCount: number
-  /** Nombre de marqueurs par categorie, calcule sur les donnees reelles. */
+  /** Nombre de marqueurs par catégorie, calcule sur les données reelles. */
   countsByCategory: Map<string, number>
   immersive: boolean
   onToggleImmersive: () => void
@@ -49,8 +49,8 @@ export function MapToolbar(props: MapToolbarProps) {
           type="search"
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
-          placeholder="Rechercher un lieu, un secret, un vehicule..."
-          aria-label="Rechercher une decouverte sur la carte"
+          placeholder="Rechercher un lieu, un secret, un véhicule..."
+          aria-label="Rechercher une découverte sur la carte"
           autoCapitalize="none"
           spellCheck={false}
           iconLeft={<Icon name="search" size={16} />}
@@ -62,7 +62,7 @@ export function MapToolbar(props: MapToolbarProps) {
             variant="secondary"
             size="md"
             iconOnly
-            aria-label={immersive ? 'Quitter le plein ecran' : 'Afficher la carte en plein ecran'}
+            aria-label={immersive ? 'Quitter le plein écran' : 'Afficher la carte en plein écran'}
             aria-pressed={immersive}
             onClick={onToggleImmersive}
           >
@@ -88,8 +88,8 @@ export function MapToolbar(props: MapToolbarProps) {
       <div className={s.status}>
         <p className={s.count} role="status">
           {resultCount === 0
-            ? 'Aucune decouverte affichee'
-            : `${resultCount} decouverte${resultCount > 1 ? 's' : ''} affichee${resultCount > 1 ? 's' : ''}`}
+            ? 'Aucune découverte affichée'
+            : `${resultCount} decouverte${resultCount > 1 ? 's' : ''} affichée${resultCount > 1 ? 's' : ''}`}
           {filtered && totalCount !== resultCount ? ` sur ${totalCount}` : ''}
         </p>
 

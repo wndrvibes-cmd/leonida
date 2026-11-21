@@ -9,7 +9,7 @@ export default function AiPage() {
   return (
     <PagePlaceholder
       title="Assistant"
-      description="Un assistant pour poser des questions sur Leonida, avec les sources utilisees pour chaque reponse."
+      description="Un assistant pour poser des questions sur Leonida, avec les sources utilisees pour chaque réponse."
     />
   )
 }

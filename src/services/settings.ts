@@ -99,7 +99,7 @@ export function parseAppIdentity(value: Json | null | undefined): AppIdentity {
   const raw = asObject(value)
   return {
     name: readString(raw?.name, 'LEONIDA'),
-    tagline: readNullableString(raw?.tagline, 'La communaute GTA VI'),
+    tagline: readNullableString(raw?.tagline, 'La communauté GTA VI'),
     logoUrl: readNullableString(raw?.logo_url, null),
   }
 }
@@ -209,7 +209,7 @@ export interface PremiumConfig {
   interval: string
   stripeMode: string
   /**
-   * `false` tant qu'aucun paiement reel n'est branche. L'interface doit alors
+   * `false` tant qu'aucun paiement réel n'est branche. L'interface doit alors
    * desactiver le bouton d'abonnement avec une explication, jamais simuler
    * un parcours de paiement.
    */

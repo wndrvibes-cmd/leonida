@@ -1,7 +1,7 @@
 /**
  * Module communautaire LEONIDA.
  *
- * Point d'entree unique : les pages `CommunityPage` et `PostPage` n'importent
+ * Point d'entrée unique : les pages `CommunityPage` et `PostPage` n'importent
  * que depuis ici.
  *
  *   import { useCommunityFeed, PostFeed } from '@/features/community'

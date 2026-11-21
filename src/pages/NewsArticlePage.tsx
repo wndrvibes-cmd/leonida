@@ -77,8 +77,8 @@ export default function NewsArticlePage() {
           title="Article introuvable"
           description={
             slug
-              ? `Aucune actualite visible ne correspond a l'adresse « ${slug} ». Le lien est peut-etre errone, ou l'article a ete retire.`
-              : "Cette adresse ne designe aucun article."
+              ? `Aucune actualite visible ne correspond a l'adresse « ${slug} ». Le lien est peut-être errone, ou l'article a ete retire.`
+              : "Cette adresse ne désigné aucun article."
           }
           action={
             <Button
@@ -87,7 +87,7 @@ export default function NewsArticlePage() {
               variant="secondary"
               iconLeft={<Icon name="arrow-left" size={18} />}
             >
-              Retour aux actualites
+              Retour aux actualités
             </Button>
           }
         />
@@ -105,7 +105,7 @@ export default function NewsArticlePage() {
     <article className={`${s.page} page`}>
       <Link className={s.back} to="/actualites">
         <Icon name="arrow-left" size={16} />
-        Toutes les actualites
+        Toutes les actualités
       </Link>
 
       {article.status !== 'published' ? (

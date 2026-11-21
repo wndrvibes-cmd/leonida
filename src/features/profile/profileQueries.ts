@@ -28,7 +28,7 @@ type PostMediaRow = Database['public']['Tables']['post_media']['Row']
 type MarkerRow = Database['public']['Tables']['map_markers']['Row']
 type PostSurface = Database['public']['Enums']['post_surface']
 
-/** Une publication de l'auteur et ses medias, dans l'ordre d'affichage. */
+/** Une publication de l'auteur et ses médias, dans l'ordre d'affichage. */
 export interface AuthorPost {
   post: PostRow
   media: PostMediaRow[]
@@ -133,7 +133,7 @@ export interface PremiumStatus {
    * `false` quand l'abonnement d'autrui n'est pas interrogeable — c'est le cas
    * normal. La migration 0009 reserve `is_premium(uuid)` a l'appelant lui-meme
    * et au staff, precisement pour empecher l'enumeration des abonnes. On
-   * n'affiche alors AUCUN badge, plutot que d'en deduire une absence
+   * n'affiche alors AUCUN badge, plutôt que d'en deduire une absence
    * d'abonnement qui serait inventee.
    */
   known: boolean

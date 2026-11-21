@@ -56,7 +56,7 @@ export default function PostPage() {
         <EmptyState
           illustration={<Icon name="community" size={38} />}
           title="Publication introuvable"
-          description="Ce lien ne mene a aucune publication visible. Elle a peut-etre ete supprimee par son auteur, ou masquee par la moderation."
+          description="Ce lien ne mene a aucune publication visible. Elle a peut-être été supprimée par son auteur, ou masquee par la modération."
           action={
             <Button
               as="link"
@@ -64,7 +64,7 @@ export default function PostPage() {
               variant="secondary"
               iconLeft={<Icon name="community" size={18} />}
             >
-              Voir le fil de la communaute
+              Voir le fil de la communauté
             </Button>
           }
         />

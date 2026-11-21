@@ -30,7 +30,7 @@ export default function NewsPage() {
 
   const selectedCategory = filters.category ? index.bySlug.get(filters.category) ?? null : null
   const needsCategory = Boolean(filters.category)
-  /** L'URL demande une categorie qui n'existe pas (ou plus) en base. */
+  /** L'URL demande une catégorie qui n'existe pas (ou plus) en base. */
   const unknownCategory = needsCategory && categories.isSuccess && !selectedCategory
 
   /* ------------------------------------------------------------------- fil */
@@ -106,18 +106,18 @@ export default function NewsPage() {
   /* ----------------------------------------------------------- etats vides */
   const emptyState = unknownCategory ? (
     <EmptyState
-      title="Categorie inconnue"
+      title="Catégorie inconnue"
       description={`Aucune categorie ne correspond a « ${filters.category} ». Elle a peut-etre ete renommee.`}
       action={
         <Button variant="secondary" onClick={reset} iconLeft={<Icon name="refresh" size={18} />}>
-          Voir toutes les actualites
+          Voir toutes les actualités
         </Button>
       }
     />
   ) : hasActiveNewsFilters(filters) ? (
     <EmptyState
-      title="Aucune actualite ne correspond"
-      description="Aucun article publie ne repond a ces criteres. Elargissez la recherche ou changez de categorie."
+      title="Aucune actualité ne correspond"
+      description="Aucun article publié ne répond a ces criteres. Elargissez la recherche ou changez de catégorie."
       action={
         <Button variant="secondary" onClick={reset} iconLeft={<Icon name="refresh" size={18} />}>
           Reinitialiser les filtres
@@ -127,11 +127,11 @@ export default function NewsPage() {
   ) : (
     <EmptyState
       illustration={<Icon name="news" size={40} />}
-      title="Aucune actualite publiee pour l'instant"
-      description="Rien n'a encore ete publie. Des qu'un article paraitra, il apparaitra ici avec sa source et son niveau de fiabilite — jamais avant verification."
+      title="Aucune actualité publiée pour l'instant"
+      description="Rien n'a encore été publié. Des qu'un article paraitra, il apparaîtra ici avec sa source et son niveau de fiabilité — jamais avant vérification."
       action={
         <Button as="link" to="/communaute" variant="secondary" iconLeft={<Icon name="community" size={18} />}>
-          Voir la communaute
+          Voir la communauté
         </Button>
       }
     />
@@ -142,7 +142,7 @@ export default function NewsPage() {
   const loading = list.isLoading || (needsCategory && categories.isLoading)
 
   // Une erreur alors que des articles sont deja affiches ne peut venir que de
-  // la page SUIVANTE : on garde la liste a l'ecran et on signale l'echec en
+  // la page SUIVANTE : on garde la liste a l'écran et on signale l'echec en
   // pied de liste, au lieu de remplacer le contenu lu par un message.
   const hasItems = articles.length > 0
   const gridError = hasItems
@@ -155,11 +155,11 @@ export default function NewsPage() {
       <header className={s.head}>
         <p className={s.kicker}>
           <Icon name="news" size={14} />
-          Actualites
+          Actualités
         </p>
         <h1 className={s.title}>Tout ce que l'on sait de GTA VI</h1>
         <p className={s.lead}>
-          Chaque article affiche sa source et son niveau de fiabilite. Une rumeur est
+          Chaque article affiche sa source et son niveau de fiabilité. Une rumeur est
           annoncee comme telle : vous savez toujours ce que vous lisez.
         </p>
       </header>

@@ -14,13 +14,13 @@ import s from './MarkerLayer.module.css'
  * `top: y * 100%` a l'interieur du calque, qui mesure exactement les
  * dimensions naturelles de l'image. Les coordonnees stockees en base (0..1)
  * sont donc utilisees telles quelles, et restent exactes quels que soient le
- * zoom, le deplacement, la taille de l'ecran ou l'orientation.
+ * zoom, le deplacement, la taille de l'écran ou l'orientation.
  *
  * TAILLE CONSTANTE : le calque est mis a l'echelle `k`, ce qui grossirait les
  * epingles avec la carte. Chacune applique donc la contre-echelle
  * `scale(var(--map-inv))` — soit `1 / k` — autour de sa pointe
  * (`transform-origin: 50% 100%`), si bien que la pointe reste rivee a sa
- * coordonnee pendant que l'epingle garde une taille lisible a l'ecran.
+ * coordonnee pendant que l'épingle garde une taille lisible a l'ecran.
  */
 
 export interface MarkerLayerProps {
@@ -164,8 +164,8 @@ function PreviewPin({ point, onMove, screenToImage }: PreviewPinProps) {
         role="button"
         tabIndex={0}
         aria-label={
-          'Repere de votre decouverte. Faites-le glisser pour l\'ajuster, '
-          + 'ou utilisez les fleches du clavier.'
+          'Repère de votre découverte. Faites-le glisser pour l\'ajuster, '
+          + 'ou utilisez les flèches du clavier.'
         }
         onKeyDown={(event) => {
           const step = 0.005

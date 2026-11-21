@@ -16,7 +16,7 @@ export function NotFoundPage() {
         <h1 className={s.title}>Cette page n'existe pas</h1>
         <p className={s.body}>
           Le chemin <code className={s.path}>{pathname}</code> ne correspond a
-          aucune rubrique de LEONIDA. Il a peut-etre ete renomme, ou le lien
+          aucune rubrique de LEONIDA. Il a peut-être été renomme, ou le lien
           que vous avez suivi est incomplet.
         </p>
 
@@ -30,8 +30,8 @@ export function NotFoundPage() {
         </div>
 
         <div className={s.more}>
-          <Link to="/actualites">Actualites</Link>
-          <Link to="/communaute">Communaute</Link>
+          <Link to="/actualites">Actualités</Link>
+          <Link to="/communaute">Communauté</Link>
           <Link to="/recherche">Recherche</Link>
         </div>
       </div>

@@ -50,7 +50,7 @@ export function PostDetail({ post, onEdit, onDelete }: PostDetailProps) {
           </Badge>
           {post.is_pinned ? (
             <Badge tone="neutral" size="sm" icon={<Icon name="pin" size={12} />}>
-              Epinglee par l'equipe
+              Epinglee par l'équipe
             </Badge>
           ) : null}
         </p>

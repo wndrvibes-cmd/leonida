@@ -101,7 +101,7 @@ export class ServiceError extends Error {
 export function unwrap<T>(result: PostgrestSingleResponse<T>): NonNullable<T> {
   if (result.error) throw new ServiceError(result.error)
   if (result.data === null || result.data === undefined) {
-    throw new ServiceError('Donnee introuvable.')
+    throw new ServiceError('Donnée introuvable.')
   }
   return result.data as NonNullable<T>
 }

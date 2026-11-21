@@ -36,7 +36,7 @@ export function useUpdateProfile() {
 
   return useMutation({
     mutationFn: (patch: ProfileEditable) => {
-      if (!user) throw new Error('Vous devez etre connecte pour modifier votre profil.')
+      if (!user) throw new Error('Vous devez être connecte pour modifier votre profil.')
       return updateProfile(user.id, patch)
     },
     onSuccess: async (next) => {
@@ -53,7 +53,7 @@ export function useUpdateProfile() {
 
 /**
  * Verification indicative de disponibilite d'un pseudonyme.
- * La contrainte d'unicite de la base reste l'arbitre final.
+ * La contrainte d'unicité de la base reste l'arbitre final.
  */
 export function useUsernameAvailability(username: string): UseQueryResult<boolean> {
   const { user } = useAuth()

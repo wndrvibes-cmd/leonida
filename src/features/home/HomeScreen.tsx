@@ -19,9 +19,9 @@ import s from './HomeScreen.module.css'
 
 /** Titres de repli si l'administrateur a laisse le libelle vide. */
 const FALLBACK_TITLES: Record<string, string> = {
-  news: 'Actualites recentes',
-  discoveries: 'Dernieres decouvertes',
-  community: 'La communaute',
+  news: 'Actualités récentes',
+  discoveries: 'Dernières découvertes',
+  community: 'La communauté',
   moments: 'Moments populaires',
   map: 'Explorer la carte',
   contests: 'Concours et cadeaux',
@@ -98,7 +98,7 @@ export default function HomeScreen() {
       <div className={cx('page', s.state)}>
         <ErrorState
           error={sections.error}
-          title="L'accueil n'a pas pu etre charge"
+          title="L'accueil n'a pas pu être charge"
           onRetry={() => void sections.refetch()}
         />
       </div>

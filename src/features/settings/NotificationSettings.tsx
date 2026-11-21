@@ -39,28 +39,28 @@ interface Item {
 const ITEMS: Item[] = [
   {
     key: 'notify_replies',
-    label: 'Reponses a mes messages',
+    label: 'Réponses a mes messages',
     description:
-      'Quand un membre repond a votre commentaire ou commente votre publication.',
+      'Quand un membre répond a votre commentaire ou commente votre publication.',
     honored: true,
   },
   {
     key: 'notify_reactions',
-    label: 'Reactions a mes contenus',
+    label: 'Réactions a mes contenus',
     description: 'Quand un membre reagit a une de vos publications.',
     honored: false,
   },
   {
     key: 'notify_moderation',
-    label: 'Decisions de moderation',
+    label: 'Decisions de modération',
     description:
-      'Quand une de vos decouvertes est validee ou refusee, ou qu\'un signalement vous concernant est traite.',
+      'Quand une de vos découvertes est validée ou refusée, ou qu\'un signalement vous concernant est traite.',
     honored: false,
   },
   {
     key: 'notify_news',
-    label: 'Nouvelles actualites',
-    description: 'Quand un article important est publie sur GTA VI.',
+    label: 'Nouvelles actualités',
+    description: 'Quand un article important est publié sur GTA VI.',
     honored: false,
   },
   {
@@ -91,7 +91,7 @@ export function NotificationSettings() {
     return (
       <SettingsSection title="Notifications" icon="bell">
         <p className={s.note}>
-          Vos reglages ne sont pas encore charges. Rechargez la page : aucun interrupteur
+          Vos réglages ne sont pas encore charges. Rechargez la page : aucun interrupteur
           n'est affiche avant de connaitre sa vraie valeur.
         </p>
       </SettingsSection>
@@ -102,7 +102,7 @@ export function NotificationSettings() {
     setPending(key)
     update.mutate(patchFor(key, value), {
       onSettled: () => setPending(null),
-      onError: (error) => toast.error('Reglage non enregistre', readableError(error)),
+      onError: (error) => toast.error('Réglage non enregistre', readableError(error)),
     })
   }
 
@@ -111,7 +111,7 @@ export function NotificationSettings() {
       title="Notifications"
       icon="bell"
       description="Choisissez ce qui merite de vous interrompre. Tout arrive dans l'application, jamais par e-mail."
-      footnote="Aucune notification par e-mail n'est envoyee par LEONIDA : ces reglages ne concernent que la cloche de l'application."
+      footnote="Aucune notification par e-mail n'est envoyée par LEONIDA : ces réglages ne concernent que la cloche de l'application."
     >
       <ul className={s.list}>
         {ITEMS.map((item) => (
@@ -126,7 +126,7 @@ export function NotificationSettings() {
             {!item.honored ? (
               <p className={s.pendingNote}>
                 {item.key === 'notify_moderation'
-                  ? "A savoir : les decisions sur vos decouvertes sont envoyees par la base sans consulter ce reglage. Vous les recevrez donc meme desactive — votre choix est conserve pour le jour ou ce filtre sera applique."
+                  ? "A savoir : les décisions sur vos découvertes sont envoyées par la base sans consulter ce réglage. Vous les recevrez donc même désactivé — votre choix est conserve pour le jour ou ce filtre sera applique."
                   : 'A savoir : aucune notification de ce type n\'est encore emise. Votre choix est enregistre et s\'appliquera des le premier envoi.'}
               </p>
             ) : null}

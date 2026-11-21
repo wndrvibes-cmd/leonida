@@ -96,11 +96,11 @@ export function ProfileScreen({ username }: ProfileScreenProps) {
           description={
             username
               ? `Aucun membre ne porte le pseudonyme « ${username} ». Il a peut-etre ete change, ou le compte a ete supprime.`
-              : 'Cette adresse ne designe aucun membre.'
+              : 'Cette adresse ne désigné aucun membre.'
           }
           action={
             <Button as="link" to="/communaute" variant="secondary" iconLeft={<Icon name="community" size={18} />}>
-              Voir la communaute
+              Voir la communauté
             </Button>
           }
         />
@@ -114,7 +114,7 @@ export function ProfileScreen({ username }: ProfileScreenProps) {
   const items: TabItem[] = [
     { value: 'publications', label: 'Publications', icon: <Icon name="community" size={16} /> },
     { value: 'moments', label: 'Moments', icon: <Icon name="moments" size={16} /> },
-    { value: 'decouvertes', label: 'Decouvertes validees', icon: <Icon name="compass" size={16} /> },
+    { value: 'decouvertes', label: 'Découvertes validées', icon: <Icon name="compass" size={16} /> },
   ]
 
   return (
@@ -147,7 +147,7 @@ export function ProfileScreen({ username }: ProfileScreenProps) {
         <p className={s.privacy}>
           <Icon name="lock" size={15} />
           <span>
-            Vos favoris n'apparaissent pas sur votre profil : ils restent prives.{' '}
+            Vos favoris n'apparaissent pas sur votre profil : ils restent privés.{' '}
             <Link to="/favoris" className={s.privacyLink}>
               Voir mes favoris
             </Link>

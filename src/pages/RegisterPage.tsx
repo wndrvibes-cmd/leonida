@@ -45,7 +45,7 @@ export default function RegisterPage() {
       const free = await isUsernameAvailable(username)
       if (token !== checkToken.current) return
       setCheckingName(false)
-      setFields((f) => ({ ...f, username: free ? undefined : 'Ce pseudo est deja pris.' }))
+      setFields((f) => ({ ...f, username: free ? undefined : 'Ce pseudo est déjà pris.' }))
     }, 450)
 
     return () => {
@@ -67,7 +67,7 @@ export default function RegisterPage() {
     if (next.username || next.email || next.password) return
 
     if (!(await isUsernameAvailable(username))) {
-      setFields((f) => ({ ...f, username: 'Ce pseudo est deja pris.' }))
+      setFields((f) => ({ ...f, username: 'Ce pseudo est déjà pris.' }))
       return
     }
 
@@ -89,12 +89,12 @@ export default function RegisterPage() {
     return (
       <>
         <header className={s.head}>
-          <h1 className={s.title}>Verifiez vos e-mails</h1>
+          <h1 className={s.title}>Vérifiez vos e-mails</h1>
         </header>
         <p className={s.notice}>
           <Icon name="check" size={18} />
           <span>
-            Un lien de confirmation vient d'etre envoye a <strong>{emailSent}</strong>.
+            Un lien de confirmation vient d'être envoyé a <strong>{emailSent}</strong>.
             Ouvrez-le pour activer votre compte, puis revenez vous connecter.
             Pensez a regarder dans vos indesirables.
           </span>
@@ -113,7 +113,7 @@ export default function RegisterPage() {
       <header className={s.head}>
         <h1 className={s.title}>Rejoindre LEONIDA</h1>
         <p className={s.subtitle}>
-          Partagez vos decouvertes et explorez Leonida avec la communaute.
+          Partagez vos découvertes et explorez Leonida avec la communauté.
         </p>
       </header>
 
@@ -140,11 +140,11 @@ export default function RegisterPage() {
           />
           {checkingName ? (
             <span className={s.checking}>
-              <Spinner size="sm" /> Verification de la disponibilite…
+              <Spinner size="sm" /> Vérification de la disponibilité…
             </span>
           ) : (
             <p className={s.rules}>
-              3 a 24 caracteres : lettres, chiffres et underscores uniquement.
+              3 a 24 caractères : lettres, chiffres et underscores uniquement.
             </p>
           )}
         </div>
@@ -208,7 +208,7 @@ export default function RegisterPage() {
       </form>
 
       <p className={s.foot}>
-        Vous avez deja un compte ?
+        Vous avez déjà un compte ?
         <Link to="/connexion" className={s.inlineLink}>
           Se connecter
         </Link>

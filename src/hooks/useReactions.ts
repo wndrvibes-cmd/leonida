@@ -52,7 +52,7 @@ export function useMyReactions(
 /**
  * Pose, remplace ou retire la reaction du membre, avec mise a jour optimiste :
  * sur un reseau mobile lent, la pastille doit repondre immediatement. En cas
- * d'echec, l'etat precedent est restaure et l'erreur remonte a l'appelant.
+ * d'échec, l'etat precedent est restaure et l'erreur remonte a l'appelant.
  */
 export function useToggleReaction(targetType: TargetType, targetId: string) {
   const queryClient = useQueryClient()
@@ -61,7 +61,7 @@ export function useToggleReaction(targetType: TargetType, targetId: string) {
 
   return useMutation<void, Error, ReactionType, { previous?: ReactionSummary }>({
     mutationFn: async (reaction) => {
-      if (!user) throw new Error('Vous devez etre connecte pour reagir.')
+      if (!user) throw new Error('Vous devez être connecte pour réagir.')
       const current = queryClient.getQueryData<ReactionSummary>(key)?.mine ?? null
       if (current === reaction) await removeReaction(user.id, targetType, targetId)
       else await setReaction(user.id, targetType, targetId, reaction)

@@ -134,7 +134,7 @@ export function PostForm({
         label="Titre (facultatif)"
         value={value.title}
         maxLength={TITLE_MAX}
-        placeholder="Une phrase qui resume votre publication"
+        placeholder="Une phrase qui résumé votre publication"
         onChange={(event) => patch({ title: event.target.value })}
         disabled={submitting}
         enterKeyHint="next"
@@ -146,7 +146,7 @@ export function PostForm({
         rows={6}
         maxLength={BODY_MAX}
         showCount
-        placeholder="Partagez votre decouverte, votre astuce ou votre question."
+        placeholder="Partagez votre découverte, votre astuce ou votre question."
         onChange={(event) => patch({ body: event.target.value })}
         error={touched ? contentError : null}
         disabled={submitting}
@@ -157,8 +157,8 @@ export function PostForm({
         <Input
           label={`Tags (${value.tags.length} / ${TAGS_MAX})`}
           value={tagDraft}
-          placeholder={tagsFull ? 'Limite atteinte' : 'vehicule, leonida-keys...'}
-          hint="Entree pour valider. 2 caracteres minimum, minuscules sans accent ni espace."
+          placeholder={tagsFull ? 'Limite atteinte' : 'véhicule, leonida-keys...'}
+          hint="Entrée pour valider. 2 caractères minimum, minuscules sans accent ni espace."
           onChange={(event) => setTagDraft(event.target.value)}
           onKeyDown={onTagKeyDown}
           disabled={submitting || tagsFull}
@@ -209,7 +209,7 @@ export function PostForm({
             multiple
             maxFiles={IMAGES_MAX}
             label={`Images (jusqu'a ${IMAGES_MAX}, facultatif)`}
-            hint="Les images partent immediatement : elles sont conservees si l'envoi de la publication echoue."
+            hint="Les images partent immédiatement : elles sont conservées si l'envoi de la publication échoué."
             existing={value.images}
             onUploaded={(images) => patch({ images })}
             disabled={submitting}
@@ -218,7 +218,7 @@ export function PostForm({
           <div className={s.block}>
             <Input
               type="url"
-              label="Lien video (facultatif)"
+              label="Lien vidéo (facultatif)"
               value={value.videoUrl}
               placeholder="https://www.youtube.com/watch?v=..."
               hint={VIDEO_LINK_HINT}
@@ -259,7 +259,7 @@ export function PostForm({
       ) : (
         <p className={s.note} role="note">
           <Icon name="info" size={16} />
-          Les images et le lien video d'une publication deja envoyee ne sont pas
+          Les images et le lien vidéo d'une publication déjà envoyée ne sont pas
           modifiables ici.
         </p>
       )}

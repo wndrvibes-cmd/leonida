@@ -11,7 +11,7 @@ export interface AiSectionProps {
 /**
  * LEONIDA AI.
  *
- * L'assistant est desactive tant qu'aucun fournisseur n'est configure cote
+ * L'assistant est désactivé tant qu'aucun fournisseur n'est configure cote
  * serveur (`ai.config.enabled`). Dans ce cas le bouton est DESACTIVE et la
  * raison est affichee : pas de faux parcours, pas de conversation simulee.
  */
@@ -49,8 +49,8 @@ export function AiSection({ title }: AiSectionProps) {
           heading={enabled ? 'Posez vos questions a LEONIDA AI' : 'LEONIDA AI n\'est pas encore ouvert'}
           description={
             enabled
-              ? 'L\'assistant repond sur les actualites, la carte et les decouvertes de la communaute.'
-              : 'L\'assistant sera disponible des qu\'un fournisseur sera configure cote serveur. En attendant, rien n\'est simule : aucune reponse ne peut etre generee.'
+              ? 'L\'assistant répond sur les actualités, la carte et les découvertes de la communauté.'
+              : 'L\'assistant sera disponible des qu\'un fournisseur sera configure cote serveur. En attendant, rien n\'est simule : aucune réponse ne peut être générée.'
           }
           bullets={bullets}
           note={config?.note ?? null}

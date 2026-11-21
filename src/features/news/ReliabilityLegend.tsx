@@ -17,7 +17,7 @@ export function ReliabilityLegend() {
     <details className={s.wrap}>
       <summary className={s.summary}>
         <Icon name="info" size={16} />
-        <span>Comment lire les niveaux de fiabilite</span>
+        <span>Comment lire les niveaux de fiabilité</span>
         <Icon name="chevron-down" size={16} className={s.chevron} />
       </summary>
 

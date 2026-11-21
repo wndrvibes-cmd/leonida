@@ -26,14 +26,14 @@ export default function ForgotPasswordPage() {
     return (
       <>
         <header className={s.head}>
-          <h1 className={s.title}>Lien envoye</h1>
+          <h1 className={s.title}>Lien envoyé</h1>
         </header>
         <p className={s.notice}>
           <Icon name="check" size={18} />
           <span>
             Si un compte LEONIDA est associe a <strong>{email.trim()}</strong>, un lien de
-            reinitialisation vient d'y etre envoye. Il est valable un court moment.
-            Pensez a verifier vos indesirables.
+            reinitialisation vient d'y être envoyé. Il est valable un court moment.
+            Pensez a vérifier vos indesirables.
           </span>
         </p>
         <p className={s.foot}>

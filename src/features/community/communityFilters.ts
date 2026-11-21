@@ -21,9 +21,9 @@ export type CommunityTab = 'recentes' | 'populaires' | 'decouvertes'
 export const COMMUNITY_TABS: readonly CommunityTab[] = ['recentes', 'populaires', 'decouvertes']
 
 export const TAB_LABELS: Record<CommunityTab, string> = {
-  recentes: 'Recentes',
+  recentes: 'Récentes',
   populaires: 'Populaires',
-  decouvertes: 'Decouvertes',
+  decouvertes: 'Découvertes',
 }
 
 /**
@@ -32,9 +32,9 @@ export const TAB_LABELS: Record<CommunityTab, string> = {
  * declencheur), pas par une audience estimee.
  */
 export const TAB_HINTS: Record<CommunityTab, string> = {
-  recentes: 'Les publications les plus recentes en premier.',
-  populaires: 'Classement par nombre de reactions recues.',
-  decouvertes: 'Uniquement les publications de type Decouverte.',
+  recentes: 'Les publications les plus récentes en premier.',
+  populaires: 'Classement par nombre de réactions recues.',
+  decouvertes: 'Uniquement les publications de type Découverte.',
 }
 
 export interface CommunityFilters {
@@ -103,7 +103,7 @@ export function sortForTab(tab: CommunityTab): PostSort {
 }
 
 /**
- * L'onglet « Decouvertes » impose `post_type = 'discovery'` : le filtre de
+ * L'onglet « Découvertes » impose `post_type = 'discovery'` : le filtre de
  * type est alors neutralise cote interface, avec son explication visible.
  */
 export function typeForTab(tab: CommunityTab, type: PostType | ''): PostType | undefined {

@@ -60,8 +60,8 @@ export function useContributeFlow(): ContributeFlow {
 
   const mutation = useMutation({
     mutationFn: async (values: ContributionValues) => {
-      if (!user) throw new Error('Connectez-vous pour proposer une decouverte.')
-      if (!point) throw new Error('Placez le repere sur la carte avant d\'envoyer.')
+      if (!user) throw new Error('Connectez-vous pour proposer une découverte.')
+      if (!point) throw new Error('Placez le repère sur la carte avant d\'envoyer.')
 
       if (editing) {
         return updateMyContribution(editing.id, {
@@ -94,7 +94,7 @@ export function useContributeFlow(): ContributeFlow {
       void queryClient.invalidateQueries({ queryKey: qk.myMarkers })
       void queryClient.invalidateQueries({ queryKey: qk.mapMarker(marker.id) })
       toast.success(
-        editing ? 'Correction enregistree' : 'Decouverte envoyee',
+        editing ? 'Correction enregistrée' : 'Découverte envoyée',
         'Elle passe en file de validation avant toute publication.',
       )
       setStep('sent')

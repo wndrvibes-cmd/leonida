@@ -24,7 +24,7 @@ export interface CommunityToolbarProps {
  * Barre de filtres du fil communautaire.
  *
  * Chaque controle est branche sur une vraie requete : aucun filtre decoratif.
- * L'etat complet remonte a la page, qui l'ecrit dans l'URL.
+ * L'état complet remonte a la page, qui l'ecrit dans l'URL.
  */
 export function CommunityToolbar({
   filters,
@@ -84,7 +84,7 @@ export function CommunityToolbar({
           placeholder="Tous les types"
           options={POST_TYPE_OPTIONS}
           disabled={typeLocked}
-          hint={typeLocked ? "Impose par l'onglet Decouvertes." : undefined}
+          hint={typeLocked ? "Impose par l'onglet Découvertes." : undefined}
           onChange={(event) => onChange({ ...filters, type: asPostType(event.target.value) })}
           fieldClassName={s.select}
         />
@@ -95,7 +95,7 @@ export function CommunityToolbar({
       {visibleTags.length > 0 ? (
         <div className={s.tagsBlock}>
           <span className={s.legend} id="community-tags-legend">
-            Tags des publications chargees
+            Tags des publications chargées
           </span>
 
           <div className="scroll-x">

@@ -74,7 +74,7 @@ export function useMarkAllNotificationsRead() {
 
   return useMutation({
     mutationFn: () => {
-      if (!user) throw new Error('Session expiree.')
+      if (!user) throw new Error('Session expirée.')
       return markAllRead(user.id)
     },
     onSuccess: invalidate,
@@ -95,7 +95,7 @@ export function useDeleteReadNotifications() {
 
   return useMutation({
     mutationFn: () => {
-      if (!user) throw new Error('Session expiree.')
+      if (!user) throw new Error('Session expirée.')
       return deleteReadNotifications(user.id)
     },
     onSuccess: invalidate,

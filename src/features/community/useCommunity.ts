@@ -26,7 +26,7 @@ export const COMMUNITY_PAGE_SIZE = 12
  * Fil pagine par curseur.
  *
  * La cle de cache porte les filtres REELLEMENT envoyes a la base (type impose
- * par l'onglet compris) : deux etats d'interface qui produisent la meme
+ * par l'onglet compris) : deux états d'interface qui produisent la meme
  * requete partagent donc la meme entree de cache.
  */
 export function useCommunityFeed(filters: CommunityFilters) {
@@ -86,7 +86,7 @@ export interface CreatedCommunityPost {
   post: Post
   /**
    * Non nul quand la publication est bien creee mais que le rattachement des
-   * medias a echoue. Ce n'est PAS un echec complet : l'interface doit le dire
+   * medias a echoue. Ce n'est PAS un échec complet : l'interface doit le dire
    * tel quel plutot que de proposer un nouvel envoi qui ferait un doublon.
    */
   mediaError: unknown
@@ -106,7 +106,7 @@ export function useCreateCommunityPost() {
 
   return useMutation<CreatedCommunityPost, Error, NewCommunityPost>({
     mutationFn: async (input) => {
-      if (!user) throw new Error('Vous devez etre connecte pour publier.')
+      if (!user) throw new Error('Vous devez être connecte pour publier.')
 
       const post = await createPost({
         authorId: user.id,
@@ -204,7 +204,7 @@ export function usePostQuickReaction() {
 
   return useMutation<ReactionType | null, Error, QuickReactionInput>({
     mutationFn: ({ postId, reaction, current }) => {
-      if (!user) throw new Error('Vous devez etre connecte pour reagir.')
+      if (!user) throw new Error('Vous devez être connecte pour réagir.')
       return toggleReaction(user.id, 'post', postId, reaction, current)
     },
     onSuccess: (_result, variables) => {

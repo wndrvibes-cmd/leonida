@@ -9,8 +9,8 @@ export interface NavItem {
 /** Navigation principale, partagee par le bureau et la barre d'onglets. */
 export const PRIMARY_NAV: NavItem[] = [
   { to: '/',            label: 'Accueil',    icon: 'home' },
-  { to: '/actualites',  label: 'Actualites', icon: 'news' },
-  { to: '/communaute',  label: 'Communaute', icon: 'community' },
+  { to: '/actualites',  label: 'Actualités', icon: 'news' },
+  { to: '/communaute',  label: 'Communauté', icon: 'community' },
   { to: '/moments',     label: 'Moments',    icon: 'moments' },
   { to: '/carte',       label: 'Carte',      icon: 'map' },
   { to: '/cadeaux',     label: 'Cadeaux',    icon: 'gift' },

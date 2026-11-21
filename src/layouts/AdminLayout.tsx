@@ -20,15 +20,15 @@ interface AdminSection {
  */
 export const ADMIN_SECTIONS: AdminSection[] = [
   { to: '/admin',               label: 'Tableau de bord', end: true },
-  { to: '/admin/actualites',    label: 'Actualites' },
-  { to: '/admin/communaute',    label: 'Communaute' },
+  { to: '/admin/actualites',    label: 'Actualités' },
+  { to: '/admin/communaute',    label: 'Communauté' },
   { to: '/admin/carte',         label: 'Carte' },
   { to: '/admin/cadeaux',       label: 'Cadeaux' },
   { to: '/admin/radar',         label: 'Radar' },
   { to: '/admin/signalements',  label: 'Signalements' },
   { to: '/admin/membres',       label: 'Membres' },
-  { to: '/admin/medias',        label: 'Medias' },
-  { to: '/admin/reglages',      label: 'Reglages' },
+  { to: '/admin/medias',        label: 'Médias' },
+  { to: '/admin/reglages',      label: 'Réglages' },
 ]
 
 /** Section courante : le chemin connu le plus long qui prefixe l'URL. */

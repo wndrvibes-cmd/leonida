@@ -26,7 +26,7 @@ export function MapSection({ title }: MapSectionProps) {
     <SectionShell
       icon="map"
       title={title}
-      subtitle="Reperez les decouvertes de la communaute sur le plan de Leonida."
+      subtitle="Reperez les découvertes de la communauté sur le plan de Leonida."
       to="/carte"
       linkLabel="Ouvrir la carte"
     >
@@ -47,8 +47,8 @@ export function MapSection({ title }: MapSectionProps) {
           }
           description={
             hasImage
-              ? 'Filtrez par categorie, ouvrez une decouverte, proposez la votre : chaque contribution passe par la validation de l\'equipe.'
-              : 'Aucune image de carte n\'a encore ete televersee. L\'ecran de la carte reste accessible, mais il ne peut pas encore afficher de plan.'
+              ? 'Filtrez par catégorie, ouvrez une découverte, proposez la votre : chaque contribution passe par la validation de l\'équipe.'
+              : 'Aucune image de carte n\'a encore été téléversée. L\'écran de la carte reste accessible, mais il ne peut pas encore afficher de plan.'
           }
           note={config.data?.disclaimer ?? null}
           action={

@@ -17,7 +17,7 @@ export interface MomentCardProps {
  * repli avec une icone de lecture, plutot qu'une image choisie au hasard.
  *
  * Les compteurs restent HORS du lien (et ne captent pas le clic) pour qu'un
- * lecteur d'ecran les annonce au lieu de les voir absorbes par l'etiquette
+ * lecteur d'écran les annonce au lieu de les voir absorbes par l'etiquette
  * du lien.
  */
 export function MomentCard({ moment }: MomentCardProps) {
@@ -45,7 +45,7 @@ export function MomentCard({ moment }: MomentCardProps) {
         <p className={s.overlay}>
           <span className={s.count}>
             <Icon name="fire" size={14} />
-            <span className="sr-only">Reactions :</span>
+            <span className="sr-only">Réactions :</span>
             {formatCount(moment.reaction_count)}
           </span>
           <span className={s.count}>

@@ -31,7 +31,7 @@ function usernameError(value: string): string | undefined {
     return `Le pseudonyme ne peut pas depasser ${USERNAME_MAX} caracteres.`
   }
   if (!USERNAME_PATTERN.test(trimmed)) {
-    return 'Seules les lettres, les chiffres et le caractere _ sont acceptes.'
+    return 'Seules les lettres, les chiffres et le caractère _ sont acceptés.'
   }
   return undefined
 }
@@ -175,7 +175,7 @@ export function ProfileSettings() {
                 Retirer l'avatar
               </Button>
             ) : (
-              <p className={s.hint}>Aucun avatar : vos initiales sont affichees.</p>
+              <p className={s.hint}>Aucun avatar : vos initiales sont affichées.</p>
             )}
           </div>
 
@@ -183,7 +183,7 @@ export function ProfileSettings() {
             bucket="avatars"
             userId={user?.id}
             label="Nouvel avatar"
-            hint="L'image part immediatement ; elle ne remplace votre avatar qu'apres enregistrement."
+            hint="L'image part immédiatement ; elle ne remplace votre avatar qu'après enregistrement."
             disabled={isSuspended}
             onUploaded={(images) => handleUploaded(images, setAvatarPath)}
             className={s.uploader}
@@ -192,13 +192,13 @@ export function ProfileSettings() {
       </SettingsSection>
 
       <SettingsSection
-        title="Banniere"
+        title="Bannière"
         icon="image"
         description="Bandeau affiche en haut de votre profil public."
         footnote={
           isStaff
             ? 'JPEG, PNG, WebP ou AVIF, 12 Mo maximum.'
-            : "Le depot dans le bucket « banners » est reserve a l'equipe LEONIDA (politique de stockage de la migration 0006). Vous pouvez en revanche retirer la banniere affichee sur votre profil."
+            : "Le depot dans le bucket « banners » est réservé a l'équipe LEONIDA (politique de stockage de la migration 0006). Vous pouvez en revanche retirer la bannière affichée sur votre profil."
         }
       >
         <div className={s.media}>
@@ -207,7 +207,7 @@ export function ProfileSettings() {
               <img className={s.bannerImage} src={bannerUrl} alt="Banniere actuelle" />
             ) : (
               <span className={s.bannerEmpty}>
-                Aucune banniere : un degrade Leonida est affiche a la place.
+                Aucune bannière : un degrade Leonida est affiche a la place.
               </span>
             )}
           </div>
@@ -220,7 +220,7 @@ export function ProfileSettings() {
                 onClick={() => setBannerPath(null)}
                 iconLeft={<Icon name="close" size={16} />}
               >
-                Retirer la banniere
+                Retirer la bannière
               </Button>
             ) : null}
 
@@ -228,7 +228,7 @@ export function ProfileSettings() {
               <ImageUploader
                 bucket="banners"
                 userId={user?.id}
-                label="Nouvelle banniere"
+                label="Nouvelle bannière"
                 hint="Format panoramique conseille (environ 4:1)."
                 onUploaded={(images) => handleUploaded(images, setBannerPath)}
                 className={s.uploader}
@@ -239,10 +239,10 @@ export function ProfileSettings() {
       </SettingsSection>
 
       <SettingsSection
-        title="Identite"
+        title="Identité"
         icon="user"
         description="Ces informations apparaissent sur votre profil public."
-        footnote="Votre adresse e-mail n'est jamais affichee publiquement."
+        footnote="Votre adresse e-mail n'est jamais affichée publiquement."
       >
         <Input
           label="Pseudonyme"
@@ -253,7 +253,7 @@ export function ProfileSettings() {
           autoComplete="username"
           spellCheck={false}
           hint={`De ${USERNAME_MIN} a ${USERNAME_MAX} caracteres : lettres, chiffres et _ uniquement. Il apparait dans l'adresse de votre profil.`}
-          error={nameError ?? (taken ? 'Ce pseudonyme est deja pris. Choisissez-en un autre.' : null)}
+          error={nameError ?? (taken ? 'Ce pseudonyme est déjà pris. Choisissez-en un autre.' : null)}
           addonRight={
             changedUsername && !localError ? (
               <span className={s.availability}>
@@ -309,7 +309,7 @@ export function ProfileSettings() {
         {isSuspended ? (
           <p className={s.note}>
             Votre compte est suspendu : la modification du profil est bloquee par la
-            moderation.
+            modération.
           </p>
         ) : null}
       </div>

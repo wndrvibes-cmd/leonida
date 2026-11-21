@@ -193,7 +193,7 @@ export async function updatePost(id: string, patch: UpdatePostInput): Promise<Po
       .select('*')
       .maybeSingle(),
   )
-  if (!row) throw new Error('Publication introuvable ou modification refusee.')
+  if (!row) throw new Error('Publication introuvable ou modification refusée.')
   return row
 }
 

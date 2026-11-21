@@ -1,7 +1,7 @@
 import s from './RouteFallback.module.css'
 
 interface RouteFallbackProps {
-  /** Texte annonce aux lecteurs d'ecran pendant l'attente. */
+  /** Texte annonce aux lecteurs d'écran pendant l'attente. */
   label?: string
   /** `page` occupe toute la hauteur utile, `inline` se contente de sa place. */
   tone?: 'page' | 'inline'

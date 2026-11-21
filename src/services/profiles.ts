@@ -33,14 +33,14 @@ export async function getProfileByUsername(username: string): Promise<Profile | 
 
 /**
  * Mise a jour du profil. La RLS n'autorise que son propre profil (ou le staff) :
- * on passe l'identifiant explicitement plutot que de deviner l'appelant.
+ * on passe l'identifiant explicitement plutôt que de deviner l'appelant.
  */
 export async function updateProfile(id: string, patch: ProfileEditable): Promise<Profile> {
   const row = unwrapMaybe(
     await supabase.from('profiles').update(patch).eq('id', id).select('*').maybeSingle(),
   )
   if (!row) {
-    throw new Error("Le profil n'a pas pu etre mis a jour : droits insuffisants ou profil absent.")
+    throw new Error("Le profil n'a pas pu être mis a jour : droits insuffisants ou profil absent.")
   }
   return row
 }
@@ -115,7 +115,7 @@ export async function getProfileStats(
 
 /**
  * `true` si le pseudonyme est libre. Indicatif seulement : la contrainte
- * d'unicite de la base reste l'arbitre final au moment de l'enregistrement.
+ * d'unicité de la base reste l'arbitre final au moment de l'enregistrement.
  */
 export async function isUsernameAvailable(username: string, exceptUserId?: string): Promise<boolean> {
   let query = supabase.from('profiles').select('id', { count: 'exact', head: true }).eq('username', username)

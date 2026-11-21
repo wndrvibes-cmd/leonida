@@ -9,7 +9,7 @@ export default function ContestPage() {
   return (
     <PagePlaceholder
       title="Cadeau"
-      description="Le detail d'un concours ou d'un cadeau : conditions de participation, dates et source."
+      description="Le détail d'un concours ou d'un cadeau : conditions de participation, dates et source."
     />
   )
 }

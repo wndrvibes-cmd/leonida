@@ -37,7 +37,7 @@ export function DeletePostDialog({ post, onCancel, onDeleted }: DeletePostDialog
       onConfirm={() =>
         remove.mutate(undefined, {
           onSuccess: () => {
-            toast.success('Publication supprimee')
+            toast.success('Publication supprimée')
             onDeleted?.()
           },
           onError: (error) => toast.error('Suppression impossible', readableError(error)),

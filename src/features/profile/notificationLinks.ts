@@ -17,7 +17,7 @@ type TargetType = Database['public']['Enums']['target_type']
  * Les actualites et les concours s'ouvrent par SLUG, alors que la
  * notification ne transporte qu'un identifiant : leurs slugs sont resolus en
  * une requete groupee par page (`useNotificationSlugs`). Sans slug, aucun lien
- * n'est propose — plutot que d'offrir un lien qui tomberait sur une page 404.
+ * n'est propose — plutôt que d'offrir un lien qui tomberait sur une page 404.
  */
 
 /** Slugs resolus, indexes par identifiant de contenu. */

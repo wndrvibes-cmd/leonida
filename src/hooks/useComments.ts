@@ -42,7 +42,7 @@ export function useCreateComment(targetType: TargetType, targetId: string) {
 
   return useMutation({
     mutationFn: (input: { body: string; parentId?: string | null }) => {
-      if (!user) throw new Error('Vous devez etre connecte pour commenter.')
+      if (!user) throw new Error('Vous devez être connecte pour commenter.')
       return createComment({
         authorId: user.id,
         targetType,

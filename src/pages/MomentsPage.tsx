@@ -9,7 +9,7 @@ export default function MomentsPage() {
   return (
     <PagePlaceholder
       title="Moments"
-      description="Les captures et courtes videos partagees par la communaute, dans un format vertical."
+      description="Les captures et courtes vidéos partagées par la communauté, dans un format vertical."
     />
   )
 }

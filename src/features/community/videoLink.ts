@@ -7,7 +7,7 @@
  * accessible sans passer par l'API Helix (jeton serveur) : on affiche donc une
  * carte de lecture annoncee comme un lien sortant, jamais une fausse image.
  *
- * Aucune iframe n'est integree : on n'embarque pas un domaine tiers dans la
+ * Aucune iframe n'est intégrée : on n'embarque pas un domaine tiers dans la
  * page, on annonce ou mene le lien et le membre decide.
  */
 
@@ -26,10 +26,10 @@ export interface VideoLink {
 }
 
 export const VIDEO_LINK_HINT =
-  'Lien YouTube ou Twitch (video, short, clip, rediffusion ou chaine). Le lien reste externe : rien n\'est integre dans la page.'
+  'Lien YouTube ou Twitch (vidéo, short, clip, rediffusion ou chaine). Le lien reste externe : rien n\'est intégré dans la page.'
 
 export const VIDEO_LINK_ERROR =
-  'Lien non reconnu. Seuls les liens YouTube et Twitch sont acceptes.'
+  'Lien non reconnu. Seuls les liens YouTube et Twitch sont acceptés.'
 
 const YOUTUBE_HOSTS = new Set(['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be', 'www.youtu.be'])
 const TWITCH_HOSTS = new Set(['twitch.tv', 'www.twitch.tv', 'm.twitch.tv', 'clips.twitch.tv'])
@@ -121,7 +121,7 @@ export function parseVideoLink(raw: string): VideoLink | null {
       canonicalUrl: `https://www.youtube.com/watch?v=${id}`,
       // Vignette publique officielle, deduite de l'identifiant de la video.
       thumbnailUrl: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
-      label: 'Video YouTube',
+      label: 'Vidéo YouTube',
     }
   }
 

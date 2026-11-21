@@ -16,7 +16,7 @@ type LinkState = 'checking' | 'valid' | 'invalid'
  *
  * Supabase place un jeton de recuperation dans l'URL ; le client est configure
  * avec `detectSessionInUrl: true` et ouvre donc une session temporaire. Si
- * aucune session n'apparait, c'est que le lien est expire ou deja utilise :
+ * aucune session n'apparaît, c'est que le lien est expire ou deja utilise :
  * on le dit, on ne propose pas un formulaire qui echouerait.
  */
 export default function ResetPasswordPage() {
@@ -35,7 +35,7 @@ export default function ResetPasswordPage() {
   useEffect(() => {
     let active = true
 
-    // L'evenement PASSWORD_RECOVERY arrive quand le jeton de l'URL est accepte.
+    // L'événement PASSWORD_RECOVERY arrive quand le jeton de l'URL est accepte.
     const { data: sub } = supabase.auth.onAuthStateChange((event, session) => {
       if (!active) return
       if (event === 'PASSWORD_RECOVERY' || session) setLinkState('valid')
@@ -81,7 +81,7 @@ export default function ResetPasswordPage() {
   if (linkState === 'checking') {
     return (
       <div className={s.checking}>
-        <Spinner size="md" /> Verification du lien…
+        <Spinner size="md" /> Vérification du lien…
       </div>
     )
   }
@@ -95,7 +95,7 @@ export default function ResetPasswordPage() {
         <p className={s.alert} role="alert">
           <Icon name="alert" size={18} />
           <span>
-            Ce lien de reinitialisation est expire ou a deja ete utilise.
+            Ce lien de reinitialisation est expiré ou a déjà été utilise.
             Demandez-en un nouveau.
           </span>
         </p>
@@ -116,7 +116,7 @@ export default function ResetPasswordPage() {
         </header>
         <p className={s.notice}>
           <Icon name="check" size={18} />
-          <span>Vous allez etre redirige vers la connexion…</span>
+          <span>Vous allez être redirige vers la connexion…</span>
         </p>
       </>
     )

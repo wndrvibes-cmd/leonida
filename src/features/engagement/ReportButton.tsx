@@ -67,7 +67,7 @@ export function ReportButton({
     mutationFn: () => {
       // Memes garde-fous que `useCreateComment` : on ne force aucun type, on
       // refuse l'appel. La RLS reste de toute facon la seule vraie barriere.
-      if (!user) throw new Error('Vous devez etre connecte pour signaler un contenu.')
+      if (!user) throw new Error('Vous devez être connecte pour signaler un contenu.')
       if (!reason) throw new Error('Choisissez un motif de signalement.')
 
       return createReport({
@@ -82,13 +82,13 @@ export function ReportButton({
       // Le contenu est desormais signale : si le membre rouvre le dialogue, il
       // doit le voir tout de suite plutot que de buter sur la contrainte unique.
       queryClient.setQueryData(reportedKey, true)
-      toast.success('Signalement envoye', "L'equipe de moderation va l'examiner.")
+      toast.success('Signalement envoyé', "L'équipe de modération va l'examiner.")
       close()
     },
     onError: (mutationError) => {
       if (isDuplicate(mutationError)) {
         queryClient.setQueryData(reportedKey, true)
-        setFormError('Vous avez deja signale ce contenu.')
+        setFormError('Vous avez déjà signale ce contenu.')
         return
       }
       setFormError(readableError(mutationError))
@@ -104,7 +104,7 @@ export function ReportButton({
 
   function handleTrigger() {
     if (!user) {
-      promptLogin('Connectez-vous pour signaler', 'Le signalement est reserve aux membres.')
+      promptLogin('Connectez-vous pour signaler', 'Le signalement est réservé aux membres.')
       return
     }
     if (isSuspended) {
@@ -139,7 +139,7 @@ export function ReportButton({
         open={open}
         onClose={close}
         title="Signaler ce contenu"
-        description="Votre signalement est transmis a l'equipe de moderation. Il reste confidentiel."
+        description="Votre signalement est transmis a l'équipe de modération. Il reste confidentiel."
         size="sm"
         disableBackdropClose={submit.isPending}
         footer={
@@ -168,14 +168,14 @@ export function ReportButton({
       >
         {already.isLoading ? (
           <div className={s.center}>
-            <Spinner label="Verification en cours" />
+            <Spinner label="Vérification en cours" />
           </div>
         ) : alreadyReported ? (
           <p className={s.note} role="status">
             <Icon name="check" size={18} className={s.noteIcon} />
             <span>
-              Vous avez deja signale ce contenu. Un seul signalement par membre est
-              enregistre ; l'equipe de moderation l'a bien recu.
+              Vous avez déjà signale ce contenu. Un seul signalement par membre est
+              enregistre ; l'équipe de modération l'a bien recu.
             </span>
           </p>
         ) : (
@@ -206,8 +206,8 @@ export function ReportButton({
             />
 
             <Textarea
-              label="Details (facultatif)"
-              hint="Precisez ce qui pose probleme. Cela aide la moderation a decider."
+              label="Détails (facultatif)"
+              hint="Precisez ce qui pose problème. Cela aide la modération a decider."
               value={details}
               onChange={(event) => setDetails(event.target.value)}
               maxLength={REPORT_DETAILS_MAX}

@@ -114,7 +114,7 @@ function assertCoordinate(value: number, axis: 'x' | 'y'): void {
  */
 export async function createContribution(input: CreateContributionInput): Promise<MarkerRow> {
   const title = input.title.trim()
-  if (title.length < 3) throw new Error('Le titre doit contenir au moins 3 caracteres.')
+  if (title.length < 3) throw new Error('Le titre doit contenir au moins 3 caractères.')
   assertCoordinate(input.x, 'x')
   assertCoordinate(input.y, 'y')
 
@@ -186,7 +186,7 @@ export async function updateMyContribution(
 
   if (!row) {
     throw new Error(
-      'Contribution introuvable ou non modifiable : une decouverte validee ne peut plus etre corrigee.',
+      'Contribution introuvable ou non modifiable : une découverte validée ne peut plus être corrigee.',
     )
   }
   return row
@@ -222,7 +222,7 @@ export async function reviewMarker(
   reason?: string | null,
 ): Promise<MarkerRow> {
   if (status === 'rejected' && !reason?.trim()) {
-    throw new Error('Un refus doit etre motive : le motif est envoye a l\'auteur.')
+    throw new Error('Un refus doit être motive : le motif est envoyé a l\'auteur.')
   }
 
   const row = unwrapMaybe(
@@ -236,7 +236,7 @@ export async function reviewMarker(
       .select('*')
       .maybeSingle(),
   )
-  if (!row) throw new Error('Decouverte introuvable ou droits insuffisants.')
+  if (!row) throw new Error('Découverte introuvable ou droits insuffisants.')
   return row
 }
 
@@ -257,11 +257,11 @@ export async function setMarkerVerification(
       .select('*')
       .maybeSingle(),
   )
-  if (!row) throw new Error('Decouverte introuvable ou droits insuffisants.')
+  if (!row) throw new Error('Découverte introuvable ou droits insuffisants.')
   return row
 }
 
-/** File d'attente de moderation, avec l'auteur de chaque contribution. */
+/** File d'attente de modération, avec l'auteur de chaque contribution. */
 export async function listPendingMarkers(limit = 100): Promise<MarkerListItem[]> {
   const rows = unwrap(
     await supabase

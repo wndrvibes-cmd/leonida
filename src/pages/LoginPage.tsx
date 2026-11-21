@@ -46,13 +46,13 @@ export default function LoginPage() {
     <>
       <header className={s.head}>
         <h1 className={s.title}>Content de vous revoir</h1>
-        <p className={s.subtitle}>Connectez-vous pour retrouver la communaute Leonida.</p>
+        <p className={s.subtitle}>Connectez-vous pour retrouver la communauté Leonida.</p>
       </header>
 
       {state?.justRegistered ? (
         <p className={s.notice}>
           <Icon name="check" size={18} />
-          <span>Votre compte est cree. Connectez-vous pour continuer.</span>
+          <span>Votre compte est créé. Connectez-vous pour continuer.</span>
         </p>
       ) : null}
 

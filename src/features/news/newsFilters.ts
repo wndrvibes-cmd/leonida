@@ -38,8 +38,8 @@ export const DEFAULT_NEWS_FILTERS: NewsFilters = {
 /** Noms des parametres d'URL, en francais comme le reste des routes. */
 const PARAM = {
   q: 'q',
-  category: 'categorie',
-  reliability: 'fiabilite',
+  category: 'catégorie',
+  reliability: 'fiabilité',
   sort: 'tri',
   tag: 'tag',
 } as const
@@ -94,6 +94,6 @@ export const RELIABILITY_OPTIONS: SelectOption[] = RELIABILITY_VALUES.map((value
  * faux.
  */
 export const SORT_OPTIONS: SelectOption[] = [
-  { value: 'recent', label: 'Plus recentes' },
+  { value: 'recent', label: 'Plus récentes' },
   { value: 'oldest', label: 'Plus anciennes' },
 ]

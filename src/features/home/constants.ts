@@ -26,9 +26,9 @@ export function isHomeSectionKey(key: string): key is HomeSectionKey {
  * invention, c'est la configuration livree avec la base.
  */
 export const DEFAULT_HOME_SECTIONS: HomeSection[] = [
-  { key: 'news',        label: 'Actualites recentes',   enabled: true, order: 10 },
-  { key: 'discoveries', label: 'Dernieres decouvertes', enabled: true, order: 20 },
-  { key: 'community',   label: 'La communaute',         enabled: true, order: 30 },
+  { key: 'news',        label: 'Actualités récentes',   enabled: true, order: 10 },
+  { key: 'discoveries', label: 'Dernières découvertes', enabled: true, order: 20 },
+  { key: 'community',   label: 'La communauté',         enabled: true, order: 30 },
   { key: 'moments',     label: 'Moments populaires',    enabled: true, order: 40 },
   { key: 'map',         label: 'Explorer la carte',     enabled: true, order: 50 },
   { key: 'contests',    label: 'Concours et cadeaux',   enabled: true, order: 60 },

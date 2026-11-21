@@ -16,12 +16,12 @@ const CELL_PX = 58
  * La grille est definie en pixels d'ecran puis ramenee en coordonnees
  * relatives : plus on zoome, plus l'image affichee est grande, donc plus les
  * cellules deviennent petites en coordonnees image — les regroupements se
- * dissolvent naturellement jusqu'a laisser apparaitre chaque epingle. C'est
+ * dissolvent naturellement jusqu'a laisser apparaitre chaque épingle. C'est
  * le principe des cartes classiques, sans dependance externe.
  *
  * @param entries  marqueurs deja filtres
- * @param width    largeur de l'image AFFICHEE, en pixels d'ecran
- * @param height   hauteur de l'image AFFICHEE, en pixels d'ecran
+ * @param width    largeur de l'image AFFICHÉE, en pixels d'ecran
+ * @param height   hauteur de l'image AFFICHÉE, en pixels d'ecran
  */
 export function clusterMarkers(
   entries: MarkerWithCategory[],

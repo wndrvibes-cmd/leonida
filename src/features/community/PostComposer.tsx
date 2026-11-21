@@ -59,8 +59,8 @@ export function PostComposer({ open, onClose }: PostComposerProps) {
     )
     if (results.some((result) => result.status === 'rejected')) {
       toast.info(
-        'Images partiellement supprimees',
-        "Certaines images envoyees n'ont pas pu etre retirees du stockage.",
+        'Images partiellement supprimées',
+        "Certaines images envoyées n'ont pas pu être retirees du stockage.",
       )
     }
   }
@@ -77,13 +77,13 @@ export function PostComposer({ open, onClose }: PostComposerProps) {
           // Honnetete : la publication EXISTE. Proposer un nouvel envoi
           // creerait un doublon, on dit donc exactement ce qui a echoue.
           toast.error(
-            'Publication envoyee sans ses medias',
+            'Publication envoyée sans ses médias',
             `Le texte est publie, mais les images ou le lien video n'ont pas pu etre rattaches (${readableError(result.mediaError)}).`,
           )
         } else {
           toast.toast({
-            title: 'Publication envoyee',
-            description: 'Elle est visible dans le fil de la communaute.',
+            title: 'Publication envoyée',
+            description: 'Elle est visible dans le fil de la communauté.',
             variant: 'success',
             action: {
               label: 'Voir',
@@ -99,7 +99,7 @@ export function PostComposer({ open, onClose }: PostComposerProps) {
   }
 
   const locked = !user
-    ? 'Connectez-vous pour publier dans la communaute.'
+    ? 'Connectez-vous pour publier dans la communauté.'
     : isSuspended
       ? 'Votre compte est suspendu : vous ne pouvez pas publier pour le moment.'
       : null
@@ -109,7 +109,7 @@ export function PostComposer({ open, onClose }: PostComposerProps) {
       open={open}
       onClose={create.isPending ? () => undefined : onClose}
       title="Nouvelle publication"
-      description="Elle apparaitra immediatement dans le fil, publiee sous votre nom."
+      description="Elle apparaîtra immédiatement dans le fil, publiée sous votre nom."
       size="md"
       disableBackdropClose={create.isPending}
     >
@@ -149,7 +149,7 @@ export function PostComposer({ open, onClose }: PostComposerProps) {
           {draft.unavailable ? (
             <p className={s.warning} role="note">
               <Icon name="alert" size={16} />
-              Ce navigateur refuse le stockage local : votre brouillon ne sera pas
+              Ce navigateur refusé le stockage local : votre brouillon ne sera pas
               conserve si vous fermez la page.
             </p>
           ) : null}

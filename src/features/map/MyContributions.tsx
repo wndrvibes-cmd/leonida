@@ -49,7 +49,7 @@ export function MyContributions({ userId, categories, onEdit, onLocate, action }
     mutationFn: (marker: MapMarker) => deleteMyContribution(marker.id),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: qk.myMarkers })
-      toast.success('Contribution supprimee')
+      toast.success('Contribution supprimée')
       setPendingDelete(null)
     },
     onError: (err) => {
@@ -62,7 +62,7 @@ export function MyContributions({ userId, categories, onEdit, onLocate, action }
     return (
       <EmptyState
         title="Vos contributions, une fois connecte"
-        description="Connectez-vous pour suivre les decouvertes que vous proposez et leur validation."
+        description="Connectez-vous pour suivre les découvertes que vous proposez et leur validation."
       />
     )
   }
@@ -84,7 +84,7 @@ export function MyContributions({ userId, categories, onEdit, onLocate, action }
     return (
       <EmptyState
         title="Aucune contribution pour l'instant"
-        description="Proposez un lieu, un vehicule ou un secret : apres relecture de l'equipe, il rejoindra la carte avec votre nom d'auteur."
+        description="Proposez un lieu, un véhicule ou un secret : après relecture de l'équipe, il rejoindra la carte avec votre nom d'auteur."
         action={action}
       />
     )
@@ -125,7 +125,7 @@ export function MyContributions({ userId, categories, onEdit, onLocate, action }
 
               {marker.status === 'pending' ? (
                 <p className={s.hint}>
-                  En attente de relecture. Elle n'apparait pas encore sur la carte publique.
+                  En attente de relecture. Elle n'apparaît pas encore sur la carte publique.
                 </p>
               ) : null}
 

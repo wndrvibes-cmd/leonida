@@ -237,7 +237,7 @@ export const MapViewport = forwardRef<MapViewportHandle, MapViewportProps>(
         onPointerDown={onPointerDown}
         onKeyDown={handleKeyDown}
         role="application"
-        aria-label="Carte de Leonida. Glissez pour deplacer, pincez ou utilisez la molette pour zoomer. Au clavier : fleches pour deplacer, plus et moins pour zoomer, zero pour la vue d'ensemble."
+        aria-label="Carte de Leonida. Glissez pour déplacer, pincez ou utilisez la molette pour zoomer. Au clavier : flèches pour déplacer, plus et moins pour zoomer, zero pour la vue d'ensemble."
         tabIndex={0}
       >
         <div ref={layerRef} className={s.layer} style={{ width: dims?.w, height: dims?.h }}>
@@ -273,7 +273,7 @@ export const MapViewport = forwardRef<MapViewportHandle, MapViewportProps>(
           <div className={`${s.sheet} ${s.sheetError}`} data-map-ui>
             <ErrorState
               title="Carte indisponible"
-              description="L'image de la carte n'a pas pu etre chargee. Verifiez votre connexion, puis reessayez."
+              description="L'image de la carte n'a pas pu être chargée. Vérifiez votre connexion, puis reessayez."
               retryLabel="Recharger l'image"
               onRetry={() => { setStatus('loading'); setReloadKey((n) => n + 1) }}
             />

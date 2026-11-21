@@ -66,7 +66,7 @@ export function ContributionForm(props: ContributionFormProps) {
     event.preventDefault()
     const trimmed = title.trim()
     if (trimmed.length < 3) {
-      setTitleError('Donnez un titre d\'au moins 3 caracteres.')
+      setTitleError('Donnez un titre d\'au moins 3 caractères.')
       return
     }
     setTitleError(undefined)
@@ -98,7 +98,7 @@ export function ContributionForm(props: ContributionFormProps) {
         </span>
         {onReposition ? (
           <button type="button" className={s.reposition} onClick={onReposition}>
-            Deplacer le repere
+            Déplacer le repère
           </button>
         ) : null}
       </p>
@@ -114,14 +114,14 @@ export function ContributionForm(props: ContributionFormProps) {
       />
 
       <Select
-        label="Categorie"
+        label="Catégorie"
         value={categoryId}
         onChange={(event) => setCategoryId(event.target.value)}
-        placeholder="Choisir une categorie"
+        placeholder="Choisir une catégorie"
         options={categories.map((category) => ({ value: category.id, label: category.label }))}
         hint={
           categories.length === 0
-            ? "Aucune categorie n'est encore definie par l'equipe."
+            ? "Aucune catégorie n'est encore definie par l'équipe."
             : undefined
         }
         disabled={categories.length === 0}
@@ -148,19 +148,19 @@ export function ContributionForm(props: ContributionFormProps) {
       />
 
       <Input
-        label="Recompense estimee"
+        label="Récompense estimee"
         value={estimatedReward}
         onChange={(event) => setEstimatedReward(event.target.value)}
         maxLength={REWARD_MAX}
-        placeholder="Ex. : une arme, un vehicule, de l'argent"
+        placeholder="Ex. : une arme, un véhicule, de l'argent"
         hint="Facultatif. Elle sera clairement presentee comme une estimation de votre part."
       />
 
       <Switch
         checked={authorTested}
         onChange={setAuthorTested}
-        label="J'ai teste cette decouverte moi-meme"
-        description="Declaration honnete : elle est affichee aux autres membres, et l'equipe la verifie avant toute validation."
+        label="J'ai teste cette découverte moi-même"
+        description="Declaration honnete : elle est affichée aux autres membres, et l'équipe la vérifié avant toute validation."
       />
 
       {imageUrl && !replacingImage ? (
@@ -180,7 +180,7 @@ export function ContributionForm(props: ContributionFormProps) {
           bucket="contributions"
           userId={userId}
           label="Image (facultative)"
-          hint="Une capture du lieu aide beaucoup l'equipe a valider votre decouverte."
+          hint="Une capture du lieu aide beaucoup l'équipe a valider votre découverte."
           onUploaded={(images) => {
             setImageUrl(images[0]?.url ?? null)
             setReplacingImage(false)

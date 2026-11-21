@@ -7,7 +7,7 @@ import s from './guards.module.css'
 /**
  * GARDES DE ROUTE — PUREMENT COSMETIQUES.
  *
- * Elles evitent d'afficher un ecran vide a quelqu'un qui n'y a pas acces et
+ * Elles evitent d'afficher un écran vide a quelqu'un qui n'y a pas acces et
  * ramenent proprement vers la connexion. Elles ne protegent AUCUNE donnee :
  * la seule protection reelle est la RLS PostgreSQL. Un visiteur qui forcerait
  * `isAdmin` dans son navigateur verrait l'interface d'administration mais
@@ -30,10 +30,10 @@ export function RequireAuth({ children }: GuardProps) {
   const { session, loading } = useAuth()
   const { to, from } = useLoginRedirect()
 
-  if (loading) return <RouteFallback label="Verification de votre session…" />
+  if (loading) return <RouteFallback label="Vérification de votre session…" />
 
   // La destination voyage deux fois : dans l'URL (?suite=) et dans l'etat de
-  // navigation (location.state.from). L'ecran de connexion peut lire l'un ou l'autre.
+  // navigation (location.state.from). L'écran de connexion peut lire l'un ou l'autre.
   if (!session) return <Navigate to={to} replace state={{ from }} />
 
   return <>{children}</>
@@ -43,7 +43,7 @@ export function RequireStaff({ children }: GuardProps) {
   const { session, isStaff, loading } = useAuth()
   const { to, from } = useLoginRedirect()
 
-  if (loading) return <RouteFallback label="Verification de vos droits…" />
+  if (loading) return <RouteFallback label="Vérification de vos droits…" />
   if (!session) return <Navigate to={to} replace state={{ from }} />
   if (!isStaff) return <AccessDenied level="equipe" />
 
@@ -54,7 +54,7 @@ export function RequireAdmin({ children }: GuardProps) {
   const { session, isAdmin, loading } = useAuth()
   const { to, from } = useLoginRedirect()
 
-  if (loading) return <RouteFallback label="Verification de vos droits…" />
+  if (loading) return <RouteFallback label="Vérification de vos droits…" />
   if (!session) return <Navigate to={to} replace state={{ from }} />
   if (!isAdmin) return <AccessDenied level="administration" />
 
@@ -65,10 +65,10 @@ export function RequireAdmin({ children }: GuardProps) {
 function AccessDenied({ level }: { level: 'equipe' | 'administration' }) {
   return (
     <div className={s.denied} role="alert">
-      <p className={s.kicker}>Acces restreint</p>
+      <p className={s.kicker}>Accès restreint</p>
       <h1 className={s.title}>Cette page est reservee a l'{level} LEONIDA</h1>
       <p className={s.body}>
-        Votre compte ne possede pas les droits necessaires. Si vous pensez qu'il
+        Votre compte ne possede pas les droits nécessaires. Si vous pensez qu'il
         s'agit d'une erreur, contactez un administrateur.
       </p>
       <Link className={s.link} to="/">Retour a l'accueil</Link>

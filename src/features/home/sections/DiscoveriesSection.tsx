@@ -26,7 +26,7 @@ export interface DiscoveriesSectionProps {
  *
  * Seuls les marqueurs `approved` remontent (comportement par defaut du
  * service, double par la RLS) : une contribution en attente de validation
- * n'apparait jamais sur l'accueil.
+ * n'apparaît jamais sur l'accueil.
  */
 export function DiscoveriesSection({ title }: DiscoveriesSectionProps) {
   const markers = useQuery({
@@ -53,7 +53,7 @@ export function DiscoveriesSection({ title }: DiscoveriesSectionProps) {
     <SectionShell
       icon="compass"
       title={title}
-      subtitle="Les trouvailles de la communaute, validees par l'equipe."
+      subtitle="Les trouvailles de la communauté, validées par l'équipe."
       to="/carte"
       linkLabel="Ouvrir la carte"
     >
@@ -64,7 +64,7 @@ export function DiscoveriesSection({ title }: DiscoveriesSectionProps) {
         onRetry={() => void markers.refetch()}
         isEmpty={(markers.data?.length ?? 0) === 0}
         empty={{
-          title: 'Aucune decouverte validee pour le moment',
+          title: 'Aucune découverte validée pour le moment',
           description:
             'Les contributions des membres passent par une file de validation avant d\'apparaitre ici.',
           icon: 'compass',

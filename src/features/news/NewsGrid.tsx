@@ -66,7 +66,7 @@ export function NewsGrid({
     return (
       <ErrorState
         error={error}
-        title="Actualites indisponibles"
+        title="Actualités indisponibles"
         onRetry={onRetry}
       />
     )
@@ -77,7 +77,7 @@ export function NewsGrid({
   return (
     <>
       <p className={s.count} role="status">
-        {articles.length === 1 ? '1 actualite affichee' : `${articles.length} actualites affichees`}
+        {articles.length === 1 ? '1 actualité affichée' : `${articles.length} actualites affichees`}
         {hasNextPage ? ' — il en reste a charger.' : null}
       </p>
 
@@ -110,7 +110,7 @@ export function NewsGrid({
               onClick={onLoadMore}
               iconLeft={<Icon name="chevron-down" size={18} />}
             >
-              Charger plus d'actualites
+              Charger plus d'actualités
             </Button>
             {/* Chargement anticipe : la sentinelle declenche la page suivante
                 avant que le bouton n'entre dans l'ecran. */}

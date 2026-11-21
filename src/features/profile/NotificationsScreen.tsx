@@ -118,11 +118,11 @@ function NotificationRow({ item, slugs, onRead, onDelete, busy }: RowProps) {
               }}
             >
               <Icon name="arrow-right" size={15} />
-              Voir l'element concerne
+              Voir l'élément concerne
             </Link>
           ) : (
             <span className={s.noLink}>
-              Aucun element a ouvrir : cette notification ne designe pas de contenu
+              Aucun élément a ouvrir : cette notification ne désigné pas de contenu
               consultable.
             </span>
           )}
@@ -202,7 +202,7 @@ export function NotificationsScreen() {
       <section className={`${s.page} page`}>
         <EmptyState
           title="Connectez-vous pour voir vos notifications"
-          description="Les reponses, les reactions et les decisions de moderation qui vous concernent arrivent ici."
+          description="Les réponses, les réactions et les décisions de modération qui vous concernent arrivent ici."
           action={
             <Button as="link" to="/connexion" variant="primary">
               Se connecter
@@ -266,7 +266,7 @@ export function NotificationsScreen() {
         <EmptyState
           illustration={<Icon name="bell" size={38} />}
           title="Aucune notification"
-          description="Des qu'un membre repondra a vos messages ou qu'une de vos decouvertes sera relue, vous le saurez ici."
+          description="Des qu'un membre repondra a vos messages ou qu'une de vos découvertes sera relue, vous le saurez ici."
         />
       ) : (
         <div className={s.groups}>
@@ -292,7 +292,7 @@ export function NotificationsScreen() {
             <ErrorState
               compact
               error={list.error}
-              title="La suite n'a pas pu etre chargee"
+              title="La suite n'a pas pu être chargée"
               onRetry={() => void list.fetchNextPage()}
             />
           ) : null}
@@ -338,14 +338,14 @@ export function NotificationsScreen() {
       <ConfirmDialog
         open={confirmPurge}
         title="Supprimer toutes les notifications lues ?"
-        message="Les notifications deja lues seront definitivement supprimees. Les non lues sont conservees. Cette action est irreversible."
+        message="Les notifications déjà lues seront définitivement supprimées. Les non lues sont conservées. Cette action est irréversible."
         confirmLabel="Supprimer les lues"
         loading={removeRead.isPending}
         onConfirm={() =>
           removeRead.mutate(undefined, {
             onSuccess: () => {
               setConfirmPurge(false)
-              toast.success('Notifications lues supprimees')
+              toast.success('Notifications lues supprimées')
             },
             onError: (error) => {
               setConfirmPurge(false)

@@ -53,12 +53,12 @@ export async function listContests(options: ListContestsOptions = {}): Promise<C
   )
 }
 
-/** `null` si l'operation n'existe pas ou n'est pas publiee. */
+/** `null` si l'opération n'existe pas ou n'est pas publiee. */
 export async function getContestBySlug(slug: string): Promise<ContestRow | null> {
   return unwrapMaybe(await supabase.from('contests').select('*').eq('slug', slug).maybeSingle())
 }
 
-/** `true` si l'operation accepte encore des participations a l'instant demande. */
+/** `true` si l'opération accepte encore des participations a l'instant demande. */
 export function isContestOpen(contest: ContestRow, now = new Date()): boolean {
   if (contest.status !== 'published') return false
   if (contest.starts_at && new Date(contest.starts_at) > now) return false

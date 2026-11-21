@@ -62,7 +62,7 @@ export function ReactionBar({
       <ErrorState
         compact
         error={summary.error}
-        title="Reactions indisponibles"
+        title="Réactions indisponibles"
         onRetry={() => void summary.refetch()}
         className={className}
       />
@@ -80,7 +80,7 @@ export function ReactionBar({
 
   function handleClick(reaction: ReactionType, isMine: boolean) {
     if (!user) {
-      promptLogin('Connectez-vous pour reagir', 'Les reactions sont reservees aux membres.')
+      promptLogin('Connectez-vous pour réagir', 'Les réactions sont réservées aux membres.')
       return
     }
 
@@ -89,14 +89,14 @@ export function ReactionBar({
     if (isSuspended && !isMine) {
       toast.error(
         'Compte suspendu',
-        'Vous ne pouvez pas reagir tant que votre compte est suspendu.',
+        'Vous ne pouvez pas réagir tant que votre compte est suspendu.',
       )
       return
     }
 
     toggle.mutate(reaction, {
       onError: (mutationError) => {
-        toast.error('Reaction impossible', readableError(mutationError))
+        toast.error('Réaction impossible', readableError(mutationError))
       },
     })
   }
@@ -105,7 +105,7 @@ export function ReactionBar({
     <div
       className={cx(s.bar, size === 'sm' && s.sm, className)}
       role="group"
-      aria-label="Reactions"
+      aria-label="Réactions"
       aria-busy={toggle.isPending || undefined}
     >
       {visible.map((reaction) => {

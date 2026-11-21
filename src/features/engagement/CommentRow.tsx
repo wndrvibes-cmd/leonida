@@ -69,7 +69,7 @@ export function CommentRow({
           <Icon name="shield" size={16} className={s.hiddenIcon} />
           <span>
             Ce commentaire a ete masque par la moderation.
-            {isAuthor || isStaff ? " Vous le voyez car vous en etes l'auteur ou un membre du staff." : ''}
+            {isAuthor || isStaff ? " Vous le voyez car vous en êtes l'auteur ou un membre du staff." : ''}
           </span>
         </p>
       ) : isEditing ? (
@@ -95,7 +95,7 @@ export function CommentRow({
               onClick={onStartReply}
               iconLeft={<Icon name="comment" size={16} />}
             >
-              Repondre
+              Répondre
             </Button>
           ) : null}
 
@@ -135,7 +135,7 @@ export function CommentRow({
             compact
             autoFocus
             submitLabel="Repondre"
-            placeholder="Votre reponse..."
+            placeholder="Votre réponse..."
             onSubmit={onSubmitReply}
             onCancel={onCancel}
           />

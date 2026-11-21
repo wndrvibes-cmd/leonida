@@ -44,7 +44,7 @@ export function PostReactions({ postId, total, mine, loading = false }: PostReac
   const react = usePostQuickReaction()
 
   // Pendant l'aller-retour, on montre l'etat VISE : la pastille repond tout de
-  // suite sur un reseau lent. En cas d'echec, l'etat du serveur reprend la main.
+  // suite sur un reseau lent. En cas d'échec, l'etat du serveur reprend la main.
   const pending = react.isPending ? react.variables : undefined
   const active = pending
     ? pending.current === pending.reaction
@@ -54,7 +54,7 @@ export function PostReactions({ postId, total, mine, loading = false }: PostReac
 
   function handleClick(reaction: ReactionType) {
     if (!user) {
-      promptLogin('Connectez-vous pour reagir', 'Les reactions sont reservees aux membres.')
+      promptLogin('Connectez-vous pour réagir', 'Les réactions sont réservées aux membres.')
       return
     }
 
@@ -65,7 +65,7 @@ export function PostReactions({ postId, total, mine, loading = false }: PostReac
     if (isSuspended && !isMine) {
       toast.error(
         'Compte suspendu',
-        'Vous ne pouvez pas reagir tant que votre compte est suspendu.',
+        'Vous ne pouvez pas réagir tant que votre compte est suspendu.',
       )
       return
     }
@@ -73,7 +73,7 @@ export function PostReactions({ postId, total, mine, loading = false }: PostReac
     react.mutate(
       { postId, reaction, current: mine },
       {
-        onError: (error) => toast.error('Reaction impossible', readableError(error)),
+        onError: (error) => toast.error('Réaction impossible', readableError(error)),
       },
     )
   }
@@ -83,7 +83,7 @@ export function PostReactions({ postId, total, mine, loading = false }: PostReac
       <div
         className={cx(s.bar, 'scroll-x')}
         role="group"
-        aria-label="Reagir a cette publication"
+        aria-label="Réagir a cette publication"
         aria-busy={loading || react.isPending || undefined}
       >
         {REACTIONS.map((reaction) => {

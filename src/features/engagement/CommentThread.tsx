@@ -123,7 +123,7 @@ export function CommentThread({
           description={
             allowComments
               ? 'Ouvrez la discussion : le premier message donne souvent le ton.'
-              : "Aucun message n'a ete publie avant la fermeture des commentaires."
+              : "Aucun message n'a été publié avant la fermeture des commentaires."
           }
         />
       ) : (
@@ -179,7 +179,7 @@ export function CommentThread({
       <ConfirmDialog
         open={toDelete !== null}
         title="Supprimer ce commentaire ?"
-        message="Le commentaire sera definitivement retire de la discussion. Cette action est irreversible."
+        message="Le commentaire sera définitivement retire de la discussion. Cette action est irréversible."
         confirmLabel="Supprimer"
         tone="danger"
         loading={remove.isPending}

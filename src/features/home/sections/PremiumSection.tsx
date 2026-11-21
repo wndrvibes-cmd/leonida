@@ -79,7 +79,7 @@ export function PremiumSection({ title }: PremiumSectionProps) {
                   {interval ? <span className={s.interval}>{interval}</span> : null}
                 </p>
                 <p className={s.hint}>
-                  Tarif annonce par l'equipe. Il ne sera preleve qu'a l'ouverture des
+                  Tarif annonce par l'équipe. Il ne sera preleve qu'a l'ouverture des
                   abonnements.
                 </p>
               </div>

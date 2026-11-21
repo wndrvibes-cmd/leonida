@@ -223,7 +223,7 @@ export async function getUserRoles(userId: string): Promise<AppRole[]> {
 /** Suspension : le motif est conserve en base et visible par le staff. */
 export async function suspendUser(userId: string, reason: string): Promise<void> {
   const motive = reason.trim()
-  if (!motive) throw new Error('Une suspension doit etre motivee.')
+  if (!motive) throw new Error('Une suspension doit être motivee.')
   await setSuspension(userId, true, motive)
 }
 

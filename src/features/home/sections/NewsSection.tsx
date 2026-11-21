@@ -50,12 +50,12 @@ export function NewsSection({ title }: NewsSectionProps) {
         onRetry={() => void articles.refetch()}
         isEmpty={(articles.data?.length ?? 0) === 0}
         empty={{
-          title: 'Aucune actualite publiee pour le moment',
+          title: 'Aucune actualité publiée pour le moment',
           description:
-            'Les articles publies par l\'equipe apparaitront ici, avec leur niveau de fiabilite.',
+            'Les articles publiés par l\'équipe apparaîtront ici, avec leur niveau de fiabilité.',
           icon: 'news',
           adminTo: '/admin/actualites',
-          adminLabel: 'Publier une actualite',
+          adminLabel: 'Publier une actualité',
         }}
         skeleton={<RowSkeleton count={3} />}
       >

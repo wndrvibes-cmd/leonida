@@ -58,7 +58,7 @@ export function PostEditor({ post, onClose }: PostEditorProps) {
       open
       onClose={update.isPending ? () => undefined : onClose}
       title="Modifier la publication"
-      description="La date de publication d'origine est conservee."
+      description="La date de publication d'origine est conservée."
       size="md"
       disableBackdropClose={update.isPending}
     >
@@ -66,7 +66,7 @@ export function PostEditor({ post, onClose }: PostEditorProps) {
         <div className={s.locked} role="note">
           <Icon name="lock" size={20} className={s.lockIcon} />
           <p className={s.lockedText}>
-            Votre compte est suspendu : vos publications ne peuvent pas etre modifiees
+            Votre compte est suspendu : vos publications ne peuvent pas être modifiées
             pour le moment.
           </p>
         </div>

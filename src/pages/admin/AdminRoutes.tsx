@@ -17,7 +17,7 @@ export default function AdminRoutes() {
         const element = (
           <PagePlaceholder
             title={`${section.label} — administration`}
-            description="Cet ecran d'administration n'est pas encore disponible."
+            description="Cet écran d'administration n'est pas encore disponible."
           />
         )
         return relative === null

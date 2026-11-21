@@ -27,7 +27,7 @@ export function PagePlaceholder({ title, description, children }: PagePlaceholde
         {description ?? "Cette rubrique n'est pas encore disponible."}
       </p>
       <p className={s.note}>
-        Aucune donnee n'est affichee ici pour l'instant : nous preferons une page
+        Aucune donnée n'est affichée ici pour l'instant : nous preferons une page
         vide a un contenu inverifie.
       </p>
 
@@ -35,7 +35,7 @@ export function PagePlaceholder({ title, description, children }: PagePlaceholde
 
       <div className={s.links}>
         <Link className={s.link} to="/">Accueil</Link>
-        <Link className={s.link} to="/actualites">Actualites</Link>
+        <Link className={s.link} to="/actualites">Actualités</Link>
         <Link className={s.link} to="/carte">Carte</Link>
       </div>
     </section>

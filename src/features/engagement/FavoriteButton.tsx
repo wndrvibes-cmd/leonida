@@ -19,7 +19,7 @@ export interface FavoriteButtonProps {
  * Bascule de favori.
  *
  * Les favoris sont PRIVES (policy `favorites_own`) : ce bouton n'affiche aucun
- * compteur, et l'etat n'est charge que pour le membre connecte.
+ * compteur, et l'état n'est charge que pour le membre connecte.
  */
 export function FavoriteButton({
   targetType,
@@ -37,7 +37,7 @@ export function FavoriteButton({
 
   const confirmed = favorite.data ?? false
   // Affichage optimiste : pendant l'aller-retour on montre l'etat VISE. Le
-  // hook, lui, n'ecrit que l'etat confirme par la base ; en cas d'echec
+  // hook, lui, n'écrit que l'etat confirme par la base ; en cas d'echec
   // l'icone revient donc d'elle-meme a la verite du serveur.
   const active = toggle.isPending ? !confirmed : confirmed
 
@@ -45,7 +45,7 @@ export function FavoriteButton({
 
   function handleClick() {
     if (!user) {
-      promptLogin('Connectez-vous pour enregistrer', 'Vos favoris restent prives.')
+      promptLogin('Connectez-vous pour enregistrer', 'Vos favoris restent privés.')
       return
     }
 

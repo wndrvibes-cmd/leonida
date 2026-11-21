@@ -33,7 +33,7 @@ function Caption({ item }: { item: NewsMedia }) {
  * Les trois genres de media de la base sont traites separement :
  *   - `image` : vignette agrandissable dans un dialogue ;
  *   - `video` : fichier video lu sur place, sans lecture automatique ;
- *   - `video_link` : lien SORTANT assume. On n'integre pas d'iframe d'un
+ *   - `video_link` : lien SORTANT assume. On n'intégré pas d'iframe d'un
  *     domaine arbitraire : on annonce ou le lien mene et on laisse le membre
  *     decider.
  */
@@ -48,7 +48,7 @@ export function ArticleGallery({ media }: ArticleGalleryProps) {
     <section className={s.wrap} aria-labelledby="article-medias">
       <h2 className={s.title} id="article-medias">
         <Icon name="image" size={20} />
-        Medias
+        Médias
       </h2>
 
       <ul className={s.grid}>
@@ -67,7 +67,7 @@ export function ArticleGallery({ media }: ArticleGalleryProps) {
                       <Icon name="play" size={22} />
                     </span>
                     <span className={s.externalText}>
-                      <strong>Ouvrir la video</strong>
+                      <strong>Ouvrir la vidéo</strong>
                       <span className={s.host}>{hostOf(item.url)}</span>
                     </span>
                     <Icon name="external" size={16} />

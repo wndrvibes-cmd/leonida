@@ -20,7 +20,7 @@ function isExternal(link: string): boolean {
  *   - sans image televersee, le fond est un degrade tropical construit avec
  *     les jetons — jamais une capture de GTA VI, qui serait une image que nous
  *     n'avons pas le droit de presenter comme notre contenu ;
- *   - le bouton n'apparait que si l'administrateur a renseigne A LA FOIS un
+ *   - le bouton n'apparaît que si l'administrateur a renseigne A LA FOIS un
  *     libelle et une destination : pas de bouton qui ne mene nulle part.
  */
 export function HomeHero({ hero, isLoading }: HomeHeroProps) {

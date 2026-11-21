@@ -57,7 +57,7 @@ export function PostCard({ post }: PostCardProps) {
       <p className={s.counts}>
         <span className={s.count}>
           <Icon name="fire" size={14} />
-          <span className="sr-only">Reactions :</span>
+          <span className="sr-only">Réactions :</span>
           {formatCount(post.reaction_count)}
         </span>
         <span className={s.count}>
@@ -68,7 +68,7 @@ export function PostCard({ post }: PostCardProps) {
         {post.media.length > 0 ? (
           <span className={s.count}>
             <Icon name="image" size={14} />
-            <span className="sr-only">Medias :</span>
+            <span className="sr-only">Médias :</span>
             {formatCount(post.media.length)}
           </span>
         ) : null}

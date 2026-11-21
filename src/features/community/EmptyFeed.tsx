@@ -79,7 +79,7 @@ export function EmptyFeed({
       <EmptyState
         illustration={<Icon name="filter" size={38} />}
         title="Aucune publication avec ces filtres"
-        description="Personne n'a encore publie ce type de contenu, ou avec ce tag. Le fil complet, lui, vous attend."
+        description="Personne n'a encore publié ce type de contenu, ou avec ce tag. Le fil complet, lui, vous attend."
         action={action}
       />
     )
@@ -90,11 +90,11 @@ export function EmptyFeed({
       <Shore />
 
       <div className={s.text}>
-        <p className={s.kicker}>La communaute demarre ici</p>
+        <p className={s.kicker}>La communauté demarre ici</p>
         <h2 className={s.title}>Aucune publication pour le moment</h2>
         <p className={s.lead}>
-          Le fil est vide, et c'est normal : rien n'a encore ete publie. Pas de faux
-          message, pas de membre invente — la premiere publication sera la votre.
+          Le fil est vide, et c'est normal : rien n'a encore été publié. Pas de faux
+          message, pas de membre invente — la première publication sera la votre.
         </p>
 
         <ul className={s.ideas}>
@@ -107,14 +107,14 @@ export function EmptyFeed({
           <li className={s.idea}>
             <Icon name="camera" size={18} />
             <span>
-              <strong>Une capture</strong> d'un endroit, d'un vehicule ou d'un detail
+              <strong>Une capture</strong> d'un endroit, d'un véhicule ou d'un détail
               remarque.
             </span>
           </li>
           <li className={s.idea}>
             <Icon name="comment" size={18} />
             <span>
-              <strong>Une question</strong> : quelqu'un finira par y repondre.
+              <strong>Une question</strong> : quelqu'un finira par y répondre.
             </span>
           </li>
         </ul>

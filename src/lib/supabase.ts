@@ -25,7 +25,7 @@ if (!url || !key) {
 // Garde-fou : une cle secrete ne doit jamais se retrouver cote client.
 if (key.startsWith('sb_secret_') || key.includes('service_role')) {
   throw new Error(
-    'Cle Supabase invalide : une cle secrete / service_role a ete placee dans ' +
+    'Cle Supabase invalide : une cle secrete / service_role a été placee dans ' +
       'le front-end. Utilisez la cle publiable.',
   )
 }
@@ -58,19 +58,19 @@ export function readableError(error: unknown): string {
   if (code === '23505') return 'Cet element existe deja.'
   if (code === '23514') return 'Les informations saisies ne respectent pas le format attendu.'
   if (code === '42501' || /row-level security/i.test(message)) {
-    return "Vous n'avez pas les droits necessaires pour cette action."
+    return "Vous n'avez pas les droits nécessaires pour cette action."
   }
   if (/Invalid login credentials/i.test(message)) return 'Adresse e-mail ou mot de passe incorrect.'
-  if (/Email not confirmed/i.test(message)) return "Votre adresse e-mail n'a pas encore ete confirmee."
-  if (/User already registered/i.test(message)) return 'Un compte existe deja avec cette adresse.'
+  if (/Email not confirmed/i.test(message)) return "Votre adresse e-mail n'a pas encore été confirmee."
+  if (/User already registered/i.test(message)) return 'Un compte existe déjà avec cette adresse.'
   if (/Password should be at least/i.test(message)) {
-    return 'Le mot de passe doit contenir au moins 8 caracteres.'
+    return 'Le mot de passe doit contenir au moins 8 caractères.'
   }
   if (/rate limit|too many requests/i.test(message)) {
     return 'Trop de tentatives. Patientez quelques instants.'
   }
   if (/Failed to fetch|NetworkError/i.test(message)) {
-    return 'Connexion impossible. Verifiez votre reseau.'
+    return 'Connexion impossible. Vérifiez votre réseau.'
   }
   if (/exceeded the maximum allowed size/i.test(message)) {
     return 'Ce fichier depasse la taille autorisee.'

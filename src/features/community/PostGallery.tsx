@@ -24,7 +24,7 @@ const COMPACT_MAX = 4
  *     n'est integree : on annonce ou mene le lien, le membre decide. La
  *     miniature n'est affichee que lorsque le fournisseur en expose une
  *     reellement (YouTube) ; pour Twitch, une carte de lecture sobre remplace
- *     l'image plutot qu'une vignette inventee.
+ *     l'image plutôt qu'une vignette inventee.
  */
 export function PostGallery({ media, variant = 'full' }: PostGalleryProps) {
   const [zoom, setZoom] = useState<number | null>(null)
@@ -116,7 +116,7 @@ export function PostGallery({ media, variant = 'full' }: PostGalleryProps) {
             )}
             <span className={s.externalText}>
               <strong className={s.externalTitle}>
-                {link ? `Ouvrir la ${link.label.toLowerCase()}` : 'Ouvrir le lien video'}
+                {link ? `Ouvrir la ${link.label.toLowerCase()}` : 'Ouvrir le lien vidéo'}
               </strong>
               <span className={s.host}>
                 {hostOf(link?.canonicalUrl ?? item.url)} — lien externe

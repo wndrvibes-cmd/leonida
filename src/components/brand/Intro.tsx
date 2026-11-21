@@ -139,7 +139,7 @@ export function Intro() {
       <div className={s.content}>
         <Logo variant="full" size={46} className={s.logo} />
         <p className={s.mask}>
-          <span className={s.tagline}>Actualites, decouvertes et carte de Leonida</span>
+          <span className={s.tagline}>Actualités, découvertes et carte de Leonida</span>
         </p>
       </div>
 

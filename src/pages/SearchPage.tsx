@@ -9,7 +9,7 @@ export default function SearchPage() {
   return (
     <PagePlaceholder
       title="Recherche"
-      description="La recherche transversale : actualites, publications, decouvertes de la carte et membres."
+      description="La recherche transversale : actualités, publications, découvertes de la carte et membres."
     />
   )
 }

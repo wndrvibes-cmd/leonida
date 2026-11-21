@@ -10,7 +10,7 @@
  * annoncee comme telle via `RELIABILITY_LABELS`, jamais presentee comme un
  * fait. Rien n'est invente ici — et `news_articles.view_count` n'est affiche
  * nulle part, parce que la base n'autorise son incrementation qu'au staff : ce
- * compteur ne refletant pas l'audience reelle, l'exposer serait mentir.
+ * compteur ne refletant pas l'audience réelle, l'exposer serait mentir.
  *
  * Les feuilles de style restent importees par chemin direct : un module CSS
  * n'a pas sa place dans un barillet.

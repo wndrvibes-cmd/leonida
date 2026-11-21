@@ -7,7 +7,7 @@ import type { MapCategory, MapMarker } from '@/services/map'
  * l'image d'origine : `x` et `y` valent 0..1. C'est ce que stocke la base
  * (`map_markers.x` / `map_markers.y`), et c'est la seule representation qui
  * reste exacte quels que soient le zoom, le deplacement, la taille de l'ecran
- * ou l'orientation de l'appareil. Aucun pixel d'ecran n'est jamais persiste.
+ * ou l'orientation de l'appareil. Aucun pixel d'écran n'est jamais persiste.
  */
 export interface RelativePoint {
   x: number
@@ -25,7 +25,7 @@ export interface MapView {
   /**
    * Dimensions de l'image telle qu'elle est affichee, en pixels d'ecran.
    * C'est la seule mesure dont le regroupement a besoin : il raisonne en
-   * distance a l'ecran, pas en pixels de l'image d'origine.
+   * distance a l'écran, pas en pixels de l'image d'origine.
    */
   displayedWidth: number
   displayedHeight: number

@@ -35,7 +35,7 @@ export function useUpdateUserSettings() {
 
   return useMutation({
     mutationFn: async (patch: UserSettingsPatch): Promise<SettingsRow> => {
-      if (!user) throw new Error('Vous devez etre connecte pour modifier vos reglages.')
+      if (!user) throw new Error('Vous devez être connecte pour modifier vos réglages.')
 
       // `upsert` et non `update` : la ligne est normalement creee par le
       // declencheur `handle_new_user`, mais un compte dont la ligne manque ne
@@ -49,7 +49,7 @@ export function useUpdateUserSettings() {
       )
 
       if (!row) {
-        throw new Error("Les reglages n'ont pas pu etre enregistres : droits insuffisants.")
+        throw new Error("Les réglages n'ont pas pu être enregistres : droits insuffisants.")
       }
       return row
     },
@@ -90,11 +90,11 @@ export const SUBSCRIPTION_STATUS_LABELS: Record<
   { label: string; tone: 'success' | 'warning' | 'danger' | 'neutral'; help: string }
 > = {
   active: { label: 'Actif', tone: 'success', help: 'Votre abonnement est en cours.' },
-  trialing: { label: "Periode d'essai", tone: 'success', help: "Vous etes en periode d'essai." },
+  trialing: { label: "Période d'essai", tone: 'success', help: "Vous êtes en période d'essai." },
   past_due: {
     label: 'Paiement en retard',
     tone: 'warning',
-    help: 'Le dernier paiement a echoue. Votre acces peut etre interrompu.',
+    help: 'Le dernier paiement a échoué. Votre accès peut être interrompu.',
   },
   canceled: { label: 'Resilie', tone: 'neutral', help: 'Cet abonnement est termine.' },
   incomplete: {

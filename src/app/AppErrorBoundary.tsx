@@ -36,11 +36,11 @@ export class AppErrorBoundary extends Component<Props, State> {
       <div className={s.wrap} role="alert">
         <div className={s.card}>
           <p className={s.kicker}>Erreur inattendue</p>
-          <h1 className={s.title}>L'application a rencontre un probleme</h1>
+          <h1 className={s.title}>L'application a rencontre un problème</h1>
           <p className={s.body}>{readableError(error)}</p>
           <div className={s.actions}>
             <button type="button" className={s.primary} onClick={this.reset}>
-              Reessayer
+              Réessayer
             </button>
             <a className={s.secondary} href="/">Retour a l'accueil</a>
           </div>

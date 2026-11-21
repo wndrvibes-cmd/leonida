@@ -42,7 +42,7 @@ const ResetPasswordPage  = lazy(() => import('@/pages/ResetPasswordPage'))
 const AdminRoutes        = lazy(() => import('@/pages/admin/AdminRoutes'))
 
 export function AppRouter() {
-  // Synchronise <html data-reduce-motion> avec le reglage du membre.
+  // Synchronise <html data-reduce-motion> avec le réglage du membre.
   useMotionPreference()
 
   return (

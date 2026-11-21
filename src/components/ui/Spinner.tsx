@@ -17,7 +17,7 @@ export interface SpinnerProps {
 
 /**
  * La rotation est pilotee par framer-motion et non par les jetons de duree :
- * un indicateur de chargement figé mentirait sur l'etat reel de l'ecran,
+ * un indicateur de chargement figé mentirait sur l'état réel de l'ecran,
  * y compris lorsque le membre a demande la reduction des animations.
  */
 export function Spinner({ size = 'md', label = 'Chargement…', silent = false, className }: SpinnerProps) {

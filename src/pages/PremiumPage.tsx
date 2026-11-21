@@ -9,7 +9,7 @@ export default function PremiumPage() {
   return (
     <PagePlaceholder
       title="Premium"
-      description="Le detail de l'offre premium : ce qu'elle apporte, son prix et ses conditions."
+      description="Le détail de l'offre premium : ce qu'elle apporte, son prix et ses conditions."
     />
   )
 }

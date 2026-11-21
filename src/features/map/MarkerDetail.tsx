@@ -20,7 +20,7 @@ import s from './MarkerDetail.module.css'
  * voir `services/authors.ts`) et la version la plus a jour.
  *
  * HONNETETE — le niveau de verification est rendu par `VERIFICATION_LABELS`,
- * donc « Verifiee LEONIDA » n'apparait QUE pour `staff_verified`. Rien n'est
+ * donc « Verifiee LEONIDA » n'apparaît QUE pour `staff_verified`. Rien n'est
  * affiche par defaut : une decouverte non verifiee le dit.
  */
 
@@ -57,8 +57,8 @@ export function MarkerDetail({ markerId, category }: MarkerDetailProps) {
   if (!marker) {
     return (
       <EmptyState
-        title="Decouverte introuvable"
-        description="Elle a peut-etre ete retiree, ou elle n'est pas encore validee."
+        title="Découverte introuvable"
+        description="Elle a peut-être été retiree, ou elle n'est pas encore validée."
         compact
       />
     )
@@ -86,9 +86,9 @@ export function MarkerDetail({ markerId, category }: MarkerDetailProps) {
             <Badge
               tone="accent"
               icon={<Icon name="shield" size={14} />}
-              title="Repere pose par l'equipe LEONIDA, et non propose par un membre."
+              title="Repère pose par l'équipe LEONIDA, et non propose par un membre."
             >
-              Repere officiel
+              Repère officiel
             </Badge>
           ) : null}
 
@@ -124,11 +124,11 @@ export function MarkerDetail({ markerId, category }: MarkerDetailProps) {
         <section className={s.block}>
           <h3 className={s.blockTitle}>
             <Icon name="coins" size={16} />
-            Recompense estimee
+            Récompense estimee
           </h3>
           <p className={s.blockBody}>{marker.estimated_reward}</p>
           <p className={s.caveat}>
-            Estimation annoncee par l'auteur, non verifiee par LEONIDA.
+            Estimation annoncee par l'auteur, non vérifiée par LEONIDA.
           </p>
         </section>
       ) : null}
@@ -137,8 +137,8 @@ export function MarkerDetail({ markerId, category }: MarkerDetailProps) {
         <p className={s.note}>
           <Icon name="info" size={16} />
           <span>
-            L'auteur declare avoir teste cette decouverte lui-meme. Elle n'a pas encore
-            ete confirmee par la communaute ni par l'equipe.
+            L'auteur declare avoir teste cette découverte lui-même. Elle n'a pas encore
+            été confirmee par la communauté ni par l'équipe.
           </span>
         </p>
       ) : null}
@@ -157,7 +157,7 @@ export function MarkerDetail({ markerId, category }: MarkerDetailProps) {
 
       <ReactionBar targetType="marker" targetId={marker.id} size="sm" />
 
-      <CommentThread targetType="marker" targetId={marker.id} title="Retours de la communaute" />
+      <CommentThread targetType="marker" targetId={marker.id} title="Retours de la communauté" />
     </div>
   )
 }

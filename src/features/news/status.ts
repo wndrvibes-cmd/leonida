@@ -12,6 +12,6 @@ type ContentStatus = Database['public']['Enums']['content_status']
 export const ARTICLE_STATUS_LABELS: Record<ContentStatus, string> = {
   draft: 'Brouillon',
   scheduled: 'Programme',
-  published: 'Publie',
+  published: 'Publié',
   archived: 'Archive',
 }

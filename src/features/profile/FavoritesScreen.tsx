@@ -31,9 +31,9 @@ const TABS: TabDefinition[] = [
     empty: {
       title: "Vous n'avez rien mis de cote",
       description:
-        'Le bouton favori est present sur les actualites, les publications, les decouvertes de la carte et les concours. Cette liste reste privee : personne d\'autre ne la voit.',
+        'Le bouton favori est present sur les actualités, les publications, les découvertes de la carte et les concours. Cette liste reste privée : personne d\'autre ne la voit.',
       to: '/actualites',
-      cta: 'Parcourir les actualites',
+      cta: 'Parcourir les actualités',
     },
   },
   {
@@ -42,28 +42,28 @@ const TABS: TabDefinition[] = [
     icon: 'community',
     empty: {
       title: 'Aucune publication en favori',
-      description: 'Les discussions, astuces et moments que vous mettez de cote apparaitront ici.',
+      description: 'Les discussions, astuces et moments que vous mettez de cote apparaîtront ici.',
       to: '/communaute',
-      cta: 'Voir la communaute',
+      cta: 'Voir la communauté',
     },
   },
   {
     value: 'news',
-    label: 'Actualites',
+    label: 'Actualités',
     icon: 'news',
     empty: {
-      title: 'Aucune actualite en favori',
+      title: 'Aucune actualité en favori',
       description: 'Mettez un article de cote pour le retrouver sans le rechercher.',
       to: '/actualites',
-      cta: 'Voir les actualites',
+      cta: 'Voir les actualités',
     },
   },
   {
     value: 'marker',
-    label: 'Decouvertes',
+    label: 'Découvertes',
     icon: 'compass',
     empty: {
-      title: 'Aucune decouverte en favori',
+      title: 'Aucune découverte en favori',
       description: 'Gardez sous la main les lieux et secrets que vous voulez tester en jeu.',
       to: '/carte',
       cta: 'Explorer la carte',
@@ -84,8 +84,8 @@ const TABS: TabDefinition[] = [
 
 const KIND_LABELS: Record<TargetType, string> = {
   post: 'Publication',
-  news: 'Actualite',
-  marker: 'Decouverte',
+  news: 'Actualité',
+  marker: 'Découverte',
   contest: 'Concours',
   comment: 'Commentaire',
 }
@@ -176,7 +176,7 @@ function FavoriteRow({ entry }: { entry: FavoriteEntry }) {
             <p className={s.rowNote}>
               {kind === 'comment'
                 ? "Ce commentaire est bien enregistre, mais son fil d'origine n'est pas encore retrouve ici : il n'y a donc aucun lien a proposer."
-                : "Ce contenu a ete supprime ou masque par la moderation. Il n'est plus consultable ; vous pouvez retirer ce favori."}
+                : "Ce contenu a été supprime ou masque par la modération. Il n'est plus consultable ; vous pouvez retirer ce favori."}
             </p>
           </>
         )}
@@ -248,7 +248,7 @@ export function FavoritesScreen() {
         </p>
         <h1 className={s.title}>Mes favoris</h1>
         <p className={s.lead}>
-          Tout ce que vous mettez de cote, au meme endroit. Cette liste n'apparait sur
+          Tout ce que vous mettez de cote, au même endroit. Cette liste n'apparaît sur
           aucun profil : vous seul la voyez.
         </p>
       </header>

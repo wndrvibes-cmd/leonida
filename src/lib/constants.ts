@@ -7,13 +7,13 @@ type Enums = Database['public']['Enums']
 export const POST_TYPE_LABELS: Record<Enums['post_type'], string> = {
   discussion: 'Discussion',
   tip:        'Astuce',
-  discovery:  'Decouverte',
-  vehicle:    'Vehicule',
+  discovery:  'Découverte',
+  vehicle:    'Véhicule',
   mission:    'Mission',
   secret:     'Secret',
   question:   'Question',
-  screenshot: "Capture d'ecran",
-  video:      'Video',
+  screenshot: "Capture d'écran",
+  video:      'Vidéo',
   other:      'Autre',
 }
 
@@ -28,19 +28,19 @@ export const REACTIONS: { value: Enums['reaction_type']; emoji: string; label: s
 export const RELIABILITY_LABELS: Record<Enums['reliability'], { label: string; tone: string; help: string }> = {
   official:  { label: 'Officiel',     tone: 'success', help: 'Information publiee par Rockstar Games ou un canal officiel.' },
   reliable:  { label: 'Source fiable',tone: 'accent',  help: 'Publiee par une source reconnue et verifiable.' },
-  community: { label: 'Communaute',   tone: 'neutral', help: 'Information partagee par la communaute, non verifiee officiellement.' },
+  community: { label: 'Communauté',   tone: 'neutral', help: 'Information partagee par la communaute, non verifiee officiellement.' },
   rumor:     { label: 'Rumeur',       tone: 'warning', help: 'Information non confirmee. A prendre avec precaution.' },
 }
 
 export const VERIFICATION_LABELS: Record<Enums['verification_level'], { label: string; tone: string; help: string }> = {
-  unverified:          { label: 'Non verifiee',       tone: 'neutral', help: "Decouverte proposee, pas encore testee." },
+  unverified:          { label: 'Non vérifiée',       tone: 'neutral', help: "Découverte proposee, pas encore testee." },
   author_tested:       { label: "Testee par l'auteur", tone: 'accent', help: "L'auteur declare avoir teste cette decouverte lui-meme." },
   community_confirmed: { label: 'Confirmee',          tone: 'success', help: 'Confirmee par plusieurs membres de la communaute.' },
-  staff_verified:      { label: 'Verifiee LEONIDA',   tone: 'premium', help: "Verifiee par l'equipe LEONIDA." },
+  staff_verified:      { label: 'Vérifiée LEONIDA',   tone: 'premium', help: "Vérifiée par l'equipe LEONIDA." },
 }
 
 export const MARKER_STATUS_LABELS: Record<Enums['marker_status'], string> = {
-  draft: 'Brouillon', pending: 'En attente', approved: 'Validee', rejected: 'Refusee',
+  draft: 'Brouillon', pending: 'En attente', approved: 'Validée', rejected: 'Refusee',
 }
 
 export const REPORT_REASON_LABELS: Record<Enums['report_reason'], string> = {
@@ -55,7 +55,7 @@ export const REPORT_REASON_LABELS: Record<Enums['report_reason'], string> = {
 }
 
 export const CONTEST_CATEGORY_LABELS: Record<string, string> = {
-  contest: 'Concours', gift: 'Cadeau', reward: 'Recompense',
+  contest: 'Concours', gift: 'Cadeau', reward: 'Récompense',
   offer: 'Offre', event: 'Evenement',
 }
 

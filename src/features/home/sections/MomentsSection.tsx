@@ -31,7 +31,7 @@ export function MomentsSection({ title }: MomentsSectionProps) {
     <SectionShell
       icon="moments"
       title={title}
-      subtitle="Les captures et sequences qui ont le plus fait reagir."
+      subtitle="Les captures et sequences qui ont le plus fait réagir."
       to="/moments"
     >
       <SectionBody
@@ -43,10 +43,10 @@ export function MomentsSection({ title }: MomentsSectionProps) {
         empty={{
           title: 'Aucun moment partage pour le moment',
           description:
-            'Les captures et videos partagees par les membres s\'afficheront ici.',
+            'Les captures et vidéos partagées par les membres s\'afficheront ici.',
           icon: 'moments',
           adminTo: '/admin/communaute',
-          adminLabel: 'Moderer les moments',
+          adminLabel: 'Modérer les moments',
         }}
         skeleton={<RowSkeleton count={4} size="sm" square />}
       >

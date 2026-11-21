@@ -72,9 +72,9 @@ export interface SectionBodyProps {
  * Les quatre etats d'une section, dans l'ordre de priorite : chargement,
  * erreur, vide, contenu.
  *
- * L'etat vide est le plus important aujourd'hui : la base est vide, c'est donc
+ * L'état vide est le plus important aujourd'hui : la base est vide, c'est donc
  * ce que verra un visiteur. Pour un membre de l'equipe, il propose en plus le
- * raccourci vers l'ecran d'administration qui permet de la remplir.
+ * raccourci vers l'écran d'administration qui permet de la remplir.
  */
 export function SectionBody({
   isLoading, isError, error, onRetry, isEmpty, empty, skeleton, children,

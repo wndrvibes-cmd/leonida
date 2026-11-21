@@ -106,7 +106,7 @@ Travail sequentiel, verifie et commite a chaque etape. Pas de vagues d'agents.
 | # | Etape | Etat |
 |---|---|---|
 | 0 | Audit et correction de la compilation | **termine** |
-| 1 | Hygiene : accents, fusion des composants homonymes, dossiers vides | a faire |
+| 1 | Hygiene : accents (**fait**), fusion des composants homonymes, dossiers vides (**fait**) | partiel |
 | 2 | Direction artistique : enrichir les jetons, composition des cartes, profondeur | a faire |
 | 3 | Navigation et accueil : hierarchie, transitions de page, etats actifs | a faire |
 | 4 | Espace membre complet (profil, parametres, favoris, notifications) | a faire |
@@ -116,12 +116,37 @@ Travail sequentiel, verifie et commite a chaque etape. Pas de vagues d'agents.
 | 8 | Edge Functions (Stripe test, Radar, IA) | a faire |
 | 9 | Verification finale : responsive, permissions, performances | a faire |
 
+### Etape 1 — ce qui a ete fait le 21/11
+
+**Accents : ~470 lignes corrigees dans ~80 fichiers.** Approche en 5 passes
+successives, de la plus sure a la plus large :
+1. texte JSX sur une ligne ;
+2. chaines contenant une espace (une chaine avec espace n'est jamais une route,
+   un slug ni une classe CSS — c'est le discriminant qui a rendu la passe sure) ;
+3. vocabulaire complete apres extraction des 1070 mots distincts des textes
+   affiches ;
+4. valeurs de props d'affichage (liste blanche de cles) + texte JSX multi-lignes ;
+5. valeurs d'objets dont la cle n'est pas technique (liste noire : `icon`, `to`,
+   `key`, `value`, `type`, `slug`...).
+
+**Trois regressions introduites, toutes rattrapees par `tsc` et corrigees :**
+la cle d'icone `video` devenue `vidéo`, la valeur de tabulation `recentes`
+devenue `récentes` alors qu'elle type une union, et le discriminant `equipe` de
+`AccessDenied`. Lecon : les litteraux servant de valeurs d'union ou de cles
+d'enregistrement doivent rester en ASCII ; seul le texte affiche est traduit.
+
+**Volontairement non traites** : `affiche`, `teste`, `supprime`, `propose`,
+`expose`, `configure`, `personnalise`. Selon le contexte ce sont des verbes
+conjugues (« il affiche ») ou des participes (« affiché ») ; un remplacement
+automatique introduirait des fautes. A reprendre a la main si besoin.
+
+**Verifications** : `tsc --noEmit` → 0 erreur ; routes, slugs et cles d'union
+controles intacts ; rendu verifie dans le navigateur.
+
 ### Prochaine tache
 
-**Etape 1 — hygiene.** Passe systematique sur les accents (323 occurrences,
-textes d'interface uniquement), fusion de `NewsCard` et `PostCard` en un
-composant a variantes, suppression des dossiers vides. Verification par
-`tsc --noEmit` et controle visuel avant commit.
+**Fin de l'etape 1** : fusionner `NewsCard` / `PostCard` (versions compacte et
+complete) en un composant a variantes. Puis **etape 2**, direction artistique.
 
 ---
 

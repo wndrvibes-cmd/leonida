@@ -31,7 +31,7 @@ export function TabBar() {
     { to: '/',           label: 'Accueil',    icon: 'home', end: true },
     { to: '/actualites', label: 'Actus',      icon: 'news' },
     { to: '/carte',      label: 'Carte',      icon: 'map' },
-    { to: '/communaute', label: 'Communaute', icon: 'community' },
+    { to: '/communaute', label: 'Communauté', icon: 'community' },
     { to: profileTo,     label: 'Profil',     icon: 'user' },
   ]
 

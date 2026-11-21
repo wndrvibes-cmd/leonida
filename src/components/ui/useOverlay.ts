@@ -35,7 +35,7 @@ export function useBodyScrollLock(active: boolean): void {
   }, [active])
 }
 
-/** Piege le focus dans le calque et le rend a l'element d'origine a la sortie. */
+/** Piege le focus dans le calque et le rend a l'élément d'origine a la sortie. */
 export function useFocusTrap(active: boolean, ref: RefObject<HTMLElement>): void {
   useEffect(() => {
     if (!active) return

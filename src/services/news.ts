@@ -207,7 +207,7 @@ export async function getCategoryIdBySlug(slug: string): Promise<string | null> 
  * pour ce compteur. Pour un visiteur, la base refuse donc l'ecriture et la
  * fonction renvoie `false` sans faire echouer l'affichage de l'article.
  * Tant qu'une RPC dediee n'est pas ajoutee, `view_count` ne reflete pas
- * l'audience reelle : ne pas le presenter comme tel dans l'interface.
+ * l'audience réelle : ne pas le presenter comme tel dans l'interface.
  */
 export async function incrementView(articleId: string): Promise<boolean> {
   try {

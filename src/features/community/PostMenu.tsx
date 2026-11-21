@@ -62,7 +62,7 @@ export function PostMenu({ post, onEdit, onDelete, size = 'sm' }: PostMenuProps)
 
       {/* Le panneau reste MONTE, seulement masque : `ReportButton` ouvre un
           dialogue porte par un portail vers <body>. Le demonter au premier
-          clic « a l'exterieur » — c'est-a-dire dans ce dialogue — ferait
+          clic « a l'extérieur » — c'est-a-dire dans ce dialogue — ferait
           disparaitre le formulaire de signalement en pleine saisie. */}
       <div
         id={menuId}

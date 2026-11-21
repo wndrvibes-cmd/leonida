@@ -10,7 +10,7 @@ import { ToastProvider } from '@/components/ui'
 import '@/styles/global.css'
 
 const container = document.getElementById('root')
-if (!container) throw new Error("Element #root absent de index.html : impossible de monter LEONIDA.")
+if (!container) throw new Error("Élément #root absent de index.html : impossible de monter LEONIDA.")
 
 createRoot(container).render(
   <StrictMode>

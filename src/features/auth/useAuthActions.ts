@@ -92,15 +92,15 @@ export interface FieldErrors {
 
 export function validateEmail(email: string): string | undefined {
   if (!email.trim()) return 'Indiquez votre adresse e-mail.'
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return "Cette adresse e-mail n'est pas valide."
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return "Cette adresse e-mail n'est pas validé."
   return undefined
 }
 
 /** Les regles doivent rester alignees sur la contrainte CHECK de `profiles`. */
 export function validateUsername(username: string): string | undefined {
   if (!username.trim()) return 'Choisissez un pseudo.'
-  if (username.length < 3) return 'Le pseudo doit contenir au moins 3 caracteres.'
-  if (username.length > 24) return 'Le pseudo ne peut pas depasser 24 caracteres.'
+  if (username.length < 3) return 'Le pseudo doit contenir au moins 3 caractères.'
+  if (username.length > 24) return 'Le pseudo ne peut pas depasser 24 caractères.'
   if (!/^[a-zA-Z0-9_]+$/.test(username)) {
     return 'Le pseudo ne peut contenir que des lettres, des chiffres et des underscores.'
   }
@@ -109,7 +109,7 @@ export function validateUsername(username: string): string | undefined {
 
 export function validatePassword(password: string): string | undefined {
   if (!password) return 'Choisissez un mot de passe.'
-  if (password.length < 8) return 'Le mot de passe doit contenir au moins 8 caracteres.'
+  if (password.length < 8) return 'Le mot de passe doit contenir au moins 8 caractères.'
   return undefined
 }
 
@@ -132,7 +132,7 @@ export async function isUsernameAvailable(username: string): Promise<boolean> {
     .select('id', { count: 'exact', head: true })
     .eq('username', username)
 
-  // En cas d'erreur reseau on n'empeche pas la soumission : la contrainte
+  // En cas d'erreur réseau on n'empeche pas la soumission : la contrainte
   // d'unicite en base reste la verification faisant autorite.
   if (error) return true
   return (count ?? 0) === 0

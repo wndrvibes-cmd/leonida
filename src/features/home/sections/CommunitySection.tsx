@@ -26,7 +26,7 @@ export function CommunitySection({ title }: CommunitySectionProps) {
     <SectionShell
       icon="community"
       title={title}
-      subtitle="Les dernieres discussions, astuces et questions des membres."
+      subtitle="Les dernières discussions, astuces et questions des membres."
       to="/communaute"
     >
       <SectionBody
@@ -38,10 +38,10 @@ export function CommunitySection({ title }: CommunitySectionProps) {
         empty={{
           title: 'Aucune publication pour le moment',
           description:
-            'Les discussions des membres apparaitront ici des la premiere publication.',
+            'Les discussions des membres apparaîtront ici des la première publication.',
           icon: 'community',
           adminTo: '/admin/communaute',
-          adminLabel: 'Moderer la communaute',
+          adminLabel: 'Modérer la communauté',
         }}
         skeleton={<RowSkeleton count={3} withCover={false} />}
       >

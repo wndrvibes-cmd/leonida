@@ -17,7 +17,7 @@ import s from '@/features/map/MapPage.module.css'
  * LA CARTE DE LEONIDA.
  *
  * Tant que `map.config.image_url` est vide — c'est le cas aujourd'hui —
- * l'ecran affiche un etat vide explicite. AUCUNE carte de substitution n'est
+ * l'écran affiche un état vide explicite. AUCUNE carte de substitution n'est
  * dessinee : inventer une geographie de Leonida serait une fausse
  * information, et l'utilisateur la prendrait pour la vraie.
  *
@@ -174,14 +174,14 @@ export default function MapPage() {
           title="La carte n'est pas encore en ligne"
           description={
             isStaff
-              ? "Aucune image n'a encore ete televersee. Rendez-vous dans l'administration pour envoyer le fond de carte et renseigner ses dimensions : les marqueurs et les contributions s'activeront aussitot."
-              : "L'equipe LEONIDA n'a pas encore publie le fond de carte. Les lieux, secrets et decouvertes proposes par les membres apparaitront ici des qu'elle sera en ligne."
+              ? "Aucune image n'a encore été téléversée. Rendez-vous dans l'administration pour envoyer le fond de carte et renseigner ses dimensions : les marqueurs et les contributions s'activeront aussitot."
+              : "L'équipe LEONIDA n'a pas encore publié le fond de carte. Les lieux, secrets et découvertes proposes par les membres apparaîtront ici des qu'elle sera en ligne."
           }
           illustration={<Icon name="map" size={40} />}
           action={
             isStaff
               ? <Button as="link" to="/admin/carte" variant="primary" size="lg">
-                  Televerser la carte
+                  Téléverser la carte
                 </Button>
               : undefined
           }
@@ -244,8 +244,8 @@ export default function MapPage() {
           {markers.isError ? (
             <ErrorState
               error={markers.error}
-              title="Decouvertes non chargees"
-              description="La carte s'affiche, mais ses marqueurs n'ont pas pu etre recuperes."
+              title="Découvertes non chargées"
+              description="La carte s'affiche, mais ses marqueurs n'ont pas pu être recuperes."
               onRetry={() => { void markers.refetch() }}
               compact
             />
@@ -268,17 +268,17 @@ export default function MapPage() {
                   <>
                     <PlacementBanner flow={flow} />
                     {markers.isPending ? (
-                      <p className={s.mapNote}>Chargement des decouvertes…</p>
+                      <p className={s.mapNote}>Chargement des découvertes…</p>
                     ) : null}
                     {!markers.isPending && !markers.isError && entries.length === 0 ? (
                       <p className={s.mapNote}>
-                        Aucune decouverte validee pour l'instant. La carte se remplira
-                        avec les propositions de la communaute.
+                        Aucune découverte validée pour l'instant. La carte se remplira
+                        avec les propositions de la communauté.
                       </p>
                     ) : null}
                     {!markers.isPending && entries.length > 0 && visible.length === 0 ? (
                       <p className={s.mapNote}>
-                        Aucune decouverte ne correspond a cette recherche.
+                        Aucune découverte ne correspond a cette recherche.
                       </p>
                     ) : null}
                     {mapConfig.disclaimer ? (
@@ -326,7 +326,7 @@ export default function MapPage() {
         <Modal
           open={selectedId !== null && tab === 'carte'}
           onClose={() => select(null)}
-          ariaLabel="Fiche de la decouverte"
+          ariaLabel="Fiche de la découverte"
           size="md"
         >
           {detail}
@@ -343,8 +343,8 @@ function MapHeader({ disclaimer }: { disclaimer: string | null }) {
     <header className={s.head}>
       <h1 className={s.title}>Carte de Leonida</h1>
       <p className={s.subtitle}>
-        Lieux, vehicules, secrets et decouvertes proposes par la communaute.
-        Chaque repere affiche son niveau de verification.
+        Lieux, véhicules, secrets et découvertes proposes par la communauté.
+        Chaque repère affiche son niveau de vérification.
       </p>
       {disclaimer ? <p className={s.headDisclaimer}>{disclaimer}</p> : null}
     </header>

@@ -8,8 +8,8 @@ import PagePlaceholder from '@/components/shared/PagePlaceholder'
 export default function SettingsPage() {
   return (
     <PagePlaceholder
-      title="Parametres"
-      description="Votre compte, votre profil public, votre fond d'ecran personnalise, vos preferences de mouvement et de notifications."
+      title="Paramètres"
+      description="Votre compte, votre profil public, votre fond d'écran personnalise, vos préférences de mouvement et de notifications."
     />
   )
 }

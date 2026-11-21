@@ -34,7 +34,7 @@ function firstImage(entry: AuthorPost): string | null {
  *
  * Les compteurs proviennent des colonnes `reaction_count` / `comment_count`
  * maintenues par la base. La ligne d'auteur est volontairement absente : sur
- * un profil, l'auteur est deja connu, la repeter n'apporterait rien.
+ * un profil, l'auteur est déjà connu, la repeter n'apporterait rien.
  */
 export function ProfilePostList({ authorId, surface, name, isSelf }: ProfilePostListProps) {
   const query = useAuthorPosts(authorId, surface)
@@ -72,8 +72,8 @@ export function ProfilePostList({ authorId, surface, name, isSelf }: ProfilePost
         title={isSelf ? "Vous n'avez partage aucun moment" : `${name} n'a partage aucun moment`}
         description={
           isSelf
-            ? 'Une capture, une scene, un instant de Leonida : vos moments apparaitront ici.'
-            : "Rien n'a encore ete partage sur cette surface."
+            ? 'Une capture, une scene, un instant de Leonida : vos moments apparaîtront ici.'
+            : "Rien n'a encore été partage sur cette surface."
         }
         action={
           isSelf ? (
@@ -86,10 +86,10 @@ export function ProfilePostList({ authorId, surface, name, isSelf }: ProfilePost
     ) : (
       <EmptyState
         illustration={<Icon name="community" size={38} />}
-        title={isSelf ? "Vous n'avez rien publie" : `${name} n'a rien publie pour l'instant`}
+        title={isSelf ? "Vous n'avez rien publié" : `${name} n'a rien publié pour l'instant`}
         description={
           isSelf
-            ? 'Vos discussions, astuces et questions apparaitront ici des votre premiere publication.'
+            ? 'Vos discussions, astuces et questions apparaîtront ici des votre première publication.'
             : "Aucune publication visible sur ce profil pour le moment."
         }
         action={
@@ -129,7 +129,7 @@ export function ProfilePostList({ authorId, surface, name, isSelf }: ProfilePost
                 <p className={s.tileMeta}>
                   <span className={s.count}>
                     <Icon name="fire" size={13} />
-                    <span className="sr-only">Reactions :</span>
+                    <span className="sr-only">Réactions :</span>
                     {formatCount(entry.post.reaction_count)}
                   </span>
                   <span className={s.count}>
@@ -182,7 +182,7 @@ export function ProfilePostList({ authorId, surface, name, isSelf }: ProfilePost
                     <time dateTime={entry.post.created_at}>{relativeTime(entry.post.created_at)}</time>
                     <span className={s.count}>
                       <Icon name="fire" size={13} />
-                      <span className="sr-only">Reactions :</span>
+                      <span className="sr-only">Réactions :</span>
                       {formatCount(entry.post.reaction_count)}
                     </span>
                     <span className={s.count}>
@@ -202,7 +202,7 @@ export function ProfilePostList({ authorId, surface, name, isSelf }: ProfilePost
         <ErrorState
           compact
           error={query.error}
-          title="La suite n'a pas pu etre chargee"
+          title="La suite n'a pas pu être chargée"
           onRetry={() => void query.fetchNextPage()}
           retryLabel="Reessayer"
         />

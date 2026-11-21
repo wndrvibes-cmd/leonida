@@ -85,7 +85,7 @@ export function PostFeed({
   return (
     <>
       <p className={s.count} role="status">
-        {posts.length === 1 ? '1 publication affichee' : `${posts.length} publications affichees`}
+        {posts.length === 1 ? '1 publication affichée' : `${posts.length} publications affichees`}
         {hasNextPage ? ' — il en reste a charger.' : null}
       </p>
 

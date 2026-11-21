@@ -20,7 +20,7 @@ export function validateImageFile(file: File, bucket: BucketName): void {
   // iOS peut remonter des HEIC que le canvas ne sait pas decoder.
   if (/heic|heif/i.test(file.type) || /\.(heic|heif)$/i.test(file.name)) {
     throw new UploadError(
-      'Les images HEIC ne sont pas prises en charge. Dans Reglages > Appareil photo > ' +
+      'Les images HEIC ne sont pas prises en charge. Dans Réglages > Appareil photo > ' +
         'Formats, choisissez « Plus compatible », ou exportez la photo en JPEG.',
     )
   }

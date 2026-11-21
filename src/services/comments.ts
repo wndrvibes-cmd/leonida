@@ -116,7 +116,7 @@ export interface CreateCommentInput {
 
 export async function createComment(input: CreateCommentInput): Promise<CommentRow> {
   const body = input.body.trim()
-  if (!body) throw new Error('Le commentaire ne peut pas etre vide.')
+  if (!body) throw new Error('Le commentaire ne peut pas être vide.')
 
   return unwrap(
     await supabase
@@ -135,12 +135,12 @@ export async function createComment(input: CreateCommentInput): Promise<CommentR
 
 export async function updateComment(id: string, body: string): Promise<CommentRow> {
   const next = body.trim()
-  if (!next) throw new Error('Le commentaire ne peut pas etre vide.')
+  if (!next) throw new Error('Le commentaire ne peut pas être vide.')
 
   const row = unwrapMaybe(
     await supabase.from('comments').update({ body: next }).eq('id', id).select('*').maybeSingle(),
   )
-  if (!row) throw new Error('Commentaire introuvable ou modification refusee.')
+  if (!row) throw new Error('Commentaire introuvable ou modification refusée.')
   return row
 }
 

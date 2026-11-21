@@ -18,7 +18,7 @@ export interface ProfileHeaderProps {
  * En-tete du profil public : banniere, avatar, identite, presentation.
  *
  * Deux choix d'honnetete y sont visibles :
- *   - le badge LEONIDA+ n'apparait que si l'abonnement est REELLEMENT
+ *   - le badge LEONIDA+ n'apparaît que si l'abonnement est REELLEMENT
  *     connaissable (soi-meme, ou staff) — voir `PremiumStatus` ;
  *   - le signalement d'un MEMBRE n'existe pas en base (l'enum `target_type`
  *     ne couvre que des contenus) : le bouton est donc desactive et explique,
@@ -63,7 +63,7 @@ export function ProfileHeader({ profile, isSelf, premium }: ProfileHeaderProps) 
               </Badge>
             ) : null}
             {profile.is_suspended ? (
-              <Badge tone="danger" size="sm" title="Ce compte est suspendu par la moderation.">
+              <Badge tone="danger" size="sm" title="Ce compte est suspendu par la modération.">
                 Compte suspendu
               </Badge>
             ) : null}
@@ -124,7 +124,7 @@ export function ProfileHeader({ profile, isSelf, premium }: ProfileHeaderProps) 
               </Button>
               <p className={s.reportNote} id={reportNoteId}>
                 Le signalement d'un membre n'est pas encore possible : seuls les contenus
-                (publication, actualite, decouverte, commentaire, concours) peuvent etre
+                (publication, actualité, découverte, commentaire, concours) peuvent être
                 signales. Utilisez le bouton de signalement present sur la publication
                 concernee.
               </p>

@@ -27,7 +27,7 @@ export interface NewsFilterBarProps {
  * Barre de filtres de /actualites.
  *
  * Chaque controle est reellement branche : aucun bouton decoratif. L'etat
- * complet remonte a la page, qui l'ecrit dans l'URL.
+ * complet remonte a la page, qui l'écrit dans l'URL.
  */
 export function NewsFilterBar({
   filters,
@@ -48,7 +48,7 @@ export function NewsFilterBar({
         <Input
           type="search"
           label="Rechercher"
-          placeholder="Titre ou resume d'une actualite"
+          placeholder="Titre ou résumé d'une actualité"
           value={search}
           onChange={(event) => onSearchChange(event.target.value)}
           hint={tooShort ? `${MIN_SEARCH_LENGTH} caracteres minimum pour lancer la recherche.` : undefined}
@@ -73,7 +73,7 @@ export function NewsFilterBar({
         />
 
         <Select
-          label="Fiabilite"
+          label="Fiabilité"
           value={filters.reliability}
           placeholder="Tous les niveaux"
           options={RELIABILITY_OPTIONS}
@@ -92,7 +92,7 @@ export function NewsFilterBar({
 
       <div className={s.categories}>
         <span className={s.legend} id="news-categories-legend">
-          Categories
+          Catégories
         </span>
 
         <div className="scroll-x">

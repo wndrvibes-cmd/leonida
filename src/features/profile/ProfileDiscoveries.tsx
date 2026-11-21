@@ -43,7 +43,7 @@ export function ProfileDiscoveries({ authorId, name, isSelf }: ProfileDiscoverie
     return (
       <ErrorState
         error={markers.error}
-        title="Decouvertes indisponibles"
+        title="Découvertes indisponibles"
         onRetry={() => void markers.refetch()}
       />
     )
@@ -55,18 +55,18 @@ export function ProfileDiscoveries({ authorId, name, isSelf }: ProfileDiscoverie
         illustration={<Icon name="compass" size={38} />}
         title={
           isSelf
-            ? "Aucune de vos decouvertes n'est encore publiee"
+            ? "Aucune de vos découvertes n'est encore publiée"
             : `${name} n'a aucune decouverte publiee`
         }
         description={
           isSelf
-            ? "Les decouvertes que vous proposez apparaissent ici une fois validees par l'equipe. Le suivi de vos propositions en attente se trouve sur la carte, onglet « Mes contributions »."
-            : "Seules les decouvertes validees par l'equipe apparaissent sur un profil."
+            ? "Les découvertes que vous proposez apparaissent ici une fois validées par l'équipe. Le suivi de vos propositions en attente se trouve sur la carte, onglet « Mes contributions »."
+            : "Seules les découvertes validées par l'équipe apparaissent sur un profil."
         }
         action={
           isSelf ? (
             <Button as="link" to="/carte" variant="secondary" iconLeft={<Icon name="map" size={18} />}>
-              Proposer une decouverte
+              Proposer une découverte
             </Button>
           ) : undefined
         }
@@ -96,7 +96,7 @@ export function ProfileDiscoveries({ authorId, name, isSelf }: ProfileDiscoverie
             <div className={s.meta}>
               {category ? <CategoryChip category={category} /> : null}
               <span className={s.date}>
-                Publiee le <time dateTime={marker.created_at}>{formatDate(marker.created_at)}</time>
+                Publiée le <time dateTime={marker.created_at}>{formatDate(marker.created_at)}</time>
               </span>
             </div>
 
@@ -107,7 +107,7 @@ export function ProfileDiscoveries({ authorId, name, isSelf }: ProfileDiscoverie
             {marker.author_tested ? (
               <p className={s.tested}>
                 <Icon name="check" size={15} />
-                L'auteur declare avoir teste cette decouverte lui-meme.
+                L'auteur declare avoir teste cette découverte lui-même.
               </p>
             ) : null}
           </Card>

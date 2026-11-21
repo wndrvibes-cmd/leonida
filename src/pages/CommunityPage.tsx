@@ -64,7 +64,7 @@ export default function CommunityPage() {
   const selectTab = useCallback(
     (value: string) => {
       const tab = asCommunityTab(value)
-      // L'onglet Decouvertes impose son type : garder l'ancien en memoire
+      // L'onglet Découvertes impose son type : garder l'ancien en memoire
       // afficherait un filtre sans effet.
       apply({ ...filters, tab, type: tab === 'decouvertes' ? '' : filters.type })
     },
@@ -131,7 +131,7 @@ export default function CommunityPage() {
 
   /* -------------------------------------------------------------- rendu -- */
   // Une erreur alors que des publications sont deja affichees ne peut venir
-  // que de la page SUIVANTE : on garde le fil a l'ecran et on signale l'echec
+  // que de la page SUIVANTE : on garde le fil a l'écran et on signale l'echec
   // en pied de liste, au lieu de remplacer ce qui est en cours de lecture.
   const hasItems = posts.length > 0
   const feedError = hasItems ? null : feed.error
@@ -142,12 +142,12 @@ export default function CommunityPage() {
       <header className={s.head}>
         <p className={s.kicker}>
           <Icon name="community" size={14} />
-          Communaute
+          Communauté
         </p>
         <h1 className={s.title}>Ce que les joueurs trouvent, testent et racontent</h1>
         <p className={s.lead}>
-          Astuces, decouvertes, captures et questions, publiees par les membres sous leur
-          propre nom. Rien n'est ecrit par l'equipe LEONIDA a leur place.
+          Astuces, découvertes, captures et questions, publiées par les membres sous leur
+          propre nom. Rien n'est écrit par l'équipe LEONIDA a leur place.
         </p>
       </header>
 

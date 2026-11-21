@@ -22,7 +22,7 @@ export function RelatedArticles({ articles, isLoading, error, category }: Relate
     return (
       <p className={s.unavailable} role="note">
         <Icon name="alert" size={16} />
-        <span>Les articles lies n'ont pas pu etre charges.</span>
+        <span>Les articles lies n'ont pas pu être charges.</span>
       </p>
     )
   }

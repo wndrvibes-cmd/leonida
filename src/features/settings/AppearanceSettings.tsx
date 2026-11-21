@@ -47,7 +47,7 @@ function clamp(value: number, min: number, max: number): number {
  * Onglet « Apparence » : fond d'application personnalise.
  *
  * La previsualisation est locale et immediate ; l'application entiere ne
- * change qu'apres enregistrement, car c'est `useAppBackground()` — branche sur
+ * change qu'après enregistrement, car c'est `useAppBackground()` — branche sur
  * la ligne `user_settings` du AuthProvider — qui pose reellement l'image.
  *
  * `background_url` contient un CHEMIN du bucket `backgrounds` (c'est ce que
@@ -121,7 +121,7 @@ export function AppearanceSettings() {
     update.mutate(
       { background_enabled: next },
       {
-        onError: (error) => toast.error('Reglage non enregistre', readableError(error)),
+        onError: (error) => toast.error('Réglage non enregistre', readableError(error)),
       },
     )
   }
@@ -158,8 +158,8 @@ export function AppearanceSettings() {
     return (
       <SettingsSection title="Personnaliser mon fond" icon="image">
         <p className={s.note}>
-          Vos reglages ne sont pas encore charges. Rechargez la page : aucune valeur
-          n'est affichee avant d'etre connue.
+          Vos réglages ne sont pas encore charges. Rechargez la page : aucune valeur
+          n'est affichée avant d'être connue.
         </p>
       </SettingsSection>
     )
@@ -195,7 +195,7 @@ export function AppearanceSettings() {
             <Icon name="alert" size={16} />
             <span>
               Avec un voile aussi leger, le texte peut devenir difficile a lire sur une
-              image claire ou chargee. Augmentez le voile si l'apercu ci-dessus n'est pas
+              image claire ou chargée. Augmentez le voile si l'apercu ci-dessus n'est pas
               net.
             </span>
           </p>
@@ -205,7 +205,7 @@ export function AppearanceSettings() {
           bucket="backgrounds"
           userId={user?.id}
           label="Image de fond"
-          hint="L'image part immediatement ; le cadrage et le voile s'appliquent apres enregistrement."
+          hint="L'image part immédiatement ; le cadrage et le voile s'appliquent après enregistrement."
           disabled={isSuspended}
           onUploaded={handleUploaded}
         />
@@ -317,7 +317,7 @@ export function AppearanceSettings() {
       <SettingsSection
         title="Affichage du fond"
         icon="eye"
-        description="Vous pouvez desactiver votre fond sans perdre votre image ni vos reglages."
+        description="Vous pouvez desactiver votre fond sans perdre votre image ni vos réglages."
       >
         <Switch
           checked={enabled}
@@ -347,7 +347,7 @@ export function AppearanceSettings() {
       <ConfirmDialog
         open={confirmRemove}
         title="Retirer votre fond ?"
-        message="Votre image sera definitivement supprimee du stockage et l'application reprendra son fond d'origine. Cette action est irreversible."
+        message="Votre image sera définitivement supprimée du stockage et l'application reprendra son fond d'origine. Cette action est irréversible."
         confirmLabel="Retirer le fond"
         loading={update.isPending}
         onConfirm={removeBackground}

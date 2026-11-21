@@ -17,8 +17,8 @@ export interface DiscoveryCardProps {
  * Le niveau de verification affiche est EXACTEMENT celui de la base :
  * « Verifiee LEONIDA » n'apparait que pour `staff_verified`, pose par le staff.
  *
- * La carte mene a l'ecran de la carte. Il n'existe pas encore d'adresse
- * dediee a un marqueur : plutot qu'inventer un parametre d'URL qui ne serait
+ * La carte mene a l'écran de la carte. Il n'existe pas encore d'adresse
+ * dediee a un marqueur : plutot qu'inventer un paramètre d'URL qui ne serait
  * lu par personne, on envoie vers la destination reelle.
  */
 export function DiscoveryCard({ marker, categoryLabel, categoryIcon }: DiscoveryCardProps) {

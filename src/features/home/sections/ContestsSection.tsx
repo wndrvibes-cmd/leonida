@@ -36,12 +36,12 @@ export function ContestsSection({ title }: ContestsSectionProps) {
         onRetry={() => void contests.refetch()}
         isEmpty={(contests.data?.length ?? 0) === 0}
         empty={{
-          title: 'Aucune operation en cours',
+          title: 'Aucune opération en cours',
           description:
-            'Concours, cadeaux et offres apparaitront ici pendant leur periode de validite.',
+            'Concours, cadeaux et offres apparaîtront ici pendant leur période de validite.',
           icon: 'gift',
           adminTo: '/admin/cadeaux',
-          adminLabel: 'Creer une operation',
+          adminLabel: 'Creer une opération',
         }}
         skeleton={<RowSkeleton count={3} />}
       >
