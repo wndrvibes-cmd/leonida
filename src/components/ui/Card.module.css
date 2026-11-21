@@ -6,7 +6,7 @@
   background: var(--surface);
   backdrop-filter: var(--blur-panel);
   -webkit-backdrop-filter: var(--blur-panel);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-lg);
   color: inherit;
   text-align: inherit;
@@ -30,14 +30,17 @@
 }
 
 /* --------------------------------------------------------------- variantes */
-/* Toutes les variantes portent l'arete lumineuse : c'est elle qui donne
-   l'impression d'une surface posee, pas l'ombre. */
+/* En style autocollant, c'est le CONTOUR et l'ombre dure qui posent la carte
+   sur la page. Une carte « plate » garde un relief leger : sans lui, elle se
+   confondrait avec le fond. */
 .flat {
-  box-shadow: var(--edge);
+  border-color: var(--ink);
+  box-shadow: var(--relief-sm);
 }
 
 .raised {
-  box-shadow: var(--edge), var(--shadow-lift);
+  border-color: var(--ink);
+  box-shadow: var(--relief);
 }
 
 .interactive {
@@ -96,4 +99,29 @@
   display: flex;
   align-items: center;
   gap: var(--sp-2);
+}
+
+
+/* ======================================================= RELIEF STICKER */
+.card {
+  border-width: var(--stroke);
+  border-color: var(--ink);
+  /* Le flou d'arriere-plan n'a plus lieu d'etre : une surface autocollante
+     est OPAQUE, elle ne laisse pas transparaitre la page. */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition:
+    translate var(--dur-instant) var(--ease-out),
+    box-shadow var(--dur-instant) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-soft);
+}
+
+.interactive:hover {
+  translate: -2px -2px;
+  box-shadow: var(--relief-lg);
+}
+
+.interactive:active {
+  translate: 3px 3px;
+  box-shadow: var(--relief-sm);
 }

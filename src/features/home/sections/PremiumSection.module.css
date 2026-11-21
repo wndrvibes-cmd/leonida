@@ -4,7 +4,7 @@
   align-items: flex-start;
   gap: var(--sp-2);
   padding: var(--sp-5);
-  border: 1px solid var(--border-strong);
+  border: var(--stroke) solid var(--border-strong);
   border-radius: var(--r-lg);
   background: var(--surface-sunken);
 }

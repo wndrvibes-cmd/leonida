@@ -58,7 +58,7 @@
   flex: 0 0 auto;
   min-height: 44px;
   padding-inline: var(--sp-4);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-full);
   background: var(--surface-sunken);
   color: var(--text-muted);

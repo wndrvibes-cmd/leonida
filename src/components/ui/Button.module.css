@@ -150,3 +150,71 @@
 .isLoading {
   cursor: progress;
 }
+
+
+/* ======================================================= RELIEF STICKER */
+/*
+ * Le bouton est un objet POSE sur la page : contour franc, ombre dure
+ * decalee en bas a droite. Au clic il s'enfonce — l'ombre se retracte et le
+ * bouton descend d'exactement la meme distance, sinon il semblerait glisser
+ * au lieu d'etre presse.
+ *
+ * On anime `translate` et `box-shadow` uniquement : aucune recomposition de
+ * mise en page, donc aucune saccade sur mobile.
+ */
+.button,
+.root {
+  border: var(--stroke) solid var(--ink);
+  box-shadow: var(--relief);
+  translate: 0 0;
+  transition:
+    translate var(--dur-instant) var(--ease-out),
+    box-shadow var(--dur-instant) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-soft),
+    filter var(--dur-fast) var(--ease-soft);
+}
+
+.button:hover:not(:disabled),
+.root:hover:not(:disabled) {
+  translate: -1px -1px;
+  box-shadow: 6px 6px 0 var(--ink);
+  filter: saturate(1.08);
+}
+
+/* L'appui : l'ombre tombe a zero et le bouton descend de 5px, la distance
+   exacte dont l'ombre etait decalee. */
+.button:active:not(:disabled),
+.root:active:not(:disabled) {
+  translate: 5px 5px;
+  box-shadow: var(--relief-press);
+  filter: none;
+}
+
+.button:disabled,
+.root:disabled {
+  box-shadow: var(--relief-sm);
+  opacity: 0.55;
+}
+
+/* Les variantes deviennent des APLATS satures : c'est la couleur qui
+   identifie l'action, pas un degrade. */
+.primary  { background: var(--surf);   color: var(--ink); }
+.premium  { background: var(--sunset); color: var(--ink); }
+.danger   { background: var(--coral);  color: var(--ink); }
+.secondary{ background: var(--sand-100); color: var(--ink); }
+
+/* Le bouton fantome n'a ni contour ni ombre : il ne doit pas rivaliser
+   visuellement avec une action reelle. */
+.ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: transparent;
+  box-shadow: none;
+}
+.ghost:hover:not(:disabled) {
+  background: var(--surface-hover);
+  border-color: var(--outline);
+  box-shadow: var(--relief-sm);
+  translate: -1px -1px;
+}
+.ghost:active:not(:disabled) { translate: 3px 3px; box-shadow: var(--relief-press); }

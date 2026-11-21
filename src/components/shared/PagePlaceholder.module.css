@@ -9,7 +9,7 @@
   min-height: 28px;
   margin-bottom: var(--sp-4);
   padding-inline: var(--sp-3);
-  border: 1px solid var(--border-accent);
+  border: var(--stroke) solid var(--border-accent);
   border-radius: var(--r-full);
   background: var(--accent-soft);
   color: var(--surf-300);
@@ -32,7 +32,7 @@
 
 .note {
   padding: var(--sp-4);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-left: 2px solid var(--accent-warm);
   border-radius: var(--r-md);
   background: var(--surface);
@@ -52,7 +52,7 @@
   align-items: center;
   min-height: 44px;
   padding-inline: var(--sp-5);
-  border: 1px solid var(--border-strong);
+  border: var(--stroke) solid var(--border-strong);
   border-radius: var(--r-full);
   color: var(--text);
   font-size: var(--text-sm);

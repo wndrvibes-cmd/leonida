@@ -17,7 +17,7 @@
   align-items: flex-end;
   min-height: 180px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   background: var(--bg);
 }
@@ -117,7 +117,7 @@
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   background: var(--surface-sunken);
   transition: border-color var(--dur-fast) var(--ease-soft),

@@ -5,7 +5,7 @@
   align-items: center;
   gap: var(--sp-5);
   padding: var(--sp-6) var(--sp-4) var(--sp-7);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-xl);
   background:
     radial-gradient(
@@ -70,7 +70,7 @@
   align-items: center;
   min-height: 28px;
   padding-inline: var(--sp-3);
-  border: 1px solid var(--border-accent);
+  border: var(--stroke) solid var(--border-accent);
   border-radius: var(--r-full);
   background: var(--accent-soft);
   color: var(--surf-300);
@@ -105,7 +105,7 @@
   align-items: flex-start;
   gap: var(--sp-3);
   padding: var(--sp-3);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   background: var(--surface-sunken);
   color: var(--text-muted);

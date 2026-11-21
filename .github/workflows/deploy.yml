@@ -1,0 +1,68 @@
+name: Déploiement GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permissions minimales exigées par le déploiement Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un seul déploiement à la fois ; on ne coupe pas celui qui est en cours.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Vérification des types
+        run: npx tsc --noEmit
+
+      - name: Build
+        env:
+          # Le préfixe doit correspondre au nom du dépôt.
+          VITE_BASE_PATH: /leonida/
+          # Clé PUBLIABLE, prévue pour le navigateur et protégée par la RLS.
+          # Elle finit de toute façon dans le bundle servi publiquement :
+          # l'écrire ici n'ajoute aucune exposition, et évite une étape de
+          # configuration. Une clé `service_role` ou un secret Stripe, eux,
+          # n'ont RIEN à faire dans ce fichier.
+          # Pour pointer vers un autre projet, définir les variables de dépôt
+          # du même nom : elles prennent le dessus.
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL || 'https://pwnusnklfpprrtgnijcy.supabase.co' }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_qr9m-6u0NlWgxoCSrH1Eow_NzLtKaAm' }}
+        run: npm run build
+
+      - name: Repli pour les routes de l'application
+        # GitHub Pages ne connait pas les routes côté client : sans copie de
+        # index.html en 404.html, un rechargement sur /carte renverrait une
+        # vraie 404 au lieu de l'application.
+        run: cp dist/index.html dist/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

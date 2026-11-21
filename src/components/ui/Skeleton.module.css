@@ -11,7 +11,7 @@
   );
   background-size: 220% 100%;
   background-repeat: no-repeat;
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   animation: skeleton-shimmer calc(var(--dur-scene) * 1.8) var(--ease-soft) infinite;
   /* Le bloc ne doit jamais provoquer de debordement horizontal. */
   max-width: 100%;

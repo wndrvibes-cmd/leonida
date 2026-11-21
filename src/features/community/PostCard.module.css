@@ -53,7 +53,7 @@
   align-items: center;
   min-height: 32px;
   padding-inline: var(--sp-3);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-full);
   background: var(--surface-sunken);
   color: var(--text-subtle);
@@ -81,7 +81,7 @@
   gap: var(--sp-3);
   margin-top: auto;
   padding-top: var(--sp-3);
-  border-top: 1px solid var(--border);
+  border-top: var(--stroke) solid var(--outline);
 }
 
 .actions {

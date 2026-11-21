@@ -55,7 +55,7 @@
   position: relative;
   min-width: 0;
   min-height: min(68vh, 560px);
-  border: 1px solid var(--border-strong);
+  border: var(--stroke) solid var(--border-strong);
   border-radius: var(--r-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -101,7 +101,7 @@
   z-index: var(--z-sticky);
   max-width: min(90%, 42ch);
   padding: var(--sp-3) var(--sp-4);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-full);
   background: color-mix(in srgb, var(--tide) 92%, transparent);
   backdrop-filter: var(--blur-panel);
@@ -135,7 +135,7 @@
   flex-direction: column;
   min-width: 0;
   max-height: 100%;
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-lg);
   background: var(--surface);
   backdrop-filter: var(--blur-panel);

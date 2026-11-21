@@ -93,7 +93,9 @@ textarea { resize: vertical; }
 /* --------------------------------------------------------- TYPOGRAPHIE --- */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 600;
+  /* 800 : les titres doivent avoir du poids. En 600 ils se confondaient avec
+     le texte courant et la hierarchie reposait uniquement sur la taille. */
+  font-weight: 800;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   text-wrap: balance;

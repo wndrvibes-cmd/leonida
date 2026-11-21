@@ -38,7 +38,7 @@
   aspect-ratio: 4 / 1;
   min-height: 90px;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   background: var(--surface-sunken);
 }
@@ -80,7 +80,7 @@
   bottom: calc(var(--tabbar-total) + var(--sp-2));
   z-index: var(--z-sticky);
   padding: var(--sp-3);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   background: color-mix(in srgb, var(--bg-elevated) 94%, transparent);
   backdrop-filter: var(--blur-bar);

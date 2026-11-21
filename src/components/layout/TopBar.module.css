@@ -5,7 +5,7 @@
   right: 0;
   z-index: var(--z-nav);
   padding-top: var(--safe-top);
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--stroke) solid var(--outline);
   background: var(--surface-sunken);
   backdrop-filter: var(--blur-bar);
 }
@@ -61,7 +61,7 @@
     width: clamp(160px, 20vw, 260px);
     height: 40px;
     padding-inline: var(--sp-3);
-    border: 1px solid var(--border);
+    border: var(--stroke) solid var(--outline);
     border-radius: var(--r-full);
     background: var(--surface);
     color: var(--text-subtle);

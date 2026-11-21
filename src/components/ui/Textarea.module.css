@@ -4,7 +4,7 @@
   min-height: 112px;
   padding: var(--sp-3);
   background: var(--surface-sunken);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   color: var(--text);
   font-family: var(--font-body);

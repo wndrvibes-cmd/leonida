@@ -383,11 +383,57 @@ se detacherait.
 annoncant explicitement leur nature, aucune fausse information sur GTA VI),
 rendu controle en 1240px et 390px, puis supprime. Base revenue a 0 article.
 
+### Direction artistique CARTOON / STICKER — 21/11
+
+Changement de direction demande : cartoon, relief, animation. Trois styles
+etaient possibles (sticker/BD, volume doux, illustration peinte) ; le choix
+s'est porte sur **sticker / BD**.
+
+Principe : contour franc, aplats satures, **ombre DURE decalee** (jamais de
+flou), et enfoncement physique au clic.
+
+**Une contrainte physique a resoudre** : une ombre d'encre quasi noire ne se
+voit pas sur un fond quasi noir. Le fond de l'application a donc ete
+ECLAIRCI (#05161F -> #0E3146) pour que le relief se detache. C'est la
+condition meme du style : sans contraste entre le fond et l'encre, il n'y a
+pas de relief.
+
+- `--ink`, `--outline`, `--stroke`, `--relief-*` ajoutes aux jetons ;
+- les anciennes ombres diffuses pointent vers le relief dur : tout bascule
+  d'un coup sans toucher chaque composant ;
+- 131 bordures de 1px converties en trait epais dans 70 fichiers ;
+- Button : ombre dure, et a l'appui l'ombre tombe a zero pendant que le
+  bouton descend d'exactement 5px — la distance dont l'ombre etait decalee,
+  sinon il semblerait glisser au lieu d'etre presse ;
+- l'arete lumineuse de l'etape precedente est NEUTRALISEE (et non supprimee,
+  pour ne casser aucun composant) : elle n'a plus de role ici.
+
+**Bug trouve au passage** : `--font-display: 'Outfit'` etait declaree mais la
+police n'etait JAMAIS chargee — aucun `<link>` dans index.html. Les titres
+retombaient silencieusement sur la police systeme. Outfit est maintenant
+chargee en graisses 500 a 800, et les titres passent en 800.
+
+### Publication — GitHub Pages
+
+- `vite.config.ts` : `base` configurable par `VITE_BASE_PATH` (Pages sert
+  depuis /<depot>/, pas depuis la racine ; sans ce prefixe la page reste
+  blanche) ;
+- `.github/workflows/deploy.yml` : typecheck, build, copie de `index.html`
+  en `404.html` (sans quoi un rechargement sur /carte renverrait une vraie
+  404), puis deploiement ;
+- la cle Supabase inscrite dans le workflow est la cle PUBLIABLE, prevue pour
+  le navigateur et protegee par la RLS. Elle finit de toute facon dans le
+  bundle public : l'ecrire la n'ajoute aucune exposition.
+
+**Le build de production fonctionne pour la premiere fois** (4,98 s) grace a
+la substitution rollup WASM. Verifie : aucun contournement local n'a fuite
+dans `package.json` ni dans le verrou de dependances.
+
 ### Prochaine tache
 
-Poursuivre la refonte : communaute (flux social), moments (galerie), carte
-(fiches et filtres), profil. Puis la suite de l'administration (actualites,
-medias, cadeaux), chantier separe.
+Poursuivre la refonte cartoon sur communaute, moments, carte et profil. Le
+rendu doit d'abord etre juge sur le site publie : le volet de previsualisation
+de l'outil passe en `visibilityState: hidden`, ce qui fausse les captures.
 
 ---
 

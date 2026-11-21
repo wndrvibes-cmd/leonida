@@ -17,7 +17,7 @@
   overflow: hidden;
   border-radius: var(--r-full);
   background: var(--surface-sunken);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   color: var(--text-muted);
 }
 

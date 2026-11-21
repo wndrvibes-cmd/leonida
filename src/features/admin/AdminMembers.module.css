@@ -6,7 +6,7 @@
 .notice {
   display: flex; align-items: flex-start; gap: var(--sp-2);
   padding: var(--sp-3) var(--sp-4);
-  border: 1px solid var(--border-accent); border-radius: var(--r-md);
+  border: var(--stroke) solid var(--border-accent); border-radius: var(--r-md);
   background: var(--accent-soft);
   font-size: var(--text-sm); color: var(--text);
 }
@@ -45,7 +45,7 @@
 .selfNote {
   grid-column: 1 / -1;
   font-size: var(--text-xs); color: var(--text-subtle);
-  padding-top: var(--sp-2); border-top: 1px solid var(--border);
+  padding-top: var(--sp-2); border-top: var(--stroke) solid var(--outline);
 }
 
 /* ------------------------------------------------------ boite de dialogue */

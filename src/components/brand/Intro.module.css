@@ -121,7 +121,7 @@
   min-height: 44px;
   min-width: 44px;
   padding-inline: var(--sp-4);
-  border: 1px solid var(--border-strong);
+  border: var(--stroke) solid var(--border-strong);
   border-radius: var(--r-full);
   background: var(--surface-sunken);
   backdrop-filter: var(--blur-panel);

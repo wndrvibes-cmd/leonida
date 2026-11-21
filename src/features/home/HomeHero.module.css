@@ -6,7 +6,7 @@
   min-height: 62svh;
   padding-block: var(--sp-9) var(--sp-8);
   overflow: hidden;
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--stroke) solid var(--outline);
 }
 
 @media (min-width: 900px) {

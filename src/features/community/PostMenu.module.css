@@ -13,7 +13,7 @@
   gap: 2px;
   width: min(15rem, calc(100vw - 2 * var(--sp-5)));
   padding: var(--sp-2);
-  border: 1px solid var(--border-strong);
+  border: var(--stroke) solid var(--border-strong);
   border-radius: var(--r-md);
   background: var(--bg-elevated);
   backdrop-filter: var(--blur-panel);

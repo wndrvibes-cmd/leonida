@@ -39,7 +39,7 @@
   display: block;
   width: 100%;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   background: var(--surface-sunken);
   padding: 0;
@@ -76,7 +76,7 @@
 .video {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   background: var(--surface-sunken);
 }
@@ -88,7 +88,7 @@
   gap: var(--sp-3);
   min-height: 72px;
   padding: var(--sp-4);
-  border: 1px solid var(--border-strong);
+  border: var(--stroke) solid var(--border-strong);
   border-radius: var(--r-md);
   background: var(--surface);
   color: var(--text);

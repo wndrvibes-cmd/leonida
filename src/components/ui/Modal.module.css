@@ -22,7 +22,7 @@
   width: 100%;
   max-height: calc(100dvh - var(--safe-top) - var(--sp-6));
   background: var(--bg-elevated);
-  border: 1px solid var(--border-strong);
+  border: var(--stroke) solid var(--border-strong);
   border-radius: var(--r-xl) var(--r-xl) 0 0;
   box-shadow: var(--edge-strong), var(--shadow-float);
   outline: none;
@@ -44,7 +44,7 @@
   justify-content: space-between;
   gap: var(--sp-3);
   padding: var(--sp-4) var(--sp-4) var(--sp-3);
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--stroke) solid var(--outline);
 }
 
 .headText {
@@ -105,7 +105,7 @@
   padding: var(--sp-3) var(--sp-4);
   /* La barre d'actions reste accessible au-dessus de l'encoche basse. */
   padding-bottom: calc(var(--sp-3) + var(--safe-bottom));
-  border-top: 1px solid var(--border);
+  border-top: var(--stroke) solid var(--outline);
   background: var(--surface-sunken);
 }
 

@@ -12,50 +12,53 @@
 :root {
   /* ----------------------------------------------------------- COULEURS --- */
   /* Fonds : du plus profond au plus clair (nuit tropicale) */
-  --abyss:        #03121A;   /* fond absolu de l'application */
-  --deep:         #07202B;   /* fond de section */
-  --tide:         #0C2F3D;   /* surface elevee */
-  --shelf:        #12404F;   /* surface survolee */
+  --abyss:        #0E3146;   /* fond absolu de l'application */
+  --deep:         #124055;   /* fond de section */
+  --tide:         #1B5673;   /* surface elevee */
+  --shelf:        #246C8F;   /* surface survolee */
 
   /* Turquoise — la couleur signature, celle de l'ocean de la carte */
   --surf-900:     #0A4F60;
   --surf-700:     #11829C;
-  --surf:         #1FB6D4;
-  --surf-300:     #5BD4E8;
+  --surf:         #2BC8E8;
+  --surf-300:     #7BE3F5;
   --surf-100:     #B4ECF6;
 
   /* Vert palmier — vegetation, Everglades */
   --palm-900:     #14402A;
   --palm-700:     #276B45;
-  --palm:         #3E9A63;
-  --palm-300:     #74C892;
+  --palm:         #3FB86E;
+  --palm-300:     #7EDCA3;
 
   /* Orange tropical — couchers de soleil, accents d'action */
   --sunset-900:   #7A2F10;
   --sunset-700:   #C2561F;
-  --sunset:       #FF7A3C;
-  --sunset-300:   #FFA877;
+  --sunset:       #FF8534;
+  --sunset-300:   #FFB072;
 
   /* Sable — Keys, plages, surfaces chaudes */
   --sand-700:     #A08A5E;
-  --sand:         #E3CB9B;
-  --sand-100:     #F5EBD6;
+  --sand:         #F3D79C;
+  --sand-100:     #FBF1DC;
 
   /* Corail — alertes, suppressions */
-  --coral:        #FF5E5B;
+  --coral:        #FF5C56;
   --coral-300:    #FF928F;
 
   /* Texte */
-  --bone:         #F3EFE6;   /* blanc casse, texte principal */
-  --mist:         #A8BFC8;   /* texte secondaire */
-  --fade:         #6B8793;   /* texte tertiaire, placeholders */
+  --bone:         #FDF6E8;   /* blanc casse, texte principal */
+  --mist:         #C4DCE6;   /* texte secondaire */
+  --fade:         #93B3C1;   /* texte tertiaire, placeholders */
 
   /* ------------------------------------------------------- SEMANTIQUE ---- */
   --bg:               var(--abyss);
   --bg-elevated:      var(--deep);
-  --surface:          color-mix(in srgb, var(--tide) 88%, transparent);
-  --surface-hover:    color-mix(in srgb, var(--shelf) 90%, transparent);
-  --surface-sunken:   color-mix(in srgb, var(--abyss) 70%, transparent);
+  /* Les surfaces sont volontairement BEAUCOUP plus claires que le fond : un
+     contour sombre et une ombre dure ne se lisent que par contraste. Sur une
+     carte aussi sombre que la page, le relief disparait. */
+  --surface:          var(--tide);
+  --surface-hover:    var(--shelf);
+  --surface-sunken:   color-mix(in srgb, var(--abyss) 86%, var(--tide));
 
   --text:             var(--bone);
   --text-muted:       var(--mist);
@@ -71,9 +74,24 @@
   --warning:          var(--sand);
   --danger:           var(--coral);
 
-  --border:           color-mix(in srgb, var(--surf-100) 12%, transparent);
-  --border-strong:    color-mix(in srgb, var(--surf-100) 22%, transparent);
-  --border-accent:    color-mix(in srgb, var(--surf) 45%, transparent);
+  /* ------------------------------------------------- CONTOUR & RELIEF --- */
+  /* L'encre : couleur unique des contours et des ombres dures. C'est elle qui
+     donne l'aspect autocollant — un trait franc, jamais un degrade. */
+  --ink:              #03141D;
+  --outline:          var(--sand-100);
+  --stroke:           2px;
+  --stroke-thick:     3px;
+
+  --border:           var(--outline);
+  --border-strong:    var(--sand);
+  --border-accent:    var(--surf-300);
+
+  /* Ombres DURES, sans flou : l'element parait decoupe et pose sur la page. */
+  --relief-sm:        3px 3px 0 var(--ink);
+  --relief:           5px 5px 0 var(--ink);
+  --relief-lg:        8px 8px 0 var(--ink);
+  /* Etat enfonce : l'ombre disparait, l'element descend d'autant. */
+  --relief-press:     0 0 0 var(--ink);
 
   /* --------------------------------------------------------- TYPOGRAPHIE - */
   --font-display: 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -95,7 +113,7 @@
   --leading-snug:   1.32;
   --leading-normal: 1.58;
 
-  --tracking-tight: -0.022em;
+  --tracking-tight: -0.034em;
   --tracking-wide:   0.08em;
   --tracking-caps:   0.14em;
 
@@ -110,12 +128,14 @@
   --reading-max: 68ch;
 
   /* ------------------------------------------------------------- RAYONS -- */
-  --r-sm: 8px;  --r-md: 14px;  --r-lg: 20px;  --r-xl: 28px;  --r-full: 999px;
+  --r-sm: 10px; --r-md: 16px; --r-lg: 22px;  --r-xl: 30px;  --r-full: 999px;
 
   /* ------------------------------------------------------------- OMBRES -- */
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.30);
-  --shadow-md: 0 6px 18px -6px rgb(0 0 0 / 0.45);
-  --shadow-lg: 0 20px 48px -16px rgb(0 0 0 / 0.60);
+  /* Les anciennes ombres diffuses pointent desormais vers le relief dur :
+     tout le produit bascule d'un coup, sans toucher chaque composant. */
+  --shadow-sm: var(--relief-sm);
+  --shadow-md: var(--relief);
+  --shadow-lg: var(--relief-lg);
   --shadow-glow: 0 0 0 1px var(--border-accent),
                  0 10px 40px -12px color-mix(in srgb, var(--surf) 40%, transparent);
 
@@ -127,13 +147,16 @@
   /* Arete lumineuse : un filet clair sur le bord superieur. C'est ce detail
      qui fait lire une surface comme du verre pose sur un fond, et non comme
      un rectangle peint. */
-  --edge:        inset 0 1px 0 color-mix(in srgb, var(--surf-100) 9%, transparent);
-  --edge-strong: inset 0 1px 0 color-mix(in srgb, var(--surf-100) 17%, transparent);
+  /* En style autocollant, le relief vient du CONTOUR et de l'ombre dure.
+     Un filet de lumiere interieur n'a plus de role : ces deux jetons sont
+     neutralises plutot que supprimes, pour ne casser aucun composant. */
+  --edge:        0 0 0 0 transparent;
+  --edge-strong: 0 0 0 0 transparent;
 
   /* Ombres portees : plus diffuses et plus basses a mesure que l'element
      s'eleve, comme une vraie source lumineuse zenithale. */
-  --shadow-float: 0 28px 64px -28px rgb(0 0 0 / 0.72);
-  --shadow-lift:  0 16px 36px -16px rgb(0 0 0 / 0.58);
+  --shadow-float: var(--relief-lg);
+  --shadow-lift:  var(--relief);
 
   /* Bandes de section : alternance a peine perceptible qui donne un rythme
      vertical sans decouper la page en blocs. */

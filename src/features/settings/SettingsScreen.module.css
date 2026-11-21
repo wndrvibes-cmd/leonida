@@ -24,7 +24,7 @@
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: var(--blur-bar);
   -webkit-backdrop-filter: var(--blur-bar);
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--stroke) solid var(--outline);
 }
 
 .panel {

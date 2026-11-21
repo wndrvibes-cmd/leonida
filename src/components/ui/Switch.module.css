@@ -42,7 +42,7 @@
   height: 32px;
   padding: 3px;
   background: var(--surface-sunken);
-  border: 1px solid var(--border-strong);
+  border: var(--stroke) solid var(--border-strong);
   border-radius: var(--r-full);
   cursor: pointer;
   transition:

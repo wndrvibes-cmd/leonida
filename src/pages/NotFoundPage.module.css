@@ -8,7 +8,7 @@
   width: 100%;
   max-width: 560px;
   padding: var(--sp-7) var(--sp-5);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-xl);
   background: var(--surface);
   text-align: center;
@@ -71,7 +71,7 @@
 .primary { background: var(--accent); color: var(--text-on-accent); }
 .primary:hover { transform: translateY(-1px); background: var(--surf-300); color: var(--text-on-accent); }
 
-.secondary { border: 1px solid var(--border-strong); color: var(--text); }
+.secondary { border: var(--stroke) solid var(--border-strong); color: var(--text); }
 .secondary:hover { background: var(--surface-hover); color: var(--text); transform: translateY(-1px); }
 
 .more {
@@ -81,6 +81,6 @@
   gap: var(--sp-4);
   margin-top: var(--sp-6);
   padding-top: var(--sp-5);
-  border-top: 1px solid var(--border);
+  border-top: var(--stroke) solid var(--outline);
   font-size: var(--text-sm);
 }

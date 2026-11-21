@@ -11,7 +11,7 @@
   gap: var(--sp-4);
   flex-wrap: wrap;
   padding-top: var(--sp-4);
-  border-top: 1px solid var(--border);
+  border-top: var(--stroke) solid var(--outline);
 }
 
 .rowText {

@@ -1,5 +1,5 @@
 .wrap {
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   background: var(--surface-sunken);
 }

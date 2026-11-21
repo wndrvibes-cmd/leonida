@@ -54,7 +54,7 @@
 .foot {
   margin-top: var(--sp-5);
   padding-top: var(--sp-4);
-  border-top: 1px solid var(--border);
+  border-top: var(--stroke) solid var(--outline);
   text-align: center;
   font-size: var(--text-sm);
   color: var(--text-muted);

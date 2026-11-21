@@ -6,7 +6,7 @@
   z-index: var(--z-nav);
   padding-bottom: var(--safe-bottom);
   padding-inline: var(--safe-left) var(--safe-right);
-  border-top: 1px solid var(--border);
+  border-top: var(--stroke) solid var(--outline);
   background: var(--surface-sunken);
   backdrop-filter: var(--blur-bar);
 }

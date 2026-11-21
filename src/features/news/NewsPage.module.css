@@ -38,7 +38,7 @@
   align-self: flex-start;
   min-height: 28px;
   padding-inline: var(--sp-3);
-  border: 1px solid var(--border-accent);
+  border: var(--stroke) solid var(--border-accent);
   border-radius: var(--r-full);
   background: var(--accent-soft);
   color: var(--surf-300);

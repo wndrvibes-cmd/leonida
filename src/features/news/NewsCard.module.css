@@ -78,7 +78,7 @@
   align-items: center;
   min-height: 22px;
   padding-inline: var(--sp-3);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-full);
   font-size: var(--text-xs);
   font-weight: 700;
@@ -113,7 +113,7 @@
   gap: var(--sp-2) var(--sp-4);
   margin-top: auto;
   padding-top: var(--sp-2);
-  border-top: 1px solid var(--border);
+  border-top: var(--stroke) solid var(--outline);
   color: var(--text-subtle);
   font-size: var(--text-xs);
 }
@@ -135,7 +135,7 @@
 
 /* --------------------------------------------------------------- SQUELETTE */
 .skeleton {
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-lg);
   background: var(--surface);
 }

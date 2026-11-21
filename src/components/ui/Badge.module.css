@@ -76,3 +76,13 @@
   border-color: transparent;
   color: var(--text-on-accent);
 }
+
+/* ======================================================= RELIEF STICKER */
+/* Pastille decoupee : contour franc et petite ombre dure. Sans contour, un
+   badge pose sur une carte deja contouree se lirait comme une tache. */
+.badge {
+  border: var(--stroke) solid var(--ink);
+  box-shadow: var(--relief-sm);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}

@@ -50,7 +50,7 @@
   gap: var(--sp-4);
   margin-top: auto;
   padding-top: var(--sp-2);
-  border-top: 1px solid var(--border);
+  border-top: var(--stroke) solid var(--outline);
   font-size: var(--text-xs);
   color: var(--text-subtle);
 }

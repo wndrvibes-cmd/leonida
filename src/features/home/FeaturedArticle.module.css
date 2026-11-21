@@ -10,7 +10,7 @@
   display: grid;
   gap: var(--sp-4);
   padding: var(--sp-4);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-xl);
   background: var(--surface);
   backdrop-filter: var(--blur-panel);

@@ -29,7 +29,7 @@
   gap: var(--sp-3);
   max-width: var(--reading-max);
   padding: var(--sp-4);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-left: 2px solid var(--accent-warm);
   border-radius: var(--r-md);
   background: var(--surface);

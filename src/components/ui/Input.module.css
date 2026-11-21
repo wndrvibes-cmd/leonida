@@ -5,7 +5,7 @@
   min-height: 46px;
   padding-inline: var(--sp-3);
   background: var(--surface-sunken);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   transition:
     border-color var(--dur-fast) var(--ease-soft),

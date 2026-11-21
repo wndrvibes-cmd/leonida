@@ -13,7 +13,7 @@
   justify-content: space-between;
   gap: var(--sp-3);
   padding-bottom: var(--sp-4);
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--stroke) solid var(--outline);
 }
 
 .headText {
@@ -54,7 +54,7 @@
   z-index: var(--z-sticky);
   align-self: flex-start;
   padding: var(--sp-1) var(--sp-3);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-full);
   background: color-mix(in srgb, var(--bg) 90%, transparent);
   backdrop-filter: var(--blur-bar);
@@ -82,7 +82,7 @@
   align-items: start;
   gap: var(--sp-3);
   padding: var(--sp-3) var(--sp-4);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-md);
   background: var(--surface);
   transition: border-color var(--dur-fast) var(--ease-soft),
@@ -120,7 +120,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
   border-radius: var(--r-full);
   background: var(--surface-sunken);
   color: var(--accent);

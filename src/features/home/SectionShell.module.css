@@ -57,7 +57,7 @@
   border-radius: var(--r-md);
   color: var(--accent);
   background: var(--accent-soft);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
 }
 
 .title {
@@ -104,7 +104,7 @@
   border-radius: var(--r-full);
   color: var(--accent);
   background: var(--accent-soft);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--outline);
 }
 
 /* ===================================================== DENSITE EDITORIALE */
