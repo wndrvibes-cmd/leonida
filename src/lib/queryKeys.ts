@@ -10,7 +10,8 @@ export const qk = {
   premium:        (id: string) => ['premium', id] as const,
   settings:       (id: string) => ['settings', id] as const,
 
-  appSettings:    (key?: string) => (key ? ['appSettings', key] : ['appSettings']) as const,
+  appSettings:    (key?: string) =>
+    (key ? (['appSettings', key] as const) : (['appSettings'] as const)),
 
   news:           (filters?: unknown) => ['news', filters ?? {}] as const,
   newsArticle:    (slug: string) => ['news', 'article', slug] as const,

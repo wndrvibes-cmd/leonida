@@ -1,4 +1,4 @@
-import type { PostgrestError } from '@supabase/supabase-js'
+import type { PostgrestError, PostgrestSingleResponse } from '@supabase/supabase-js'
 
 /**
  * Briques communes a tous les services : pagination par curseur, remontee
@@ -82,20 +82,32 @@ export class ServiceError extends Error {
   }
 }
 
-interface SupabaseResult<T> {
-  data: T | null
-  error: PostgrestError | null
-}
+/**
+ * On reprend TEL QUEL le type de reponse de postgrest-js au lieu d'en
+ * redeclarer un equivalent.
+ *
+ * Ce detail n'est pas cosmetique. Une signature maison du genre
+ * `{ data: T | null; error: PostgrestError | null }` oblige TypeScript a
+ * inferer `T` en confrontant les deux branches de l'union renvoyee par
+ * Supabase ; l'inference echoue et retombe sur `never`. Toutes les lectures
+ * de proprietes en aval cassaient alors avec
+ * « Property 'x' does not exist on type 'never' ».
+ *
+ * A noter : toutes les requetes aboutissent a `PostgrestSingleResponse<X>`,
+ * y compris les listes — pour `select()` sans `single()`, `X` vaut `Row[]`.
+ */
 
 /** Donnee obligatoire : absente, c'est une erreur. */
-export function unwrap<T>(result: SupabaseResult<T>): T {
+export function unwrap<T>(result: PostgrestSingleResponse<T>): NonNullable<T> {
   if (result.error) throw new ServiceError(result.error)
-  if (result.data === null) throw new ServiceError('Donnee introuvable.')
-  return result.data
+  if (result.data === null || result.data === undefined) {
+    throw new ServiceError('Donnee introuvable.')
+  }
+  return result.data as NonNullable<T>
 }
 
 /** Donnee facultative : `maybeSingle()` peut legitimement ne rien renvoyer. */
-export function unwrapMaybe<T>(result: SupabaseResult<T>): T | null {
+export function unwrapMaybe<T>(result: PostgrestSingleResponse<T>): T | null {
   if (result.error) throw new ServiceError(result.error)
   return result.data
 }
